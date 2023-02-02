@@ -1,0 +1,46 @@
+<clr-datagrid
+  [clrDgLoading]="loading"
+  (clrDgRefresh)="updatedState.emit($event)"
+>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'memberType'">Member Number</clr-dg-column>
+  <clr-dg-column [clrDgField]="'accountType'">Account Type</clr-dg-column>
+  <clr-dg-column [clrDgField]="'balance'">Balance</clr-dg-column>
+  <clr-dg-column>Overdraft</clr-dg-column>
+  <clr-dg-column>Overdraft Amount</clr-dg-column>
+  <clr-dg-placeholder>{{ placeholderMessage }}</clr-dg-placeholder>
+
+  <clr-dg-row *ngFor="let memberAccount of memberAccounts">
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="editSelected.emit(memberAccount)">
+        Update Overdrat Status
+      </button>
+    </clr-dg-action-overflow>
+
+    <clr-dg-cell
+      >{{ memberAccount?.accountHolderSurname }}
+      {{ memberAccount?.accountHolderName }}
+    </clr-dg-cell>
+    <clr-dg-cell>{{ memberAccount?.accountNumber }}</clr-dg-cell>
+    <clr-dg-cell>{{ memberAccount?.accountType }}</clr-dg-cell>
+    <clr-dg-cell>{{
+      memberAccount?.balance | currency: '':memberAccount.currency.code
+    }}</clr-dg-cell>
+    <clr-dg-cell>
+      <span *ngIf="memberAccount.overdraft" class="label label-success"
+        >Enabled</span
+      >
+      <span *ngIf="!memberAccount.overdraft" class="label label-danger"
+        >Disabled</span
+      >
+    </clr-dg-cell>
+    <clr-dg-cell>{{ memberAccount?.overdraftAmount }}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgTotalItems]="total">
+      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+      {{ memberAccounts.length }} Member Accounts
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

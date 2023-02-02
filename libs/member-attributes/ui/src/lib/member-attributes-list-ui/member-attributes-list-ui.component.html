@@ -1,0 +1,39 @@
+<div class="limit-height">
+  <clr-datagrid [clrDgLoading]="loading">
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Display Name</clr-dg-column>
+    <clr-dg-column>Field Type</clr-dg-column>
+    <clr-dg-column>Optional</clr-dg-column>
+    <clr-dg-column>Created on</clr-dg-column>
+
+    <clr-dg-placeholder>{{ placeholderMessage }}</clr-dg-placeholder>
+
+    <clr-dg-row *clrDgItems="let memberAttribute of memberAttributeList">
+      <clr-dg-action-overflow>
+        <button
+          class="action-item"
+          (click)="updateSelected.emit(memberAttribute)"
+        >
+          Update
+        </button>
+      </clr-dg-action-overflow>
+      <clr-dg-cell>{{ memberAttribute?.name }}</clr-dg-cell>
+      <clr-dg-cell>{{ memberAttribute?.displayName }}</clr-dg-cell>
+      <clr-dg-cell>{{ memberAttribute?.fieldType }}</clr-dg-cell>
+      <clr-dg-cell>
+        <span *ngIf="memberAttribute?.optional">Yes</span>
+        <span *ngIf="!memberAttribute?.optional">No</span></clr-dg-cell
+      >
+      <clr-dg-cell>{{ memberAttribute?.createdDate | date }}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer *ngIf="total > 0">
+      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+      {{ pagination.totalItems }} Member Attributes
+      <clr-dg-pagination
+        #pagination
+        [clrDgTotalItems]="total"
+      ></clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>

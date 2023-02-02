@@ -1,0 +1,32 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+  <h3 class="modal-title">{{ title }}</h3>
+  <div class="modal-body">
+    <form [formGroup]="phoneNumberForm">
+      <clr-input-container>
+        <label>Enter Phone Number</label>
+        <input
+          type="number"
+          clrInput
+          formControlName="phoneNumber"
+          required
+          style="width: auto"
+        />
+        <textarea cols="45" rows="4"></textarea>
+        <clr-control-error>This field is required</clr-control-error>
+      </clr-input-container>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn" (click)="closeModal.emit()">
+      Cancel
+    </button>
+    <button
+      [disabled]="phoneNumberForm.invalid"
+      type="button"
+      class="btn btn-primary"
+      (click)="formValue.emit(this.phoneNumberForm.value)"
+    >
+      Add
+    </button>
+  </div>
+</clr-modal>

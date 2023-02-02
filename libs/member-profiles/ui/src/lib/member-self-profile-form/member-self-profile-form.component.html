@@ -1,0 +1,234 @@
+<br />
+<div class="head">Create Member Profile {{ user?.id }} {{ user?.title }} {{ user?.firstName }} {{ user?.lastName }}</div>
+<hr />
+
+<div class="card">
+  <div class="card-block">
+    <form [formGroup]="memberProfileForm">
+      <img [src]="fileName" height="300" />
+
+      <clr-select-container>
+        <label>User</label>
+        <select clrSelect name="options" formControlName="userId" required  (change)="userId.emit($event.target)">
+          <option disabled value="">Select User</option>
+          <option [value]="user?.id">
+            {{ user?.title }} {{ user?.firstName }} {{ user?.lastName }}
+          </option>
+        </select>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-select-container>
+
+      <!-- <clr-input-container>
+    <label class="required">Organization Name</label>
+    <input clrInput formControlName="name" type="text" size="35" />
+    <clr-control-error>Name is required</clr-control-error>
+  </clr-input-container> -->
+
+      <clr-input-container>
+        <label class="required">Physical Address</label>
+        <input
+          clrInput
+          formControlName="physicalAddress"
+          type="text"
+          size="35"
+        />
+        <clr-control-error>Name is required</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label class="required">Mailing Address</label>
+        <input
+          clrInput
+          formControlName="mailingAddress"
+          type="text"
+          size="35"
+        />
+        <clr-control-error>This field is required</clr-control-error>
+      </clr-input-container>
+
+      <clr-date-container>
+        <label>Date Joined </label>
+        <input clrDate type="date" formControlName="dateJoined" />
+      </clr-date-container>
+
+      <clr-select-container>
+        <label class="required">Status</label>
+        <select clrSelect name="options" formControlName="status">
+          <option
+            *ngFor="let status of statuses | keyvalue"
+            [value]="status.value"
+          >
+            {{ status.key }}
+          </option>
+        </select>
+      </clr-select-container>
+
+      <clr-select-container>
+        <label class="required">Member Type</label>
+        <select
+          clrSelect
+          name="options"
+          formControlName="memberTypeId"
+          (change)="memberTypeId.emit($event.target)"
+        >
+          <option
+            *ngFor="let memberType of memberTypes"
+            [value]="memberType.id"
+          >
+            {{ memberType.name }}
+          </option>
+        </select>
+      </clr-select-container>
+
+      <br />
+
+      <ng-container *ngIf="memberAttributes?.length > 0">
+        <div
+          formArrayName="memberTypeAttributeValues"
+          *ngFor="let field of memberAttributes; let i = index"
+        >
+          <div [formGroupName]="i">
+            <div [ngSwitch]="field.fieldType">
+              <div *ngSwitchCase="'TEXT'">
+                <clr-input-container>
+                  <label>{{ field.name }}</label>
+                  <input
+                    clrInput
+                    formControlName="value"
+                    type="text"
+                    size="30"
+                  />
+                  <clr-control-error>Field is required!</clr-control-error>
+                </clr-input-container>
+              </div>
+
+              <div *ngSwitchCase="'NUMBER'">
+                <clr-input-container>
+                  <label>{{ field.name }}</label>
+                  <input
+                    clrInput
+                    formControlName="value"
+                    type="number"
+                    size="30"
+                  />
+                  <clr-control-error>Field is required!</clr-control-error>
+                </clr-input-container>
+              </div>
+
+              <div *ngSwitchCase="'DATE'">
+                <clr-date-container>
+                  <label>{{ field.name }}</label>
+                  <input
+                    clrDate
+                    formControlName="value"
+                    type="date"
+                    size="30"
+                  />
+                  <clr-control-error>Field is required!</clr-control-error>
+                </clr-date-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container>
+        <br />
+        <button
+          class="btn"
+          (click)="isAddPhoneNumber = true"
+        >
+          Phone Numbers
+        </button>
+        <br />
+        <br />
+        <ol class="list">
+          <li *ngFor="let phoneNumber of phoneNumbers; let i = index">
+            {{ phoneNumber }} &nbsp;
+            <span
+              class="is-danger"
+              (click)="deletePhoneNumbers(phoneNumber)"
+            ></span>
+            <span
+              class="is-info"
+              (click)="editPhoneNumbers(phoneNumber)"
+            ></span>
+          </li>
+        </ol>
+        <br />
+      </ng-container>
+
+      <ng-container>
+        <br />
+        <button class="btn" (click)="isAddEmail = true">
+           Emails
+        </button>
+        <br />
+        <br />
+        <ol class="list">
+          <li *ngFor="let email of emails; let i = index">
+            {{ email }} &nbsp;
+            <span
+              class="is-danger"
+              (click)="deleteEmails(email)"
+            ></span>
+            <span
+              class="is-info"
+              (click)="editEmails(email)"
+            ></span>
+          </li>
+        </ol>
+        <br />
+      </ng-container>
+    </form>
+  </div>
+
+  <div class="card-footer">
+    <button type="submit" class="btn" [routerLink]="['/member-profile']">
+      Cancel
+    </button>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="onSubmit()"
+      [clrLoading]="btnState"
+    >
+      {{ btnTitle }}
+    </button>
+  </div>
+</div>
+
+<membership-application-emails-form
+  *ngIf="isAddEmail"
+  [title]="'Add Email'"
+  (formValue)="saveEmail($event)"
+  (closeModal)="close()"
+>
+</membership-application-emails-form>
+
+<membership-application-phone-number-form
+  *ngIf="isAddPhoneNumber"
+  [title]="'Add PhoneNumber'"
+  (formValue)="saveNumber($event)"
+  (closeModal)="close()"
+>
+</membership-application-phone-number-form>
+
+<membership-application-emails-form
+  *ngIf="isUpdateEmail"
+  [email]="selectedEmail"
+  [title]="'Update Email'"
+  (formValue)="updateEmails($event)"
+  (closeModal)="close()"
+>
+</membership-application-emails-form>
+
+<membership-application-phone-number-form
+  *ngIf="isUpdatePhoneNumber"
+  [phoneNumber]="selectedPhoneNumber"
+  [title]="'Update PhoneNumber'"
+  (formValue)="updatePhoneNumbers($event)"
+  (closeModal)="close()"
+>
+</membership-application-phone-number-form>

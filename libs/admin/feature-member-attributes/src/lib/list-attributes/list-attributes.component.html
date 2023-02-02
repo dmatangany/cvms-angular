@@ -1,0 +1,39 @@
+<clr-button-group>
+  <clr-button class="btn btn-sm" (click)="isCreate = true">
+    <clr-icon shape="plus"></clr-icon>&nbsp;Create
+  </clr-button>
+  <clr-button class="btn btn-sm" (click)="refresh(true)">
+    <clr-icon shape="refresh"></clr-icon>&nbsp;Refresh
+  </clr-button>
+</clr-button-group>
+
+<membership-application-member-attributes-list-ui
+  [loading]="(memberAttributesFacade.loading$ | async)!"
+  [memberAttributeList]="(memberAttributesFacade.allMemberAttributes$ | async)!"
+  [total]="(memberAttributesFacade.totalMemberAttributes$ | async)!"
+  (updatedState)="getMemberAttributes()"
+  [placeholderMessage]="'No Member Attributes Found'"
+  (updateSelected)="updateMemberAttribute($event)"
+  (deleteSelected)="deleteMemberAttribute($event)"
+>
+</membership-application-member-attributes-list-ui>
+
+<membership-application-create-attribute
+  *ngIf="isCreate"
+  (closeModal)="refresh($event)"
+>
+</membership-application-create-attribute>
+
+<membership-application-update-attribute
+  *ngIf="isUpdate"
+  (closeModal)="refresh($event)"
+  [memberAttribute]="selectedMemberAttribute"
+>
+</membership-application-update-attribute>
+
+<membership-application-delete-attribute
+  *ngIf="isDelete"
+  (closeModal)="refresh($event)"
+  [memberAttribute]="selectedMemberAttribute"
+>
+</membership-application-delete-attribute>

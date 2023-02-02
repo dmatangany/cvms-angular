@@ -1,0 +1,10 @@
+<membership-application-action-confirmation-form
+  (proceed)="onSubmit()"
+  (closeModal)="closeModal.emit(false)"
+  [btnState]="(eventsFacade.btnState$ | async)!"
+>
+  <span class="action-header">Publish Event</span>
+  <span class="action-message"
+    >Are you sure you want to <strong>PUBLISH</strong> this event?</span
+  >
+</membership-application-action-confirmation-form>

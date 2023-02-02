@@ -1,0 +1,195 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+  <h3 class="modal-title">{{ title }}</h3>
+  <div class="modal-body">
+    <form clrForm [formGroup]="eventForm" clrLayout="vertical">
+      <clr-select-container>
+        <label>Category</label>
+        <select clrSelect formControlName="categoryId">
+          <option>Select Categoy</option>
+          <option *ngFor="let category of categoryList" [value]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+      </clr-select-container>
+
+      <clr-radio-container clrInline>
+        <label>Event Type</label>
+        <clr-radio-wrapper *ngFor="let type of type">
+          <input
+            type="radio"
+            clrRadio
+            required
+            [value]="false"
+            formControlName="type"
+          />
+          <label>{{ type }}</label>
+        </clr-radio-wrapper>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-radio-container>
+
+      <clr-input-container>
+        <label>Amount</label>
+        <input clrInput type="text" formControlName="name" size="45" />
+        <clr-control-error>Field is required</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Name</label>
+        <input clrInput type="text" formControlName="name" size="45" />
+        <clr-control-error>Field is required</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>City</label>
+        <input clrInput type="text" formControlName="city" size="45" />
+        <clr-control-error>Field is required</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Country</label>
+        <input clrInput type="text" formControlName="country" size="45" />
+        <clr-control-error>Field is required</clr-control-error>
+      </clr-input-container>
+
+      <clr-textarea-container>
+        <label>Description</label>
+        <textarea
+          clrTextarea
+          formControlName="description"
+          name="description"
+          rows="4"
+          cols="45"
+          required
+        ></textarea>
+
+        <clr-control-error>You must provide a description!</clr-control-error>
+      </clr-textarea-container>
+
+      <clr-input-container>
+        <label>Location</label>
+        <input clrInput type="text" formControlName="location" size="45" />
+        <clr-control-error>Field is required</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Number of Attendees</label>
+        <input
+          clrInput
+          type="text"
+          formControlName="maximumNumberOfAttendees"
+          size="45"
+        />
+        <clr-control-error>Field is required</clr-control-error>
+      </clr-input-container>
+
+      <div class="clr-row">
+        <div class="clr-col-md-6">
+          <clr-date-container>
+            <label>Start Date </label>
+            <input type="date" formControlName="startDateOfEvent" clrDate />
+            <clr-control-error>Field is Required</clr-control-error>
+          </clr-date-container>
+        </div>
+        <div class="clr-col-md-6">
+          <clr-input-container>
+            <label>Start Time </label>
+            <input
+              clrInput
+              type="time"
+              formControlName="startTimeOfEvent"
+              size="45"
+            />
+            <clr-control-error>Field is required</clr-control-error>
+          </clr-input-container>
+        </div>
+      </div>
+
+      <div class="clr-row">
+        <div class="clr-col-md-6">
+          <clr-date-container>
+            <label>End Date </label>
+            <input type="date" formControlName="endDateOfEvent" clrDate />
+            <clr-control-error>Field is Required</clr-control-error>
+          </clr-date-container>
+        </div>
+        <div class="clr-col-md-6">
+          <clr-input-container>
+            <label>End Time</label>
+            <input
+              clrInput
+              type="time"
+              formControlName="endTimeOfEvent"
+              size="45"
+            />
+            <clr-control-error>Field is required</clr-control-error>
+          </clr-input-container>
+        </div>
+      </div>
+      <clr-radio-container clrInline>
+        <label>Payable Event</label>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            required
+            [value]="false"
+            formControlName="payable"
+          />
+          <label>Yes</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            required
+            [value]="true"
+            formControlName="payable"
+          />
+          <label>No</label>
+        </clr-radio-wrapper>
+
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-radio-container>
+
+      <clr-radio-container clrInline>
+        <label>For Subscribed Members</label>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            required
+            [value]="false"
+            formControlName="forSubscribedMembers"
+          />
+          <label>Yes</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            required
+            [value]="true"
+            formControlName="forSubscribedMembers"
+          />
+          <label>No</label>
+        </clr-radio-wrapper>
+
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-radio-container>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="closeModal.emit()">
+      Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [clrLoading]="btnState$"
+      (click)="formValue.emit(eventForm.value)"
+    >
+      Submit
+    </button>
+  </div>
+</clr-modal>

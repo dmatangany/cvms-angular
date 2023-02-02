@@ -1,0 +1,25 @@
+<br />
+<div class="head">Events Calendar</div>
+<hr />
+<br />
+
+<div class="card">
+  <div class="card-block">
+    <membership-application-events-calender-ui
+      *ngIf="!(eventsFacade.loading$ | async)!"
+      [myEvents]="(eventsFacade.allEvents$ | async)!"
+      (handleSelectedEvent)="handleEvent($event)"
+    ></membership-application-events-calender-ui>
+
+    <div class="text-center" *ngIf="(eventsFacade.loading$ | async)!">
+      Loading please wait...
+    </div>
+  </div>
+</div>
+
+<membership-application-subscribe-event
+  *ngIf="subscribeEvent"
+  [eventId]="eventId"
+  (closeModal)="subscribeEvent = false"
+>
+</membership-application-subscribe-event>

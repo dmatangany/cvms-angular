@@ -1,0 +1,90 @@
+<div class="limit-height">
+  <clr-datagrid
+    [clrDgLoading]="loading"
+    (clrDgRefresh)="updatedState.emit($event)"
+  >
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Category</clr-dg-column>
+    <clr-dg-column>Published?</clr-dg-column>
+    <clr-dg-column>Start Time of Event</clr-dg-column>
+    <clr-dg-column>End Time of Event</clr-dg-column>
+    <clr-dg-column>Country</clr-dg-column>
+
+    <clr-dg-placeholder>{{ placeholderMessage }}</clr-dg-placeholder>
+
+    <clr-dg-row *ngFor="let event of eventsList" [clrDgItem]="event">
+      <clr-dg-action-overflow>
+        <button
+          class="action-item"
+          (click)="publishSelectedEvent.emit(event)"
+          *ngIf="canModify && !event.published"
+        >
+          Publish
+        </button>
+        <button
+          class="action-item"
+          (click)="unpublishSelectedEvent.emit(event)"
+          *ngIf="canModify && event.published"
+        >
+          Unpublish
+        </button>
+
+        <button
+          class="action-item"
+          (click)="updateSelected.emit(event)"
+          *ngIf="canModify"
+        >
+          Update
+        </button>
+        <button
+          class="action-item"
+          (click)="deleteSelected.emit(event)"
+          *ngIf="canModify"
+        >
+          Delete
+        </button>
+        <button class="action-item" (click)="viewAvailablePackages.emit(event)">
+          View Available Packages
+        </button>
+      </clr-dg-action-overflow>
+      <clr-dg-cell>{{ event?.name }}</clr-dg-cell>
+      <clr-dg-cell>{{ event?.category?.name }}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="label label-success" *ngIf="event?.published"
+          >Published</span
+        >
+        <span class="label label-info" *ngIf="!event?.published"
+          >Unpublished</span
+        >
+      </clr-dg-cell>
+      <clr-dg-cell
+        >{{ event?.startDateOfEvent | date }} at
+        <strong>{{ event?.startTimeOfEvent }}</strong></clr-dg-cell
+      >
+      <clr-dg-cell
+        >{{ event?.endDateOfEvent | date }} at
+        <strong>{{ event?.endTimeOfEvent }}</strong></clr-dg-cell
+      >
+      <clr-dg-cell>{{ event?.country }} </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-detail *clrIfDetail="let detail">
+      <clr-dg-detail-header>{{ detail.name }}</clr-dg-detail-header>
+      <hr />
+      <clr-dg-detail-body>
+        <membership-application-events-details
+          [event]="detail"
+        ></membership-application-events-details>
+      </clr-dg-detail-body>
+    </clr-dg-detail>
+
+    <clr-dg-footer *ngIf="total > 0">
+      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+      {{ pagination.totalItems }} Events
+      <clr-dg-pagination
+        #pagination
+        [clrDgTotalItems]="total"
+      ></clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>

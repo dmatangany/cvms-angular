@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "staging-apps-dee55"
+  },
+  "targets": {
+    "staging-apps-dee55": {
+      "hosting": {
+        "admin": [
+          "membership-admin-v2"
+        ],
+        "client": [
+          "membership-client"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

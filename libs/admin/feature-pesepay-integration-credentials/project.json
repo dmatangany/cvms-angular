@@ -1,0 +1,29 @@
+{
+  "name": "admin-feature-pesepay-integration-credentials",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/admin/feature-pesepay-integration-credentials/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/admin/feature-pesepay-integration-credentials"
+      ],
+      "options": {
+        "jestConfig": "libs/admin/feature-pesepay-integration-credentials/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/admin/feature-pesepay-integration-credentials/**/*.ts",
+          "libs/admin/feature-pesepay-integration-credentials/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

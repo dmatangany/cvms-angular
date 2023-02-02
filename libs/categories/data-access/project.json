@@ -1,0 +1,27 @@
+{
+  "name": "categories-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/categories/data-access/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/categories/data-access"],
+      "options": {
+        "jestConfig": "libs/categories/data-access/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/categories/data-access/**/*.ts",
+          "libs/categories/data-access/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

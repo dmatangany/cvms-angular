@@ -1,0 +1,7 @@
+<membership-application-currency-form
+  [currency]="(currenciesFacade.selectedCurrency$ | async)!"
+  [btnState$]="currenciesFacade.btnState$"
+  [title]="'Update Currency'"
+  (closeModal)="closeModal.emit($event)"
+  (formValue)="onSubmit($event)"
+></membership-application-currency-form>

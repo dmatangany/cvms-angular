@@ -1,0 +1,106 @@
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>Date of Transaction</strong>
+  </div>
+  <div class="clr-col-md-4">
+    {{ transactions.dateTimeOfTransaction | date }}
+    <span *ngIf="!transactions.dateTimeOfTransaction">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>Amount</strong>
+  </div>
+  <div class="clr-col-md-4">
+    {{ transactions.amount | currency: '':transactions.currency.code }}
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>Member Name</strong>
+  </div>
+  <div class="clr-col-md-4">
+    {{ transactions.memberName }}
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>MemberNumber</strong>
+  </div>
+  <div class="clr-col-md-4">
+    {{ transactions.memberId }}
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>Transaction Reference Number</strong>
+  </div>
+  <div class="clr-col-md-4">
+    {{ transactions.transactionReferenceNumber }}
+    <span *ngIf="!transactions.transactionReferenceNumber">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>Transaction Status</strong>
+  </div>
+  <div class="clr-col-md-4">
+    {{ transactions.transactionStatus }}
+    <span *ngIf="!transactions.transactionStatus">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>Transaction Description</strong>
+  </div>
+  <div class="clr-col-md-4">
+    {{ transactions.transactionDescription }}
+    <span *ngIf="!transactions.transactionDescription">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>Created Date</strong>
+  </div>
+  <div class="clr-col-md-4">
+    {{ transactions.createdDate | date }}
+    <span *ngIf="!transactions.createdDate">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>Created By</strong>
+  </div>
+  <div class="clr-col-md-4">
+    {{ transactions.createdBy }}
+    <span *ngIf="!transactions.createdBy">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>Last Modified By</strong>
+  </div>
+  <div class="clr-col-md-4">
+    {{ transactions.lastModifiedBy }}
+    <span *ngIf="!transactions.lastModifiedBy">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>Last Modified Date</strong>
+  </div>
+  <div class="clr-col-md-4">
+    {{ transactions.lastModifiedDate | date }}
+    <span *ngIf="!transactions.lastModifiedDate">--</span>
+  </div>
+</div>

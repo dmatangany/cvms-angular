@@ -1,0 +1,28 @@
+<form [formGroup]="loginForm" clrLayout="vertical">
+  <div class="login-group">
+    <clr-input-container>
+      <label>Username</label>
+      <input type="text" name="username" clrInput formControlName="username" />
+    </clr-input-container>
+
+    <clr-password-container>
+      <label>Password</label>
+      <input
+        type="password"
+        name="password"
+        clrPassword
+        formControlName="password"
+      />
+    </clr-password-container>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="formValue.emit(loginForm.value)"
+      [clrLoading]="btnState$ | async"
+    >
+      Sign In
+    </button>
+    <a [routerLink]="['../forgot-password']" class="signup">Forgot Password?</a>
+  </div>
+</form>

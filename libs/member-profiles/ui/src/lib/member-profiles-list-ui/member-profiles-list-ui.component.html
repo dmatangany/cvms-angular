@@ -1,0 +1,48 @@
+  <div class="card">
+  <div class="search">
+    <input class="searchTerm" type="text" name="searchTerm"
+      placeholder="Filter by any field value"
+      [(ngModel)]="searchText" />
+  </div>
+	  </div>
+  <clr-datagrid [clrDgLoading]="loading" (clrDgRefresh)="updatedState.emit()">
+  <clr-dg-column>Member Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'memberId'">Member ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'status'">MemberType</clr-dg-column>
+  <clr-dg-column [clrDgField]="'status'">Status</clr-dg-column>
+    <clr-dg-column [clrDgField]="'owing'">Balance</clr-dg-column>
+  <clr-dg-placeholder>{{ placeholderMessage }}</clr-dg-placeholder>
+
+  <clr-dg-row *clrDgItems="let memberProfile of memberProfiles | filterPipe: searchText">
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="updateSelected.emit(memberProfile)">
+        Edit
+      </button>
+      <button
+        class="action-item"
+        (click)="viewMemberProfile.emit(memberProfile)"
+      >
+        View
+      </button>
+      <button class="action-item" (click)="deleteSelected.emit(memberProfile)">
+        Delete
+      </button>
+    </clr-dg-action-overflow>
+    <clr-dg-cell
+      >{{ memberProfile?.user?.title }} {{ memberProfile?.user?.firstName }}
+      {{ memberProfile?.user?.lastName }}</clr-dg-cell
+    >
+    <clr-dg-cell>{{ memberProfile?.memberId }}</clr-dg-cell>
+    <clr-dg-cell>{{ memberProfile?.memberType.name }}</clr-dg-cell>
+    <clr-dg-cell>{{ memberProfile?.status }}</clr-dg-cell>
+
+    <clr-dg-cell>{{ memberProfile?.owing  | currency:'USD':'symbol' }}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgTotalItems]="total">
+      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+      {{ memberProfiles.length }} Member Profiles
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

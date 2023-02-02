@@ -1,0 +1,61 @@
+<membership-application-header-two></membership-application-header-two>
+<clr-header class="header header-6">
+  <div class="header-nav" [clr-nav-level]="1">
+    <div class="nav-link nav-text">
+      <label
+        *ngIf="
+          (subscriptionFacade.selectedSubscription$ | async)?.expired === false
+        "
+        class="label label-success"
+        >Active Subscription</label
+      >
+      <label
+        *ngIf="
+          (subscriptionFacade.selectedSubscription$ | async)?.expired === true
+        "
+        class="label label-danger"
+        >Inactive Subscription</label
+      >
+    </div>
+
+    <a
+      [routerLink]="['/dashboard']"
+      [routerLinkActive]="['active']"
+      class="nav-link nav-text"
+      >Dashboard</a
+    >
+    <a
+      [routerLink]="['/subscriptions']"
+      class="nav-link nav-text"
+      [routerLinkActive]="['active']"
+      >Subscriptions</a
+    >
+    <a
+      [routerLink]="['/transactions']"
+      [routerLinkActive]="['active']"
+      class="nav-link nav-text"
+      >Transactions</a
+    >
+    <a
+      [routerLink]="['/events']"
+      [routerLinkActive]="['active']"
+      class="nav-link nav-text"
+      >Events Calendar</a
+    >
+    <a
+      [routerLink]="['/my-accounts']"
+      [routerLinkActive]="['active']"
+      class="nav-link nav-text"
+      >My Account</a
+    >
+
+    <a class="nav-link nav-text" (click)="logout()">Logout</a>
+  </div>
+  <div *ngIf="memberProfile?.name"> class="he" style="float: right">
+    Current Balance:&nbsp;
+    {{ (memberAccount.selectedMemberAccount$ | async)?.currency?.code
+    }}{{
+      (memberProfile?.owing | currency: '')
+    }}&nbsp;&nbsp;
+  </div>
+</clr-header>

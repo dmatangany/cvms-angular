@@ -1,0 +1,46 @@
+<clr-modal [(clrModalOpen)]="opened">
+  <h3 class="modal-title">Update Account</h3>
+  <div class="modal-body">
+    <form clrForm [formGroup]="overdraftForm">
+      <clr-radio-container clrInline>
+        <label>Overdraft?</label>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            [value]="true"
+            formControlName="overdraft"
+          />
+          <label>Enable</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            [value]="false"
+            formControlName="overdraft"
+          />
+          <label>Disable</label>
+        </clr-radio-wrapper>
+        <clr-control-error>Required</clr-control-error>
+      </clr-radio-container>
+      <clr-input-container>
+        <label>Overdraft Amount</label>
+        <input clrInput type="text" formControlName="overdraftAmount" />
+      </clr-input-container>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="closeModal.emit()">
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      [clrLoading]="btnState"
+      (click)="formValue.emit(overdraftForm.value)"
+    >
+      Ok
+    </button>
+  </div>
+</clr-modal>

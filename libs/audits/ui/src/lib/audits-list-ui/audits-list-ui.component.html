@@ -1,0 +1,59 @@
+<div class="limit-height">
+  <clr-datagrid
+    [clrDgLoading]="loading"
+    (clrDgRefresh)="updatedState.emit($event)"
+  >
+    <clr-dg-column [clrDgField]="'resource.name'">Resource Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'action.type'">Action Type</clr-dg-column>
+    <clr-dg-column [clrDgField]="'action.actionStatus'"
+      >Action Status</clr-dg-column
+    >
+    <clr-dg-column [clrDgField]="'action.performedBy'"
+      >Performed By</clr-dg-column
+    >
+    <clr-dg-column [clrDgField]="'origin.sourceIP'">Source IP</clr-dg-column>
+    <clr-dg-column [clrDgField]="'origin.host'">Host</clr-dg-column>
+    <clr-dg-column [clrDgField]="'dateCreated'">Date</clr-dg-column>
+    <clr-dg-placeholder>{{ placeholderMessage }}</clr-dg-placeholder>
+
+    <clr-dg-row *ngFor="let audit of auditsList" [clrDgItem]="audit">
+      <clr-dg-cell>{{
+        decamelize(audit?.resource?.name) | titlecase
+      }}</clr-dg-cell>
+      <clr-dg-cell>{{ audit?.action?.type }}</clr-dg-cell>
+      <clr-dg-cell
+        ><span
+          class="label"
+          [ngClass]="{
+            'label-success': audit?.action?.actionStatus === 'COMPLETE',
+            'label-warning': audit?.action?.actionStatus === 'STARTED'
+          }"
+          >{{ audit?.action?.actionStatus }}</span
+        ></clr-dg-cell
+      >
+      <clr-dg-cell>{{ audit?.action?.performedBy }}</clr-dg-cell>
+      <clr-dg-cell>{{ audit?.origin?.sourceIP }}</clr-dg-cell>
+      <clr-dg-cell>{{ audit?.origin?.host }}</clr-dg-cell>
+      <clr-dg-cell>{{ audit?.dateCreated }}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-detail *clrIfDetail="let detail">
+      <clr-dg-detail-header>Audit Details</clr-dg-detail-header>
+      <clr-dg-detail-body>
+        <membership-application-audit-details
+          [audit]="detail"
+        ></membership-application-audit-details>
+      </clr-dg-detail-body>
+    </clr-dg-detail>
+
+    <clr-dg-footer *ngIf="total > 0">
+      <clr-dg-pagination #pagination [clrDgTotalItems]="total">
+        <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]"
+          >Audits per page</clr-dg-page-size
+        >
+        {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+        {{ pagination.totalItems }} Audits</clr-dg-pagination
+      >
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>

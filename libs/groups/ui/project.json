@@ -1,0 +1,27 @@
+{
+  "name": "groups-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/groups/ui/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/groups/ui"],
+      "options": {
+        "jestConfig": "libs/groups/ui/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/groups/ui/**/*.ts",
+          "libs/groups/ui/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

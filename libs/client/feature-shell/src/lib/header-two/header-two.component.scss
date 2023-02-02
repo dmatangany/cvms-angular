@@ -1,0 +1,49 @@
+.header .header-nav {
+  display: flex;
+  flex: 0 0 auto;
+  /* margin-left: -13%; */
+  margin: auto;
+  margin-right: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header {
+  background-color: #110542 !important;
+}
+
+.active {
+  color: white !important;
+  border-bottom: 2px solid white;
+}
+
+.header .header-nav .nav-link {
+  opacity: 1 !important;
+  font-weight: 700 !important;
+}
+
+.header .header-nav .nav-link:hover,
+.title {
+  color: white !important;
+  font-weight: 700 !important;
+}
+
+a {
+  color: white !important;
+}
+
+.inactive-account {
+  background: red;
+  height: 10px;
+  padding: 10px;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.active-account {
+  background: rgb(6, 143, 35);
+  height: 10px;
+  padding: 10px;
+  margin: auto;
+  border-radius: 10px;
+}

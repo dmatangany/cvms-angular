@@ -1,0 +1,33 @@
+<br />
+<div class="head">Transactions</div>
+<hr />
+<br />
+<div class="card">
+  <div class="card-block">
+    <clr-tabs>
+      <clr-tab>
+        <button clrTabLink id="link1" style="border: none">
+          Payment Transactions
+        </button>
+        <clr-tab-content id="content1" *clrIfActive>
+          <br />
+          <membership-application-list-payment-transactions></membership-application-list-payment-transactions>
+        </clr-tab-content>
+      </clr-tab>
+      <clr-tab>
+        <button clrTabLink style="border: none">Account Transactions</button>
+        <clr-tab-content *clrIfActive>
+          <br />
+          <membership-application-accounts-transactions-list></membership-application-accounts-transactions-list>
+        </clr-tab-content>
+      </clr-tab>
+      <clr-tab>
+        <button clrTabLink style="border: none">Reports</button>
+        <clr-tab-content *clrIfActive>
+          <br />
+          <membership-application-reports></membership-application-reports>
+        </clr-tab-content>
+      </clr-tab>
+    </clr-tabs>
+  </div>
+</div>

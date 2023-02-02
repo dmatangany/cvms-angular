@@ -1,0 +1,57 @@
+<div class="limit-height">
+  <clr-datagrid
+    [clrDgLoading]="loading"
+    (clrDgRefresh)="updatedState.emit($event)"
+  >
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Status</clr-dg-column>
+    <clr-dg-column>Created By</clr-dg-column>
+    <clr-dg-column>Created on</clr-dg-column>
+
+    <clr-dg-placeholder>{{ placeholderMessage }}</clr-dg-placeholder>
+
+    <clr-dg-row *ngFor="let category of categoriesList" [clrDgItem]="category">
+      <clr-dg-action-overflow>
+        <button class="action-item" (click)="updateSelected.emit(category)">
+          Update
+        </button>
+        <button class="action-item" (click)="deleteSelected.emit(category)">
+          Delete
+        </button>
+      </clr-dg-action-overflow>
+      <clr-dg-cell>{{ category?.name }}</clr-dg-cell>
+      <clr-dg-cell>
+        <span *ngIf="category?.status === 'ACTIVE'" class="label label-success"
+          >Active</span
+        >
+        <span
+          *ngIf="category?.status === 'DEACTIVATED'"
+          class="label label-danger"
+          >Deactivated</span
+        >
+        <span
+          *ngIf="category?.status === 'DISCOMMISIONED'"
+          class="label label-info"
+          >Discommisioned</span
+        >
+      </clr-dg-cell>
+      <clr-dg-cell
+        >{{ category?.createdBy }}
+        <span *ngIf="!category?.createdBy">-</span>
+      </clr-dg-cell>
+      <clr-dg-cell
+        >{{ category?.createdDate | date }}
+        <span *ngIf="!category?.createdDate">-</span></clr-dg-cell
+      >
+    </clr-dg-row>
+
+    <clr-dg-footer *ngIf="total > 0">
+      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+      {{ pagination.totalItems }} Categories
+      <clr-dg-pagination
+        #pagination
+        [clrDgTotalItems]="total"
+      ></clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>

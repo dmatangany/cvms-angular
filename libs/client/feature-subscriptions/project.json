@@ -1,0 +1,27 @@
+{
+  "name": "client-feature-subscriptions",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/client/feature-subscriptions/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/feature-subscriptions"],
+      "options": {
+        "jestConfig": "libs/client/feature-subscriptions/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/feature-subscriptions/**/*.ts",
+          "libs/client/feature-subscriptions/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

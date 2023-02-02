@@ -1,0 +1,62 @@
+<clr-modal [(clrModalOpen)]="opened">
+  <h3 class="modal-title">Create Subscription</h3>
+  <div class="modal-body">
+    <form [formGroup]="subscriptionForm">
+      <clr-input-container>
+        <label>Amount</label>
+        <input clrInput formControlName="amountPaid" type="number" size="40" />
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-input-container>
+
+      <clr-select-container>
+        <label>Calculation Type</label>
+        <select clrSelect name="options" formControlName="calculationType">
+          <option *ngFor="let ctype of calculationType" [value]="ctype">
+            {{ ctype }}
+          </option>
+        </select>
+      </clr-select-container>
+
+      <clr-date-container>
+        <label>Start Date </label>
+        <input clrDate type="date" formControlName="startDate" />
+      </clr-date-container>
+
+      <clr-select-container>
+        <label>Select Member</label>
+        <select clrSelect name="options" formControlName="memberId">
+          <option *ngFor="let member of members" [value]="member?.id">
+            {{ member?.name }}
+          </option>
+        </select>
+      </clr-select-container>
+
+      <clr-select-container>
+        <label>Member Package</label>
+        <select clrSelect name="options" formControlName="membershipPackageId">
+          <option [value]="memberPackage.id"
+          >
+            {{ memberPackage.name }}
+          </option>
+        </select>
+      </clr-select-container>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline"
+      (click)="closeModal.emit(true)"
+    >
+      Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="formValue.emit(subscriptionForm.value)"
+    >
+      Submit
+    </button>
+  </div>
+</clr-modal>

@@ -1,0 +1,64 @@
+  <div class="card">
+  <div class="search">
+    <input class="searchTerm" type="text" name="searchTerm" 
+      placeholder="Filter by any field value"
+      [(ngModel)]="searchText" />
+  </div>
+	  </div>
+	  <clr-datagrid
+  [clrDgLoading]="loading"
+  (clrDgRefresh)="updatedState.emit($event)"
+>
+  <clr-dg-column>Amount</clr-dg-column>
+  <clr-dg-column>Membership Package</clr-dg-column>
+  <clr-dg-column>Member</clr-dg-column>
+  <clr-dg-column>Start Date</clr-dg-column>
+  <clr-dg-column>End Date</clr-dg-column>
+  <clr-dg-column>Status</clr-dg-column>
+
+  <clr-dg-placeholder>{{ placeholderMessage }}</clr-dg-placeholder>
+
+  <clr-dg-row
+    *ngFor="let subscription of subscriptionsList | filterPipe: searchText"
+    [clrDgItem]="subscription"
+  >
+    <clr-dg-cell
+      >{{ subscription?.accountsPaymentTransaction?.currency?.code
+      }}{{ subscription?.amountPaid | currency: '':'' }}
+    </clr-dg-cell>
+    <clr-dg-cell
+      >{{ subscription?.membershipPackage?.name
+      }}<span *ngIf="!subscription?.membershipPackage?.name"
+        >-</span
+      ></clr-dg-cell
+    >
+    <clr-dg-cell
+      >{{ subscription?.member?.user?.firstName }}
+      {{ subscription?.member?.user?.lastName }}
+    </clr-dg-cell>
+    <clr-dg-cell
+      >{{ subscription?.startDate | date }}
+      <span *ngIf="!subscription?.startDate">-</span>
+    </clr-dg-cell>
+    <clr-dg-cell
+      >{{ subscription?.endDate | date }}
+      <span *ngIf="!subscription?.endDate">-</span>
+    </clr-dg-cell>
+
+    <clr-dg-cell>
+      <span *ngIf="subscription.expired" class="label label-danger"
+        >Expired</span
+      >
+      <span *ngIf="!subscription.expired" class="label label-success"
+        >Active</span
+      >
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer *ngIf="total > 0">
+    <clr-dg-pagination #pagination [clrDgTotalItems]="total">
+      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+      {{ pagination.totalItems }} Subscriptions</clr-dg-pagination
+    >
+  </clr-dg-footer>
+</clr-datagrid>

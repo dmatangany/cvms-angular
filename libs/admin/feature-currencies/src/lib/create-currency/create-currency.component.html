@@ -1,0 +1,6 @@
+<membership-application-currency-form
+  [btnState$]="currenciesFacade.btnState$"
+  [title]="'Create New Currency'"
+  (closeModal)="closeModal.emit($event)"
+  (formValue)="onSubmit($event)"
+></membership-application-currency-form>

@@ -1,0 +1,43 @@
+<br />
+<div class="head">Currencies</div>
+<hr />
+<br />
+<div class="card">
+  <div class="card-block">
+    <clr-button-group>
+      <clr-button class="btn btn-sm" (click)="isCreate = true"
+        ><clr-icon shape="plus"></clr-icon>&nbsp;Create</clr-button
+      >
+      <clr-button class="btn btn-sm" (click)="refresh(true)"
+        ><clr-icon shape="refresh"></clr-icon>&nbsp;Refresh</clr-button
+      >
+    </clr-button-group>
+    <br />
+    <div class="limit-height">
+      <membership-application-currencies-list-ui
+        [currenciesList]="(currenciesFacade.allCurrencies$ | async)!"
+        [total]="(currenciesFacade.totalCurrencies$ | async)!"
+        [loading]="(currenciesFacade.loading$ | async)!"
+        [placeholderMessage]="placeholderMessage!"
+        (updatedState)="getCurrencyList($event)"
+        (updateSelected)="updateCurrency($event)"
+        (deleteSelected)="deleteCurrency($event)"
+      ></membership-application-currencies-list-ui>
+    </div>
+  </div>
+</div>
+
+<membership-application-create-currency
+  *ngIf="isCreate"
+  (closeModal)="refresh($event)"
+></membership-application-create-currency>
+
+<membership-application-update-currency
+  *ngIf="isUpdate"
+  (closeModal)="refresh($event)"
+></membership-application-update-currency>
+
+<membership-application-delete-currency
+  *ngIf="isDelete"
+  (closeModal)="refresh($event)"
+></membership-application-delete-currency>

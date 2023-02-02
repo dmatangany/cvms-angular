@@ -1,0 +1,27 @@
+{
+  "name": "file-manager",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/file-manager/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/file-manager"],
+      "options": {
+        "jestConfig": "libs/file-manager/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/file-manager/**/*.ts",
+          "libs/file-manager/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

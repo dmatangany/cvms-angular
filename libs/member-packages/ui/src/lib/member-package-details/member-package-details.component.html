@@ -1,0 +1,98 @@
+<div class="clr-row">
+  <div class="clr-col-3">
+    <span class="clr-control-label">Name</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ memberPackage.name }}</span>
+    <span *ngIf="!memberPackage.name">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <span class="clr-control-label">Currency</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ memberPackage.currency.code }}</span>
+    <span *ngIf="!memberPackage.currency.code">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <span class="clr-control-label">Amount</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ memberPackage.amount }}</span>
+    <span *ngIf="!memberPackage.amount">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <span class="clr-control-label">Description</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ memberPackage.description }}</span>
+    <span *ngIf="!memberPackage.description">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <span class="clr-control-label">Member Type</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ memberPackage.memberType }}</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <span class="clr-control-label">Is Default Package</span>
+  </div>
+  <div class="clr-col">
+    <span *ngIf="memberPackage.defaultPackage">Yes</span>
+    <span *ngIf="!memberPackage.defaultPackage">No</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <span class="clr-control-label">Last Modified By</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ memberPackage.lastModifiedBy }}</span>
+    <span *ngIf="!memberPackage.lastModifiedBy">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <span class="clr-control-label">Date Last Modified</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ memberPackage.lastModifiedDate | date }}</span>
+    <span *ngIf="!memberPackage.lastModifiedDate">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <span class="clr-control-label">Created By</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ memberPackage.createdBy }}</span>
+    <span *ngIf="!memberPackage.createdBy">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <span class="clr-control-label">Date Created</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ memberPackage.createdDate | date }}</span>
+    <span *ngIf="!memberPackage.createdDate">-</span>
+  </div>
+</div>

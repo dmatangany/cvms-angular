@@ -1,0 +1,27 @@
+{
+  "name": "dashboard-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/dashboard/data-access/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/dashboard/data-access"],
+      "options": {
+        "jestConfig": "libs/dashboard/data-access/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/dashboard/data-access/**/*.ts",
+          "libs/dashboard/data-access/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

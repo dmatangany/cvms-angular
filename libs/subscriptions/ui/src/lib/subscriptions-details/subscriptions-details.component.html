@@ -1,0 +1,192 @@
+<div class="card" *ngFor="let subscript of subscriptions; let i = index">
+  <div class="card-header">Subscription Details</div>
+  <div class="card-block">
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label class="clr-control-label">Amount Paid</label>
+      </div>
+      <div class="clr-col-7">
+        <span *ngIf="subscript?.amountPaid">{{
+          subscript?.amountPaid
+            | currency
+              : ''
+              : subscript?.accountsPaymentTransaction?.currency?.code
+        }}</span>
+        <span *ngIf="!subscript?.amountPaid">--</span>
+      </div>
+    </div>
+
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label class="clr-control-label">Transaction Reference Number</label>
+      </div>
+      <div class="clr-col-7">
+        <span
+          *ngIf="
+            subscript?.accountsPaymentTransaction?.transactionReferenceNumber
+          "
+          >{{
+            subscript?.accountsPaymentTransaction?.transactionReferenceNumber
+          }}</span
+        >
+        <span
+          *ngIf="
+            !subscript?.accountsPaymentTransaction
+              ?.transactionReferenceNumber
+          "
+          >--</span
+        >
+      </div>
+    </div>
+
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label class="clr-control-label">Transaction Date</label>
+      </div>
+      <div class="clr-col-7">
+        <span
+          *ngIf="
+            subscript?.accountsPaymentTransaction?.dateTimeOfTransaction
+          "
+          >{{
+            subscript?.accountsPaymentTransaction?.dateTimeOfTransaction
+              | date
+          }}</span
+        >
+        <span
+          *ngIf="
+            !subscript?.accountsPaymentTransaction?.dateTimeOfTransaction
+          "
+          >--</span
+        >
+      </div>
+    </div>
+
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label class="clr-control-label">Status</label>
+      </div>
+      <div class="clr-col-7">
+        <span class="label label-success" *ngIf="!subscript?.expired"
+          >Active</span
+        >
+        <span class="label label-danger" *ngIf="subscript?.expired"
+          >Expired</span
+        >
+      </div>
+    </div>
+
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label class="clr-control-label">Start Date</label>
+      </div>
+      <div class="clr-col-7">
+        <span *ngIf="subscript?.startDate">{{
+          subscript?.startDate | date
+        }}</span>
+        <span *ngIf="!subscript?.startDate">--</span>
+      </div>
+    </div>
+
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label class="clr-control-label">End Date</label>
+      </div>
+      <div class="clr-col-7">
+        <span *ngIf="subscript?.endDate">{{
+          subscript?.endDate | date
+        }}</span>
+        <span *ngIf="!subscript?.endDate">--</span>
+      </div>
+    </div>
+
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label class="clr-control-label">Member Name</label>
+      </div>
+      <div class="clr-col-7">
+        <span *ngIf="subscript?.member?.name">{{
+          subscript?.member?.name
+        }}</span>
+        <span *ngIf="!subscript?.member?.name">--</span>
+      </div>
+    </div>
+
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label class="clr-control-label">Member Status</label>
+      </div>
+      <div class="clr-col-7">
+        <span *ngIf="subscript?.member?.status">{{
+          subscript?.member?.status
+        }}</span>
+        <span *ngIf="!subscript?.member?.status">--</span>
+      </div>
+    </div>
+
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label class="clr-control-label">MemberType</label>
+      </div>
+      <div class="clr-col-7">
+        <span *ngIf="subscript?.member?.memberType?.name">{{
+          subscript?.member?.memberType?.name
+        }}</span>
+        <span *ngIf="!subscript?.member?.memberType?.name">--</span>
+      </div>
+    </div>
+
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label class="clr-control-label">Membership Package</label>
+      </div>
+      <div class="clr-col-7">
+        <span *ngIf="subscript?.membershipPackage?.name">{{
+          subscript?.membershipPackage?.name
+        }}</span>
+        <span *ngIf="!subscript?.membershipPackage?.name">--</span>
+      </div>
+    </div>
+
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label class="clr-control-label">Membership Price</label>
+      </div>
+      <div class="clr-col-7">
+        <span *ngIf="subscript?.membershipPackage?.amount">{{
+          subscript?.membershipPackage?.amount
+            | currency: '':subscript?.membershipPackage?.currency?.code
+        }}</span>
+        <span *ngIf="!subscript?.membershipPackage?.amount">--</span>
+      </div>
+    </div>
+
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label class="clr-control-label">Overdue Period In Days</label>
+      </div>
+      <div class="clr-col-7">
+        <span *ngIf="subscript?.membershipPackage?.overduePeriodInDays">{{
+          subscript?.membershipPackage?.overduePeriodInDays
+        }}</span>
+        <span *ngIf="!subscript?.membershipPackage?.overduePeriodInDays"
+          >--</span
+        >
+      </div>
+    </div>
+
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label class="clr-control-label">Validity Period In Days</label>
+      </div>
+      <div class="clr-col-7">
+        <span *ngIf="subscript?.membershipPackage?.validityPeriodInDays">{{
+          subscript?.membershipPackage?.validityPeriodInDays
+        }}</span>
+        <span *ngIf="!subscript?.membershipPackage?.validityPeriodInDays"
+          >--</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

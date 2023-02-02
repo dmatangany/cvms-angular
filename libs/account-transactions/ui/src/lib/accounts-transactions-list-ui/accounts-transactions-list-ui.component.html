@@ -1,0 +1,138 @@
+  <div class="card">
+  <div class="search">
+    <input class="searchTerm" type="text" name="searchTerm"
+      placeholder="Filter by any field value"
+      [(ngModel)]="searchText" />
+  </div>
+  <clr-datagrid
+  [clrDgLoading]="loading"
+  (clrDgRefresh)="updatedState.emit($event)"
+>
+  <clr-dg-column>Transaction Description</clr-dg-column>
+  <clr-dg-column>Transaction Reference Number</clr-dg-column>
+  <clr-dg-column>Amount</clr-dg-column>
+  <clr-dg-column>Member Name</clr-dg-column>
+  <clr-dg-column>Status</clr-dg-column>
+
+  <clr-dg-placeholder>{{ placeholderMessage }}</clr-dg-placeholder>
+
+  <clr-dg-row
+    *ngFor="let accountTransaction of accountTransactionsList | filterPipe: searchText"
+    [clrDgItem]="accountTransaction"
+  >
+    <clr-dg-cell
+      >{{ accountTransaction?.transactionDescription }}
+      <span *ngIf="!accountTransaction?.transactionDescription">-</span>
+    </clr-dg-cell>
+    <clr-dg-cell
+      >{{ accountTransaction?.transactionReferenceNumber }}
+      <span *ngIf="!accountTransaction?.transactionReferenceNumber">-</span>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      {{
+        accountTransaction?.amount
+          | currency: '':accountTransaction?.currency?.code
+      }}</clr-dg-cell
+    >
+    <clr-dg-cell
+      >{{ accountTransaction?.memberName
+      }}<span *ngIf="!accountTransaction?.memberName">-</span></clr-dg-cell
+    >
+
+    <clr-dg-cell>
+      <div [ngSwitch]="accountTransaction?.transactionStatus">
+        <div>
+          <div
+            class="label label-warning"
+            *ngSwitchCase="transactionStatus?.INITIATED"
+          >
+            INITIATED
+          </div>
+          <div
+            class="label label-warning"
+            *ngSwitchCase="transactionStatus?.PROCESSING"
+          >
+            PROCESSING
+          </div>
+        </div>
+        <div>
+          <div
+            class="label label-success"
+            *ngSwitchCase="transactionStatus?.SUCCESS"
+          >
+            SUCCESS
+          </div>
+        </div>
+        <div>
+          <div
+            class="label label-danger"
+            *ngSwitchCase="transactionStatus?.CANCELLED"
+          >
+            CANCELLED
+          </div>
+          <div
+            class="label label-danger"
+            *ngSwitchCase="transactionStatus?.CLOSED"
+          >
+            CLOSED
+          </div>
+          <div
+            class="label label-danger"
+            *ngSwitchCase="transactionStatus?.ERROR"
+          >
+            ERROR
+          </div>
+          <div
+            class="label label-danger"
+            *ngSwitchCase="transactionStatus?.FAILED"
+          >
+            FAILED
+          </div>
+          <div
+            class="label label-danger"
+            *ngSwitchCase="transactionStatus?.INSUFFICIENT_FUNDS"
+          >
+            INSUFFICIENT FUNDS
+          </div>
+          <div
+            class="label label-danger"
+            *ngSwitchCase="transactionStatus?.TERMINATED"
+          >
+            TERMINATED
+          </div>
+          <div
+            class="label label-danger"
+            *ngSwitchCase="transactionStatus?.TIME_OUT"
+          >
+            TIME_OUT
+          </div>
+
+          <div *ngSwitchDefault>
+            <span class="spinner spinner-inline"> Loading... </span>
+          </div>
+        </div>
+      </div>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-detail *clrIfDetail="let detail">
+    <clr-dg-detail-header>Transaction Details</clr-dg-detail-header>
+    <clr-dg-detail-body>
+      <membership-application-account-transactions-details
+        [transactions]="detail"
+      >
+      </membership-application-account-transactions-details>
+    </clr-dg-detail-body>
+  </clr-dg-detail>
+
+  <clr-dg-footer *ngIf="total > 0">
+    <clr-dg-pagination #pagination [clrDgTotalItems]="total">
+      <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]"
+        >Account Transactions per page</clr-dg-page-size
+      >
+      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+      {{ pagination.totalItems }} Account Transactions</clr-dg-pagination
+    >
+  </clr-dg-footer>
+</clr-datagrid>
+  </div>

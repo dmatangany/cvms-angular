@@ -1,0 +1,26 @@
+<div class="head">Member Types</div>
+<hr />
+<br />
+
+<div class="card">
+  <div class="card-block">
+    <clr-tabs>
+      <clr-tab>
+        <button clrTabLink style="border: none">Member Type Details</button>
+        <clr-tab-content *clrIfActive>
+          <br />
+          <membership-application-member-type-details
+            [memberType]="(memberTypesFacade.selectedMemberType$ | async)!"
+          ></membership-application-member-type-details>
+        </clr-tab-content>
+      </clr-tab>
+      <clr-tab>
+        <button clrTabLink style="border: none">Member Attributes</button>
+        <clr-tab-content *clrIfActive>
+          <br />
+          <membership-application-list-attributes></membership-application-list-attributes>
+        </clr-tab-content>
+      </clr-tab>
+    </clr-tabs>
+  </div>
+</div>

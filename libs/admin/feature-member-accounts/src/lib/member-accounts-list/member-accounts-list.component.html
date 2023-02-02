@@ -1,0 +1,24 @@
+<br />
+<div class="head">Member Accounts</div>
+<hr />
+<br />
+
+<div class="card">
+  <div class="card-block">
+    <membership-application-member-accounts-list-ui
+      [memberAccounts]="(memberAccountsFacade.allMemberAccounts$ | async)!"
+      [loading]="(memberAccountsFacade.loading$ | async)!"
+      [total]="(memberAccountsFacade.totalMemberAccounts$ | async)!"
+      (editSelected)="edit($event)"
+      (updatedState)="getMemberAccounts($event)"
+    >
+    </membership-application-member-accounts-list-ui>
+  </div>
+</div>
+
+<membership-application-update-member-accounts
+  *ngIf="isEdit"
+  [memberAccount]="selectedMemberAccounts"
+  (closeModal)="refresh()"
+>
+</membership-application-update-member-accounts>

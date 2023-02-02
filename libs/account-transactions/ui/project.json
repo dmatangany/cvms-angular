@@ -1,0 +1,27 @@
+{
+  "name": "account-transactions-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/account-transactions/ui/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/account-transactions/ui"],
+      "options": {
+        "jestConfig": "libs/account-transactions/ui/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/account-transactions/ui/**/*.ts",
+          "libs/account-transactions/ui/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

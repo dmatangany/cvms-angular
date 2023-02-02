@@ -1,0 +1,9 @@
+<membership-application-member-package-form
+  [btnState]="(memberPackagesFacade.btnState$ | async)!"
+  [title]="'Update Member Package'"
+  [memberPackage]="(memberPackagesFacade.selectedMemberPackage$ | async)!"
+  [memberTypes$]="(memberTypesFacade.allMemberTypes$)!"
+  [currencies$]="currenciesFacade.allCurrencies$"
+  (closeModal)="closeModal.emit($event)"
+  (formValue)="onSubmit($event)"
+></membership-application-member-package-form>

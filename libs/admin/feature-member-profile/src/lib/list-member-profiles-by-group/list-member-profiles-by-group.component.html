@@ -1,0 +1,49 @@
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <clr-select-container>
+      <label>Member Types</label>
+      <select
+        clrSelect
+        name="memberTypeId"
+        [(ngModel)]="memberTypeId"
+        (change)="getUsersListByGroup()"
+      >
+        <option value="one">Select Member Type</option>
+        <option
+          [value]="membertype.id"
+          *ngFor="let membertype of memberTypesFacade.allMemberTypes$ | async"
+        >
+          {{ membertype.name }}
+        </option>
+      </select>
+    </clr-select-container>
+  </div>
+</div>
+<br />
+<div>
+  <button *ngIf="memberTypeId" class="btn btn-sm" (click)="isCreate = true">Subscribe</button>
+  <button *ngIf="memberTypeId" class="btn btn-sm" (click)="downloadPDF()">PDF</button>
+  <button *ngIf="memberTypeId" class="btn btn-sm" (click)="ExportTOExcel()">Excel</button>
+  <button *ngIf="memberTypeId"  class="btn btn-sm" (click)="getProfilesList({})">Refresh</button>
+  <div class="col-md-8" id="htmlData" #htmlData>
+  <membership-application-member-profiles-list-ui
+    *ngIf="memberTypeId"
+    [memberProfiles]="(memberProfilesFacade.allMemberProfiles$ | async)!"
+    [total]="(memberProfilesFacade.totalMemberProfiles$ | async)!"
+    [loading]="(memberProfilesFacade.loading$ | async)!"
+    [placeholderMessage]="'Profiles'"
+    (updatedState)="getMemberProfiles($event)"
+    (deleteSelected)="promptDelete($event)"
+    (updateSelected)="updateMemberProfile($event)"
+    (viewMemberProfile)="viewMemberProfile($event)"
+	(viewUserSubscriptions)="viewUserSubscriptions($event)"
+  ></membership-application-member-profiles-list-ui>
+  </div>
+  <membership-application-subscriptions-form-in-profile *ngIf="isCreate"
+  [btnState]="(subscriptionFacade.btnState$ | async)!"
+  (closeModal)="refresh($event)"
+  (formValue)="onSubmit($event)"
+  [members]="(memberProfilesFacade.allMemberProfiles$ | async)!"
+  [memberPackage]="(memberPackageFacade.selectedMemberPackage$ | async)!"
+></membership-application-subscriptions-form-in-profile>
+</div>

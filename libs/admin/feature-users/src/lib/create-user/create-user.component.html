@@ -1,0 +1,13 @@
+<div class="head">Create New User</div>
+<hr />
+<br />
+
+<div class="padding-left-right-1">
+  <membership-application-user-form
+    [btnState]="(usersService.btnState$ | async)!"
+    [title]="'Create New User'"
+    [allGroups$]="groupsFacade.allGroups$"
+    [btnTitle]="'Create'"
+    (formValue)="createUser($event)"
+  ></membership-application-user-form>
+</div>

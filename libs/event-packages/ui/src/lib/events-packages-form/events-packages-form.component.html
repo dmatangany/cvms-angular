@@ -1,0 +1,98 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+  <h3 class="modal-title">{{ title }}</h3>
+  <div class="modal-body">
+    <form [formGroup]="eventPackageForm">
+      <clr-input-container>
+        <label>Name</label>
+        <input clrInput type="text" formControlName="name" size="45" />
+        <clr-control-error>Field is required</clr-control-error>
+      </clr-input-container>
+
+      <div class="clr-row">
+        <div class="clr-col-md-6">
+          <clr-select-container>
+            <label>Currency</label>
+            <select clrSelect formControlName="currencyId" required>
+              <option selected>Select Currency</option>
+              <option
+                *ngFor="let currency of currenciesList"
+                [value]="currency.id"
+              >
+                {{ currency.code }}
+              </option>
+            </select>
+            <clr-control-error>This field is required!</clr-control-error>
+          </clr-select-container>
+        </div>
+        <div class="clr-col-md-6">
+          <clr-input-container>
+            <label>Amount</label>
+            <input clrInput type="text" formControlName="amount" size="45" />
+            <clr-control-error>Field is required</clr-control-error>
+          </clr-input-container>
+        </div>
+      </div>
+
+      <clr-radio-container clrInline>
+        <label>Event Package Status</label>
+        <clr-radio-wrapper *ngFor="let status of statuses | keyvalue">
+          <input
+            type="radio"
+            [value]="status?.value"
+            clrRadio
+            required
+            formControlName="eventPackageStatus"
+          />
+          <label>{{ status?.key }}</label>
+        </clr-radio-wrapper>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-radio-container>
+
+      <clr-input-container>
+        <label>Quantity Available</label>
+        <input
+          clrInput
+          type="text"
+          formControlName="quantityAvailable"
+          size="45"
+        />
+        <clr-control-error>Field is required</clr-control-error>
+      </clr-input-container>
+      <div class="clr-row">
+        <div class="clr-col-md-6">
+          <clr-date-container>
+            <label>Latest Date of Purchase</label>
+            <input type="date" formControlName="latestDateOfPurchase" clrDate />
+            <clr-control-error>Field is Required</clr-control-error>
+          </clr-date-container>
+        </div>
+        <div class="clr-col-md-6">
+          <clr-input-container>
+            <label>Latest Time of Purchase</label>
+            <input
+              clrInput
+              type="time"
+              formControlName="latestTimeOfPurchase"
+              size="45"
+            />
+            <clr-control-error>Field is required</clr-control-error>
+          </clr-input-container>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="closeModal.emit()">
+      Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [clrLoading]="btnState"
+      (click)="formValue.emit(eventPackageForm.value)"
+    >
+      Submit
+    </button>
+  </div>
+</clr-modal>

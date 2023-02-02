@@ -1,0 +1,147 @@
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Amount</span>
+  </div>
+  <div class="clr-col">
+    <span
+      >{{ paymentTransaction.currencyCode }}
+      {{ paymentTransaction.amount }}</span
+    >
+    <span *ngIf="!paymentTransaction.amount">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Date of Transaction</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ paymentTransaction.dateTimeOfTransaction | date }}</span>
+    <span *ngIf="!paymentTransaction.dateTimeOfTransaction">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Payment Status</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ paymentTransaction.paymentStatus }}</span>
+    <span *ngIf="!paymentTransaction.paymentStatus">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Transaction Status Description</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ paymentTransaction.pesepayTransactionStatusDescription }}</span>
+    <span *ngIf="!paymentTransaction.pesepayTransactionStatusDescription"
+      >-</span
+    >
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Value Availability Status</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ paymentTransaction.valueAvailabilityStatus }}</span>
+    <span *ngIf="!paymentTransaction.valueAvailabilityStatus">-</span>
+  </div>
+</div>
+
+<div class="card-title">Customer</div>
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Name</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ paymentTransaction.customerName }}</span>
+    <span *ngIf="!paymentTransaction.customerName">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Email</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ paymentTransaction.customerEmail }}</span>
+    <span *ngIf="!paymentTransaction.customerEmail">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Phone Number</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ paymentTransaction.customerPhoneNumber }}</span>
+    <span *ngIf="!paymentTransaction.customerPhoneNumber">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Pesepay Reference Number</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ paymentTransaction.pesepayReferenceNumber }}</span>
+    <span *ngIf="!paymentTransaction.pesepayReferenceNumber">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Transaction Description</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ paymentTransaction.pesepayTransactionStatusDescription }}</span>
+    <span *ngIf="!paymentTransaction.pesepayTransactionStatusDescription"
+      >-</span
+    >
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Product Reference Number</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ paymentTransaction.productReferenceNumber }}</span>
+    <span *ngIf="!paymentTransaction.productReferenceNumber">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Created By</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ paymentTransaction.createdBy }}</span>
+    <span *ngIf="!paymentTransaction.createdBy">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Last Modified Date</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ paymentTransaction.lastModifiedDate | date }}</span>
+    <span *ngIf="!paymentTransaction.lastModifiedDate">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-4">
+    <span class="clr-control-label">Last Modified By</span>
+  </div>
+  <div class="clr-col">
+    <span>{{ paymentTransaction.lastModifiedBy }}</span>
+    <span *ngIf="!paymentTransaction.lastModifiedBy">-</span>
+  </div>
+</div>

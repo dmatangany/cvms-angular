@@ -1,0 +1,17 @@
+<div class="login-wrapper">
+  <div class="login">
+    <span class="text-center">
+      <!-- <img class="img-logo" src="assets/favicon-32x32.png" width="3&" /> -->
+    </span>
+    <br /><br />
+    <div class="text-center">
+      <div>
+        <h3>Membership Admin Portal</h3>
+      </div>
+    </div>
+    <membership-application-admin-login-form
+      [btnState$]="authFacade.authBtnState$"
+      (formValue)="login($event)"
+    ></membership-application-admin-login-form>
+  </div>
+</div>

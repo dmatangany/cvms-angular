@@ -1,0 +1,27 @@
+{
+  "name": "admin-feature-groups",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/admin/feature-groups/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/admin/feature-groups"],
+      "options": {
+        "jestConfig": "libs/admin/feature-groups/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/admin/feature-groups/**/*.ts",
+          "libs/admin/feature-groups/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

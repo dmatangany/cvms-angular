@@ -1,0 +1,104 @@
+<div class="limit-height">
+  <div class="card">
+  <div class="search">
+    <input class="searchTerm" type="text" name="searchTerm" 
+      placeholder="Filter by any field value"
+      [(ngModel)]="searchText" />
+  </div>
+  <clr-datagrid
+    [clrDgLoading]="loading"
+    (clrDgRefresh)="updatedState.emit($event)"
+  >
+    <clr-dg-column>Member Id</clr-dg-column>
+    <clr-dg-column>Date of Transaction</clr-dg-column>
+
+    <clr-dg-column>Reference Number</clr-dg-column>
+    <clr-dg-column>Amount</clr-dg-column>
+    <clr-dg-column>Status</clr-dg-column>
+
+    <clr-dg-placeholder>{{ placeholderMessage }}</clr-dg-placeholder>
+
+    <clr-dg-row
+      *ngFor="let paymentTransaction of paymentTransactionsList | filterPipe: searchText"
+      [clrDgItem]="paymentTransaction"
+    >
+      <clr-dg-cell
+        >{{ paymentTransaction?.memberId }}
+        <span *ngIf="!paymentTransaction?.memberId">-</span></clr-dg-cell
+      >
+      <clr-dg-cell
+        >{{ paymentTransaction?.dateTimeOfTransaction | date
+        }}<span *ngIf="!paymentTransaction?.dateTimeOfTransaction"
+          >-</span
+        ></clr-dg-cell
+      >
+      <clr-dg-cell
+        >{{ paymentTransaction?.productReferenceNumber }}
+        <span *ngIf="!paymentTransaction?.productReferenceNumber"
+          >-</span
+        ></clr-dg-cell
+      >
+      <clr-dg-cell>
+        {{
+          paymentTransaction?.amount
+            | currency: '':paymentTransaction?.currencyCode
+        }}</clr-dg-cell
+      >
+
+      <clr-dg-cell>
+        <div [ngSwitch]="paymentTransaction?.paymentStatus">
+          <span class="label label-success" *ngSwitchCase="'SUCCESS'"
+            >{{ paymentTransaction?.paymentStatus }}
+          </span>
+          <span class="label label-info" *ngSwitchCase="'INITIATED'">{{
+            paymentTransaction?.paymentStatus
+          }}</span>
+          <span class="label label-warning" *ngSwitchCase="'PENDING'">{{
+            paymentTransaction?.paymentStatus
+          }}</span>
+          <span class="label label-error" *ngSwitchCase="'TERMINATED'">{{
+            paymentTransaction?.paymentStatus
+          }}</span>
+          <span class="label label-danger" *ngSwitchCase="'FAILED'">{{
+            paymentTransaction?.paymentStatus
+          }}</span>
+          <span
+            class="label label-danger"
+            *ngSwitchCase="'INSUFFICIENT_FUNDS'"
+            >{{ paymentTransaction?.paymentStatus }}</span
+          >
+          <span class="label label-danger" *ngSwitchCase="'CLOSED'">{{
+            paymentTransaction?.paymentStatus
+          }}</span>
+          <span class="label label-danger" *ngSwitchCase="'CANCELLED'">{{
+            paymentTransaction?.paymentStatus
+          }}</span>
+          <span class="label label-danger" *ngSwitchCase="'TIME_OUT'">{{
+            paymentTransaction?.paymentStatus
+          }}</span>
+
+          <span *ngSwitchDefault>-</span>
+        </div>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-detail *clrIfDetail="let detail">
+      <clr-dg-detail-header>Payment Transaction Details</clr-dg-detail-header>
+      <clr-dg-detail-body>
+        <membership-application-payment-transaction-details
+          [paymentTransaction]="detail"
+        ></membership-application-payment-transaction-details>
+      </clr-dg-detail-body>
+    </clr-dg-detail>
+
+    <clr-dg-footer *ngIf="total > 0">
+      <clr-dg-pagination #pagination [clrDgTotalItems]="total">
+        <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]"
+          >Payment Transactions per page</clr-dg-page-size
+        >
+        {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+        {{ pagination.totalItems }} Payment Transactions</clr-dg-pagination
+      >
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>

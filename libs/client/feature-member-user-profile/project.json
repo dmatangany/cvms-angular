@@ -1,0 +1,27 @@
+{
+  "name": "client-feature-member-profile",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/client/feature-member-profile/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/feature-member-profile"],
+      "options": {
+        "jestConfig": "libs/client/feature-member-profile/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/feature-member-profile/**/*.ts",
+          "libs/client/feature-member-profile/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

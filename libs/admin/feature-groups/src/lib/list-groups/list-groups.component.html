@@ -1,0 +1,25 @@
+<br />
+<div class="head">Groups</div>
+
+<hr />
+<div class="card">
+  <div class="card-block">
+    <clr-button-group>
+      <clr-button class="btn btn-sm" (click)="getGroups({})"
+        ><clr-icon shape="refresh"></clr-icon>&nbsp;Refresh</clr-button
+      >
+    </clr-button-group>
+    <br />
+    <div class="limit-height">
+      <membership-application-list-groups-ui
+        (updatedState)="getGroups($event)"
+        [total]="(groupsFacade.totalGroups$ | async)!"
+        [groupsList]="(groupsFacade.allGroups$ | async)!"
+        [placeholderMessage]="'No Groups Yet'"
+        [loading]="(groupsFacade.loading$ | async)!"
+        (viewGroupPermissions)="viewGroupAuthorities($event)"
+      >
+      </membership-application-list-groups-ui>
+    </div>
+  </div>
+</div>

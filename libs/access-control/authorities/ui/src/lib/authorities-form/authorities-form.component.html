@@ -1,0 +1,39 @@
+<div class="clr-row">
+  <div class="clr-col-md-12">
+    <clr-checkbox-container>
+      <clr-checkbox-wrapper>
+        <input
+          type="checkbox"
+          clrCheckbox
+          required
+          [checked]="isAllSelected()"
+          (click)="pushAllRoles()"
+        />
+        <label><strong>Assign All</strong></label>
+      </clr-checkbox-wrapper>
+    </clr-checkbox-container>
+  </div>
+</div>
+<div class="clr-row">
+  <div class="clr-col-md-4" *ngFor="let role of authorities">
+    <clr-checkbox-container>
+      <clr-checkbox-wrapper>
+        <input
+          type="checkbox"
+          clrCheckbox
+          required
+          [value]="role.id"
+          [checked]="isChecked(role.id)"
+          (click)="pushToCheckedRoles(role)"
+        />
+        <label>{{ role.name.split('_').join(' ') | titlecase }}</label>
+      </clr-checkbox-wrapper>
+    </clr-checkbox-container>
+  </div>
+</div>
+<div class="card-header"></div>
+<br />
+<button class="btn" (click)="closePage.emit()">Cancel</button>
+<button class="btn btn-primary" [clrLoading]="btnState" (click)="onSave()">
+  Save
+</button>

@@ -1,0 +1,132 @@
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Resource Name</label>
+  </div>
+  <div class="clr-col-9 card-text">
+    {{ decamelize(audit?.resource?.name) | titlecase }}
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Date Created</label>
+  </div>
+  <div class="clr-col-9 card-text">{{ audit?.dateCreated }}</div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Resource Description</label>
+  </div>
+  <div class="clr-col-9 card-text">{{ audit?.resource?.description }}</div>
+</div>
+<br />
+
+<div class="card-title">Action</div>
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Status</label>
+  </div>
+  <div class="clr-col-9 card-text">
+    <span
+      class="label"
+      [ngClass]="{
+        'label-success': audit?.action?.actionStatus === 'COMPLETE',
+        'label-warning': audit?.action?.actionStatus === 'STARTED'
+      }"
+      >{{ audit?.action?.actionStatus }}</span
+    >
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Performed By</label>
+  </div>
+  <div class="clr-col-9 card-text">{{ audit?.action?.performedBy }}</div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Type</label>
+  </div>
+  <div class="clr-col-9 card-text">{{ audit?.action?.type }}</div>
+</div>
+<br />
+
+<div class="card-title">Origin</div>
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Host</label>
+  </div>
+  <div class="clr-col-9 card-text">{{ audit?.origin?.host }}</div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Remote User</label>
+  </div>
+  <div class="clr-col-9 card-text">{{ audit?.origin?.remoteUser }}</div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Service Name</label>
+  </div>
+  <div class="clr-col-9 card-text">{{ audit?.origin?.serviceName }}</div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Source IP</label>
+  </div>
+  <div class="clr-col-9 card-text">{{ audit?.origin?.sourceIP }}</div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Browser</label>
+  </div>
+  <div class="clr-col-9 card-text">
+    {{ audit?.origin?.browser }}<span *ngIf="!audit?.origin?.browser">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Country</label>
+  </div>
+  <div class="clr-col-9 card-text">
+    {{ audit?.origin?.country }}<span *ngIf="!audit?.origin?.country">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Operating System</label>
+  </div>
+  <div class="clr-col-9 card-text">
+    {{ audit?.origin?.operatingSystem }}
+    <span *ngIf="!audit?.origin?.operatingSystem">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">Time Zone</label>
+  </div>
+  <div class="clr-col-9 card-text">
+    {{ audit?.origin?.timeZone }}
+    <span *ngIf="!audit?.origin?.timeZone">-</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-3">
+    <label for="basic" class="clr-control-label">User Agent</label>
+  </div>
+  <div class="clr-col-9 card-text">
+    {{ audit?.origin?.userAgent }}
+    <span *ngIf="!audit?.origin?.userAgent">-</span>
+  </div>
+</div>

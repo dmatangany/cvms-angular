@@ -1,0 +1,101 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+  <h3 class="modal-title">{{ title }}</h3>
+  <div class="modal-body">
+    <form [formGroup]="currencyForm">
+      <clr-input-container>
+        <label>Name</label>
+        <input clrInput type="text" formControlName="name" size="45" />
+        <clr-control-error>Field is required</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Code</label>
+        <input clrInput type="text" formControlName="code" size="45" />
+        <clr-control-error>Field is required</clr-control-error>
+      </clr-input-container>
+
+      <clr-radio-container clrInline>
+        <label>Is Default?</label>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            required
+            [value]="true"
+            formControlName="defaultCurrency"
+          />
+          <label>Yes</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            required
+            [value]="false"
+            formControlName="defaultCurrency"
+          />
+          <label>No</label>
+        </clr-radio-wrapper>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-radio-container>
+
+      <clr-input-container>
+        <label>Rate to Default</label>
+        <input clrInput type="text" formControlName="rateToDefault" size="45" />
+        <clr-control-error>Field is required</clr-control-error>
+      </clr-input-container>
+
+      <clr-radio-container clrInline>
+        <label>Active?</label>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            required
+            [value]="true"
+            formControlName="active"
+          />
+          <label>Yes</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            required
+            [value]="false"
+            formControlName="active"
+          />
+          <label>No</label>
+        </clr-radio-wrapper>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-radio-container>
+
+      <clr-textarea-container>
+        <label>Description</label>
+        <textarea
+          clrTextarea
+          formControlName="description"
+          name="description"
+          rows="4"
+          cols="45"
+        ></textarea>
+
+        <clr-control-error>You must provide a description!</clr-control-error>
+      </clr-textarea-container>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="closeModal.emit()">
+      Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [clrLoading]="btnState$ | async"
+      (click)="formValue.emit(currencyForm.value)"
+    >
+      Submit
+    </button>
+  </div>
+</clr-modal>

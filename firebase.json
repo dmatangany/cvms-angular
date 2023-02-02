@@ -1,0 +1,96 @@
+{
+  "hosting": [
+    {
+      "target": "admin",
+      "public": "dist\\apps\\admin-portal",
+      "headers": [
+        {
+          "source": "**",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public,max-age=31536000,immutable"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "frame-ancestors 'none'"
+            },
+            { "key": "X-Content-Type-Options", "value": "nosniff" },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            { "key": "X-XSS-Protection", "value": "0" },
+            { "key": "Referrer-Policy", "value": "no-referrer" },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=63072000; includeSubDomains; preload"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(js|css|eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "max-age=31536000"
+            }
+          ]
+        }
+      ],
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "client",
+      "public": "dist\\apps\\client-portal",
+      "headers": [
+        {
+          "source": "**",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public,max-age=31536000,immutable"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "frame-ancestors 'none'"
+            },
+            { "key": "X-Content-Type-Options", "value": "nosniff" },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            { "key": "X-XSS-Protection", "value": "0" },
+            { "key": "Referrer-Policy", "value": "no-referrer" },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=63072000; includeSubDomains; preload"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(js|css|eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "max-age=31536000"
+            }
+          ]
+        }
+      ],
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

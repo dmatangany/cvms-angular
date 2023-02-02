@@ -1,0 +1,27 @@
+{
+  "name": "access-control-user-authorities-data-access",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/access-control/user-authorities/data-access/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/access-control/user-authorities/data-access"],
+      "options": {
+        "jestConfig": "libs/access-control/user-authorities/data-access/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/access-control/user-authorities/data-access/**/*.ts",
+          "libs/access-control/user-authorities/data-access/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

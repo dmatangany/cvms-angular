@@ -1,0 +1,27 @@
+{
+  "name": "member-packages-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/member-packages/data-access/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/member-packages/data-access"],
+      "options": {
+        "jestConfig": "libs/member-packages/data-access/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/member-packages/data-access/**/*.ts",
+          "libs/member-packages/data-access/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,65 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+  <h3 class="modal-title">{{ title }}</h3>
+  <div class="modal-body">
+    <form [formGroup]="memberAttributeForm">
+      <clr-input-container>
+        <label>Name</label>
+        <input clrInput formControlName="name" type="text" size="30" />
+        <clr-control-error>Field is required!</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Display Name</label>
+        <input clrInput formControlName="displayName" type="text" size="30" />
+        <clr-control-error>Field is required!</clr-control-error>
+      </clr-input-container>
+
+      <clr-select-container>
+        <label>Field Type</label>
+        <select clrSelect formControlName="fieldType">
+          <option *ngFor="let fieldType of fieldTypes" [value]="fieldType">
+            {{ fieldType }}
+          </option>
+        </select>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-select-container>
+
+      <clr-radio-container clrInline>
+        <label>Optional?</label>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            [value]="true"
+            formControlName="optional"
+          />
+          <label>Yes</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            [value]="false"
+            formControlName="optional"
+          />
+          <label>No</label>
+        </clr-radio-wrapper>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-radio-container>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="closeModal.emit()">
+      Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [clrLoading]="btnState"
+      (click)="formValue.emit(memberAttributeForm.value)"
+    >
+      Submit
+    </button>
+  </div>
+</clr-modal>

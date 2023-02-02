@@ -1,0 +1,12 @@
+<button class="btn btn-sm" (click)="getPaymentTransactions({})">Refresh</button>
+
+<membership-application-payment-transactions-ui
+  [paymentTransactionsList]="
+    (paymentTransactionsFacade.allPaymentTransactions$ | async)!
+  "
+  [total]="(paymentTransactionsFacade.totalPaymentTransactions$ | async)!"
+  [loading]="(paymentTransactionsFacade.loading$ | async)!"
+  [placeholderMessage]="'Payment Transactions'"
+  (updatedState)="getPaymentTransactions($event)"
+>
+</membership-application-payment-transactions-ui>

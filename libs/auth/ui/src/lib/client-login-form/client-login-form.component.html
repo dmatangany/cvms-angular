@@ -1,0 +1,44 @@
+<form [formGroup]="loginForm" clrLayout="vertical">
+  <div class="login-group">
+    <clr-input-container>
+      <label>Username</label>
+      <input type="text" name="username" clrInput formControlName="username" />
+    </clr-input-container>
+
+    <clr-password-container>
+      <label>Password</label>
+      <input
+        type="password"
+        name="password"
+        clrPassword
+        formControlName="password"
+      />
+    </clr-password-container>
+    <br />
+  </div>
+
+  <div class="text-center">
+    <button
+      class="btn btn-primary btn-block"
+      (click)="formValue.emit(loginForm.value)"
+      [clrLoading]="btnState$ | async"
+    >
+      Sign In
+    </button>
+  </div>
+  <br />
+  <div class="card-header"></div>
+
+  <a class="text-right" routerLink="../forgot-password" class="txt3">
+    Forgot Password?
+  </a>
+  <br /><br />
+
+  <a class="text-right" routerLink="../register"> Sign Up For a New Account</a>
+  <br /><br />
+
+  <a class="text-right" type="submit" (click)="makePayment.emit()">
+    Make Payment
+  </a>
+  <br /><br />
+</form>

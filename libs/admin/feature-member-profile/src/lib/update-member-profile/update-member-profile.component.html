@@ -1,0 +1,16 @@
+<br />
+<div class="head">Update Member Profile</div>
+
+<hr />
+
+<membership-application-member-profile-form
+  [users]="(usersFacade.allUsers$ | async)!"
+  [btnState]="(memberProfileFacade.btnState$ | async)!"
+  [memberTypes]="(memberTypesFacade.allMemberTypes$ | async)!"
+  [memberProfile]="(memberProfileFacade.selectedMemberProfile$ | async)!"
+  [memberAttributes]="(memberAttributesFacade.allMemberAttributes$ | async)!"
+  (memberTypeId)="getAttributes($event)"
+  (formValue)="onSubmit($event)"
+  [btnTitle]="'Update'"
+>
+</membership-application-member-profile-form>

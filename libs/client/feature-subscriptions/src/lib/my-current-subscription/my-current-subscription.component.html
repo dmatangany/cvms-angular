@@ -1,0 +1,4 @@
+<membership-application-subscriptions-details
+  *ngIf="!(subscriptionFacade.loading$ | async)!"
+  [subscriptions]="(subscriptionFacade.allSubscriptions$ | async)!"
+></membership-application-subscriptions-details>

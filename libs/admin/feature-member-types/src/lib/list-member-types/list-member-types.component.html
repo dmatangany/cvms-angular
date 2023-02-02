@@ -1,0 +1,57 @@
+<br />
+<div class="head">Member Types</div>
+
+<hr />
+
+<div class="card">
+  <div class="card-block">
+    <clr-button-group>
+      <clr-button class="btn btn-sm" (click)="isCreate = true">
+        <clr-icon shape="plus"></clr-icon>&nbsp;Create
+      </clr-button>
+      <clr-button class="btn btn-sm" (click)="refresh(true)">
+        <clr-icon shape="refresh"></clr-icon>&nbsp;Refresh
+      </clr-button>
+    </clr-button-group>
+
+    <membership-application-member-types-list-ui
+      [loading]="(memberTypesFacade.loading$ | async)!"
+      [memberTypeList]="(memberTypesFacade.allMemberTypes$ | async)!"
+      [total]="(memberTypesFacade.totalMemberTypes$ | async)!"
+      (updatedState)="getMemberTypes($event)"
+      [placeholderMessage]="'No Member Types Found'"
+      (updateSelected)="updateMemberType($event)"
+      (deleteSelected)="deleteMemberType($event)"
+      (viewMemberAttribute)="viewMemberType($event)"
+      (addAttribute)="addAttribute($event)"
+    >
+    </membership-application-member-types-list-ui>
+  </div>
+</div>
+
+<membership-application-create-member-type
+  *ngIf="isCreate"
+  (closeModal)="refresh($event)"
+>
+</membership-application-create-member-type>
+
+<membership-application-update-member-type
+  *ngIf="isUpdate"
+  (closeModal)="refresh($event)"
+  [memberType]="selectedMemberType"
+>
+</membership-application-update-member-type>
+
+<membership-application-delete-member-type
+  *ngIf="isDelete"
+  (closeModal)="refresh($event)"
+  [memberType]="selectedMemberType"
+>
+</membership-application-delete-member-type>
+
+<membership-application-add-member-attribute
+  *ngIf="isAddAttribute"
+  (closeModal)="refresh(true)"
+  [memberType]="selectedMemberType"
+>
+</membership-application-add-member-attribute>

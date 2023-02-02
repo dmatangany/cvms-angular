@@ -1,0 +1,8 @@
+<membership-application-update-member-accounts-form
+  [details]="memberAccount"
+  [btnState]="(memberAccountsFacade.btnState$ | async)!"
+  (formValue)="onSubmit($event)"
+  (closeModal)="closeModal.emit()"
+  [title]="'Update Member Account'"
+>
+</membership-application-update-member-accounts-form>

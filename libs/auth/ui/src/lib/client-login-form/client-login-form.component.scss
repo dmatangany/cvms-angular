@@ -1,0 +1,11 @@
+.btn {
+  margin-top: 2% !important;
+}
+
+:host ::ng-deep {
+  clr-password-container {
+    .clr-input-group {
+      border: none !important;
+    }
+  }
+}

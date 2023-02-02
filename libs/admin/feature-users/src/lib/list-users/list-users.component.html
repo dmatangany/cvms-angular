@@ -1,0 +1,19 @@
+<button class="btn btn-sm" (click)="createUser()">Add</button>
+<button class="btn btn-sm" (click)="getUserList({})">Refresh</button>
+<membership-application-list-users-ui
+  [userList]="(usersFacade.allUsers$ | async)!"
+  [total]="(usersFacade.totalUsers$ | async)!"
+  [loading]="(usersFacade.loading$ | async)!"
+  [placeholderMessage]="'Users'"
+  (updatedState)="getUserList($event)"
+  (updateSelected)="updateUser($event)"
+  (viewSelected)="viewUser($event)"
+  (changeSelectedUserStatus)="changeUserStatus($event)"
+  (viewUserAuthorities)="viewUserAuthorities($event)"
+></membership-application-list-users-ui>
+
+<membership-application-change-user-status
+  *ngIf="isChangeStatus"
+  [user]="selectedUser"
+  (closeModal)="refresh($event)"
+></membership-application-change-user-status>

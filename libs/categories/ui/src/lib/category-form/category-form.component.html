@@ -1,0 +1,42 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+  <h3 class="modal-title">{{ title }}</h3>
+  <div class="modal-body">
+    <form [formGroup]="categoryForm">
+      <clr-input-container>
+        <label>Name</label>
+        <input clrInput type="text" formControlName="name" size="45" />
+        <clr-control-error>Field is required</clr-control-error>
+      </clr-input-container>
+
+      <clr-radio-container clrInline>
+        <label>Category Status</label>
+        <clr-radio-wrapper *ngFor="let status of statuses | keyvalue">
+          <input
+            type="radio"
+            clrRadio
+            required
+            [value]="status?.value"
+            formControlName="categoryStatus"
+          />
+          <label>{{ status.key | titlecase }}</label>
+        </clr-radio-wrapper>
+
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-radio-container>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="closeModal.emit()">
+      Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [clrLoading]="btnState$ | async"
+      (click)="formValue.emit(categoryForm.value)"
+    >
+      Submit
+    </button>
+  </div>
+</clr-modal>

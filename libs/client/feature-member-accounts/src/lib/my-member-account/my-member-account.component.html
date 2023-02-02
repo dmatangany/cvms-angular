@@ -1,0 +1,16 @@
+<!-- <button class="btn btn-primary" (click)="isLoadAccount = true">
+  Load Account
+</button> -->
+<membership-application-account-details-ui
+  *ngIf="!(memberAccountsFacade.loading$ | async)!"
+  [myAccount]="(memberAccountsFacade.selectedMemberAccount$ | async)!"
+></membership-application-account-details-ui>
+
+<membership-application-load-account
+  *ngIf="isLoadAccount"
+  (closeModal)="isLoadAccount = false"
+></membership-application-load-account>
+<div
+  class="text-center"
+  *ngIf="!(memberAccountsFacade.loading$ | async)!"
+></div>

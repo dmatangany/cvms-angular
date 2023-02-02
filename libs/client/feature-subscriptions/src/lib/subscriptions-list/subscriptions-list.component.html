@@ -1,0 +1,10 @@
+<button class="btn btn-sm" (click)="getSubscriptions({})">Refresh</button>
+
+<br />
+<membership-application-subscriptions-list-ui
+  [subscriptionsList]="(subscriptionFacade.allSubscriptions$ | async)!"
+  [total]="(subscriptionFacade.totalSubscriptions$ | async)!"
+  [loading]="(subscriptionFacade.loading$ | async)!"
+  (updatedState)="getSubscriptions($event)"
+>
+</membership-application-subscriptions-list-ui>

@@ -1,0 +1,76 @@
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Event Name</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="eventPackage?.name">{{ eventPackage?.name }}</span>
+    <span *ngIf="!eventPackage?.name">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Quantity Available</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="eventPackage?.quantityAvailable">{{
+      eventPackage?.quantityAvailable
+    }}</span>
+    <span *ngIf="!eventPackage?.quantityAvailable">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Amount</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="eventPackage?.amount">{{
+      eventPackage?.amount | currency: '':eventPackage?.currencyCode
+    }}</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>Date Joined</strong>
+  </div>
+  <div class="clr-col-md-8">
+    <span *ngIf="eventPackage?.eventPackageStatus">{{
+      eventPackage?.eventPackageStatus
+    }}</span>
+    <span *ngIf="!eventPackage?.eventPackageStatus">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Latest Date of Purchase</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="eventPackage?.latestDateOfPurchase">{{
+      eventPackage?.latestDateOfPurchase | date
+    }}</span>
+    <span *ngIf="!eventPackage?.latestDateOfPurchase">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Latest Time of Purchase</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="eventPackage?.latestTimeOfPurchase">{{
+      eventPackage?.latestTimeOfPurchase
+    }}</span>
+    <span *ngIf="!eventPackage?.latestTimeOfPurchase">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Created By</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="eventPackage?.createdBy">{{ eventPackage?.createdBy }}</span>
+    <span *ngIf="!eventPackage?.createdBy">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Date Created</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="eventPackage?.createdDate">{{
+      eventPackage?.createdDate | date
+    }}</span>
+    <span *ngIf="!eventPackage?.createdDate">--</span>
+  </div>
+</div>

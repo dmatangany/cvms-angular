@@ -1,0 +1,12 @@
+<membership-application-action-confirmation-form
+  (proceed)="onSubmit()"
+  (closeModal)="closeModal.emit(false)"
+  [btnState]="(memberProfileFacade.btnState$ | async)!"
+  [actionButtonMessage]="'Delete'"
+  [cancelButtonMessage]="'Keep'"
+>
+  <span class="action-header">Delete Member Profile</span>
+  <span class="action-message"
+    >Are you sure you want to delete Member Profile?</span
+  >
+</membership-application-action-confirmation-form>

@@ -1,0 +1,27 @@
+{
+  "name": "member-accounts-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/member-accounts/ui/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/member-accounts/ui"],
+      "options": {
+        "jestConfig": "libs/member-accounts/ui/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/member-accounts/ui/**/*.ts",
+          "libs/member-accounts/ui/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

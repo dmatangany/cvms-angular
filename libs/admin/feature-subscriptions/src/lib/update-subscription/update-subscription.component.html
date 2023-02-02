@@ -1,0 +1,113 @@
+<clr-modal
+  [(clrModalOpen)]="opened"
+  [clrModalClosable]="false"
+  [clrModalSize]="'lg'"
+>
+  <h3 class="modal-title">Update Subscription</h3>
+  <div class="modal-body">
+    <clr-alert *ngIf="isAlert" [clrAlertType]="'danger'">
+      <clr-alert-item>
+        <span class="alert-text"> {{ message }} </span>
+      </clr-alert-item>
+    </clr-alert>
+    <br />
+
+    <form clrForm [formGroup]="subscriptionForm">
+      <section class="form-block">
+        <div class="col-md-12">
+          <clr-input-container>
+            <label class="required clr-col-xs-12 clr-col-md-4">Amount</label>
+            <input
+              class="required clr-col-xs-12 clr-col-md-5"
+              clrInput
+              formControlName="amountPaid"
+              type="number"
+              size="40"
+            />
+            <clr-control-error>This field is required!</clr-control-error>
+          </clr-input-container>
+        </div>
+
+        <div class="col-md-12">
+          <clr-date-container>
+            <label class="required clr-col-xs-12 clr-col-md-4"
+              >Start Date
+            </label>
+            <input
+              class="required clr-col-xs-12 clr-col-md-5"
+              clrDate
+              type="date"
+              formControlName="startDate"
+            />
+          </clr-date-container>
+        </div>
+        <br />
+
+        <div class="col-md-12">
+          <div class="clr-row">
+            <label class="clr-control-label clr-col-4">Select Member</label>
+            <div class="clr-control-container clr-col-6">
+              <ng-autocomplete
+                [data]="members"
+                [searchKeyword]="keyword"
+                (selected)="selectEvent($event)"
+                (inputChanged)="onChangeSearch($event)"
+                (inputFocused)="onFocused($event)"
+                [itemTemplate]="itemTemplate"
+                [notFoundTemplate]="notFoundTemplate"
+              >
+              </ng-autocomplete>
+
+              <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item.name"></a>
+              </ng-template>
+
+              <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <clr-select-container>
+            <label class="required clr-col-xs-12 clr-col-md-4"
+              >Member Package</label
+            >
+            <select
+              class="required clr-col-xs-12 clr-col-md-5"
+              clrSelect
+              name="options"
+              formControlName="membershipPackageId"
+            >
+              <option
+                *ngFor="let memberPackage of memberPackages"
+                [value]="memberPackage.id"
+              >
+                {{ memberPackage.name }}</option
+              >
+            </select>
+          </clr-select-container>
+        </div>
+      </section>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline"
+      (click)="onClose(subscription)"
+    >
+      Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="updateSubscription()"
+      [clrLoading]="editState"
+    >
+      Update
+    </button>
+  </div>
+</clr-modal>

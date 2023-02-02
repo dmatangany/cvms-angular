@@ -1,0 +1,47 @@
+clr-main-container {
+  background: url(/assets/antoine-rault-IhWRrZx4-kk-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: -webkit-fill-available;
+  height: 100vh;
+}
+
+.container {
+  width: 100em;
+  position: relative;
+  height: auto;
+  overflow: auto;
+  margin: auto;
+}
+
+.wrap {
+  background: #fff;
+  position: relative;
+  padding: 5% 10%;
+}
+
+@media (max-width: 576px) {
+  .container {
+    width: 100% !important;
+  }
+
+  clr-main-container {
+    min-height: 100vh;
+    padding: 0;
+    height: auto;
+  }
+}
+
+@media (min-width: 576px) {
+  clr-main-container {
+    min-height: 100vh;
+    padding: 2rem;
+    height: auto;
+  }
+}
+
+:host ::ng-deep {
+  h2 {
+    color: #110542;
+  }
+}

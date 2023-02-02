@@ -1,0 +1,15 @@
+<br />
+<div class="head">Authorities</div>
+<hr />
+<br />
+<div class="card">
+  <div class="card-block">
+    <div class="card-header">Assign or Remove Authorities</div>
+    <membership-application-authorities-form
+      [myAuthorities]="(groupAuthoritiesFacade.allGroupAuthorities$ | async)!"
+      [authorities]="(authoritiesFacade.allAuthorities$ | async)!"
+      (save)="onSubmit($event)"
+      (closePage)="close()"
+    ></membership-application-authorities-form>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "name": "payment-transactions-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/payment-transactions/ui/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/payment-transactions/ui"],
+      "options": {
+        "jestConfig": "libs/payment-transactions/ui/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/payment-transactions/ui/**/*.ts",
+          "libs/payment-transactions/ui/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

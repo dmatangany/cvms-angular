@@ -1,0 +1,9 @@
+<membership-application-events-form
+  [btnState$]="(eventFacade.btnState$ | async)!"
+  [title]="'Create New Event'"
+  [categoryList]="(categoriesFacade.allCategories$ | async)!"
+  (closeModal)="closeModal.emit($event)"
+  (formValue)="onSubmit($event)"
+  [event]="selectedEvent"
+>
+</membership-application-events-form>

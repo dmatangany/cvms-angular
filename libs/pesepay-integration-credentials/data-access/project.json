@@ -1,0 +1,27 @@
+{
+  "name": "pesepay-integration-credentials-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/pesepay-integration-credentials/data-access/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/pesepay-integration-credentials/data-access"],
+      "options": {
+        "jestConfig": "libs/pesepay-integration-credentials/data-access/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/pesepay-integration-credentials/data-access/**/*.ts",
+          "libs/pesepay-integration-credentials/data-access/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

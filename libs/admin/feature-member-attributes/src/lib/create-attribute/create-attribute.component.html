@@ -1,0 +1,6 @@
+<membership-application-member-attributes-form
+  [btnState]="(memberAttributesFacade.btnState$ | async)!"
+  [title]="'Create Member Attribute'"
+  (closeModal)="closeModal.emit($event)"
+  (formValue)="onSubmit($event)"
+></membership-application-member-attributes-form>

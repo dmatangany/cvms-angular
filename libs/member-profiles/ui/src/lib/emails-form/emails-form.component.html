@@ -1,0 +1,31 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+  <h3 class="modal-title">{{ title }}</h3>
+  <div class="modal-body">
+    <form [formGroup]="emailForm">
+      <clr-input-container>
+        <label>Enter Email</label>
+        <input
+          clrInput
+          formControlName="email"
+          required
+          type="email"
+          style="width: 250px"
+        />
+        <clr-control-error>Invalid email Address</clr-control-error>
+      </clr-input-container>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn" (click)="closeModal.emit()">
+      Cancel
+    </button>
+    <button
+      [disabled]="emailForm.invalid"
+      type="button"
+      class="btn btn-primary"
+      (click)="formValue.emit(this.emailForm.value)"
+    >
+      Add
+    </button>
+  </div>
+</clr-modal>

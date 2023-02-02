@@ -1,0 +1,27 @@
+{
+  "name": "admin-feature-payment-transactions",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/admin/feature-payment-transactions/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/admin/feature-payment-transactions"],
+      "options": {
+        "jestConfig": "libs/admin/feature-payment-transactions/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/admin/feature-payment-transactions/**/*.ts",
+          "libs/admin/feature-payment-transactions/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,71 @@
+<div class="head">Dashboard</div>
+<hr />
+<br />
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <div class="card-header">Total Amount For Current Month</div>
+    <membership-application-total-amount-current-month
+      [data]="(dashboardStats | async)?.totalAutomatedAmountCurrentMonth!"
+    ></membership-application-total-amount-current-month>
+  </div>
+  <div class="clr-col-md-4">
+    <div class="card-header">Total Amount For Current Year</div>
+    <membership-application-total-amount-current-year
+      [data]="(dashboardStats | async)?.totalAutomatedAmountCurrentYear!"
+    ></membership-application-total-amount-current-year>
+  </div>
+  <div class="clr-col-md-4">
+    <div class="card-header">Total Amount In History</div>
+    <membership-application-total-amount-in-history
+      [data]="(dashboardStats | async)?.totalAutomatedAmountInHistory!"
+    ></membership-application-total-amount-in-history>
+  </div>
+</div>
+<div class="card-header"></div>
+<div class="clr-row" *ngIf="dashboardStats | async as m">
+  <div class="clr-col-md-3">
+    <div class="card member">
+      <div class="card-header">Member Distribution</div>
+      <div class="card-block">
+        Active
+        <span style="float: right">{{
+          m.totalMembers - m.inActiveMembers
+        }}</span
+        ><br />
+        Inactive
+        <span style="float: right">{{
+          m.totalMembers - m.inActiveMembers
+        }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="clr-col-md-3">
+    <div class="card monthSubs">
+      <div class="card-header">Total Current Month Subscriptions</div>
+      <div class="card-block">
+        Monthly Subscriptions
+        <span style="float: right">{{ m.totalCurrentMonthSubscriptions }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="clr-col-md-3">
+    <div class="card yearSubs">
+      <div class="card-header">Total Current Year Subscriptions</div>
+      <div class="card-block">
+        Year Subsriptions
+        <span style="float: right">{{ m.totalCurrentYearSubscriptions }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="clr-col-md-3">
+    <div class="card totalSubs">
+      <div class="card-header">Total Subscriptions</div>
+      <div class="card-block">
+        Total Subscriptions
+        <span style="float: right">{{ m.totalSubscriptions }}</span
+        ><br />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<membership-application-payments-form
+  (closeModal)="closeModal.emit(true)"
+  (formValue)="onSubmit($event)"
+  [title]="'Load Account'"
+  [btnState$]="transactionsFacade.btnState$"
+  [isLoggedIn]="true"
+  [currencies]="(currenciesFacade.allCurrencies$ | async)!"
+  [memberId]="(userData.myProfileState$ | async)?.memberId!"
+>
+</membership-application-payments-form>

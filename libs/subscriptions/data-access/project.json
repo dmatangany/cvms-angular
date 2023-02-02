@@ -1,0 +1,27 @@
+{
+  "name": "subscriptions-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/subscriptions/data-access/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/subscriptions/data-access"],
+      "options": {
+        "jestConfig": "libs/subscriptions/data-access/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/subscriptions/data-access/**/*.ts",
+          "libs/subscriptions/data-access/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

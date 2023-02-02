@@ -1,0 +1,45 @@
+.header .header-nav {
+  display: flex;
+  flex: 0 0 auto;
+  /* margin-left: -13%; */
+  //margin: auto;
+  //margin-right: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header {
+  background-color: white !important;
+}
+
+.active {
+  color: #110542 !important;
+  border-bottom: 2px solid white;
+}
+
+.header .header-nav .nav-link {
+  opacity: 1 !important;
+  font-weight: 700 !important;
+}
+
+.header .header-nav .nav-link:hover,
+.title {
+  color: #110542 !important;
+  font-weight: 700 !important;
+  background-color: #a298c7;
+}
+
+a {
+  color: #110542 !important;
+}
+
+.he {
+  display: flex;
+  flex: 0 0 auto;
+  /* margin-left: -13%; */
+  margin: auto;
+  margin-right: 10px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #110542;
+}

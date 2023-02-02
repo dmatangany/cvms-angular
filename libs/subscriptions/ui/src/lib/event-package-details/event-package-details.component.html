@@ -1,0 +1,55 @@
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Package Name</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="eventPackage.name">{{ eventPackage.name }}</span>
+    <span *ngIf="!eventPackage.name">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Amount</strong></div>
+  <div class="clr-col-md-8">
+    <span>{{
+      eventPackage.amount | currency: '':eventPackage.currency.code
+    }}</span>
+    <span *ngIf="!eventPackage.amount">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Description</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="eventPackage.description">{{ eventPackage.description }}</span>
+    <span *ngIf="!eventPackage.description">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>Member Type</strong>
+  </div>
+  <div class="clr-col-md-8">
+    <span 
+      >{{ eventPackage.memberType }}</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Overdue Period In Days</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="eventPackage.overduePeriodInDays">{{
+      eventPackage.overduePeriodInDays
+    }}</span>
+    <span *ngIf="!eventPackage.overduePeriodInDays">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Validity Period In Days</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="eventPackage.validityPeriodInDays">{{
+      eventPackage.validityPeriodInDays
+    }}</span>
+    <span *ngIf="!eventPackage.validityPeriodInDays">--</span>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<form [formGroup]="resetPasswordForm" clrLayout="vertical">
+  <div class="clr-row">
+    <div class="clr-col-md-6">
+      <clr-select-container>
+        <label>Transaction Type</label>
+        <select clrSelect formControlName="type">
+          <option>Select Categoy</option>
+          <option *ngFor="let type of types" [value]="type">
+            {{ type | titlecase }}
+          </option>
+        </select>
+      </clr-select-container>
+    </div>
+    <div class="clr-col-md-6">
+      <clr-select-container>
+        <label>Status</label>
+        <select clrSelect formControlName="status">
+          <option>Select Categoy</option>
+          <option *ngFor="let stat of statuses" [value]="stat">
+            {{ stat }}
+          </option>
+        </select>
+      </clr-select-container>
+    </div>
+  </div>
+  <div class="clr-row">
+    <div class="clr-col-md-6">
+      <clr-date-container>
+        <label>From Date</label>
+        <input type="fromDate" clrDate formControlName="fromDate" required />
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-date-container>
+    </div>
+    <div class="clr-col-md-6">
+      <clr-date-container>
+        <label>To Date</label>
+        <input type="toDate" clrDate formControlName="toDate" required />
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-date-container>
+    </div>
+  </div>
+
+  <clr-radio-container clrInline>
+    <label>Report Type</label>
+    <clr-radio-wrapper>
+      <input
+        type="radio"
+        clrRadio
+        required
+        value="PDF"
+        formControlName="reportType"
+      />
+      <label>PDF</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input
+        type="radio"
+        clrRadio
+        required
+        value="EXCEL"
+        formControlName="reportType"
+      />
+      <label>Excel</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input
+        type="radio"
+        clrRadio
+        required
+        value="csv"
+        formControlName="reportType"
+      />
+      <label>CSV</label>
+    </clr-radio-wrapper>
+    <clr-control-error>This field is required!</clr-control-error>
+  </clr-radio-container>
+</form>
+<br />
+<button
+  [disabled]="resetPasswordForm.invalid"
+  type="submit"
+  class="btn btn-primary"
+  [clrLoading]="btnState$ | async"
+  (click)="formValue.emit(resetPasswordForm.value)"
+>
+  Get Report
+</button>

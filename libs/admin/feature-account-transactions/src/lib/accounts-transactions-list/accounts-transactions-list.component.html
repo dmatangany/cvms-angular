@@ -1,0 +1,12 @@
+<button class="btn btn-sm" (click)="getAccountTransactions({})">Refresh</button>
+
+<membership-application-accounts-transactions-list-ui
+  [accountTransactionsList]="
+    (accountTransactionsFacade.allAccountTransactions$ | async)!
+  "
+  [total]="(accountTransactionsFacade.totalAccountTransactions$ | async)!"
+  [loading]="(accountTransactionsFacade.loading$ | async)!"
+  [placeholderMessage]="'Payment Transactions'"
+  (updatedState)="getAccountTransactions($event)"
+>
+</membership-application-accounts-transactions-list-ui>

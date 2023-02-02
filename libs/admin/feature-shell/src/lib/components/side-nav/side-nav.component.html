@@ -1,0 +1,108 @@
+<clr-vertical-nav id="show_bg_2" [clr-nav-level]="1">
+  <br />
+  <a clrVerticalNavLink [routerLink]="['/dashboard']" routerLinkActive="active">
+    <clr-icon clrVerticalNavIcon shape="home" class="is-solid"></clr-icon>
+    DashBoard
+  </a>
+  <a
+    clrVerticalNavLink
+    [routerLink]="['/member-profile']"
+    routerLinkActive="active"
+  >
+    <clr-icon clrVerticalNavIcon shape="clipboard"></clr-icon>
+    Members
+  </a>
+  <a
+    clrVerticalNavLink
+    [routerLink]="['/subscriptions']"
+    routerLinkActive="active"
+  >
+    <clr-icon
+      clrVerticalNavIcon
+      shape="credit-card"
+      class="is-solid"
+    ></clr-icon>
+    Subscriptions
+  </a>
+  <a
+    clrVerticalNavLink
+    [routerLink]="['/transactions']"
+    routerLinkActive="active"
+  >
+    <clr-icon clrVerticalNavIcon shape="switch"></clr-icon>
+    Transactions
+  </a>
+  <a clrVerticalNavLink [routerLink]="['/events']" routerLinkActive="active">
+    <clr-icon clrVerticalNavIcon shape="event" class="is-solid"></clr-icon>
+    Events
+  </a>
+
+  <clr-vertical-nav-group routerLinkActive="active" style="font-size: 12px">
+    <clr-icon clrVerticalNavIcon shape="users" class="is-solid"></clr-icon>
+    User Manager
+    <clr-vertical-nav-group-children>
+      <a clrVerticalNavLink [routerLink]="['/users']" routerLinkActive="active">
+        Users
+      </a>
+      <a
+        [routerLink]="['/groups']"
+        clrVerticalNavLink
+        routerLinkActive="active"
+      >
+        Groups
+      </a>
+    </clr-vertical-nav-group-children></clr-vertical-nav-group
+  >
+  <clr-vertical-nav-group routerLinkActive="active" style="font-size: 12px">
+    <clr-icon clrVerticalNavIcon shape="slider" class="is-solid"></clr-icon>
+    Parameters
+    <clr-vertical-nav-group-children>
+      <a
+        clrVerticalNavLink
+        [routerLink]="['/pesepay-credentials']"
+        routerLinkActive="active"
+      >
+        <clr-icon clrVerticalNavIcon shape="lock" class="is-solid"></clr-icon>
+        Pesepay Credentials
+      </a>
+
+      <a
+    clrVerticalNavLink
+    [routerLink]="['/member-packages']"
+    routerLinkActive="active"
+  >
+    Member Packages
+  </a>
+	<a
+    clrVerticalNavLink
+    [routerLink]="['/member-types']"
+    routerLinkActive="active"
+  >
+    Member Types
+  </a>
+      <a
+        [routerLink]="['/currencies']"
+        clrVerticalNavLink
+        routerLinkActive="active"
+      >
+        Currencies
+      </a>
+      <a
+        [routerLink]="['/categories']"
+        clrVerticalNavLink
+        routerLinkActive="active"
+      >
+        Categories
+      </a>
+    </clr-vertical-nav-group-children></clr-vertical-nav-group
+  >
+
+  <a
+    clrVerticalNavLink
+    [routerLink]="['/audit-trail']"
+    routerLinkActive="active"
+  >
+    <clr-icon clrVerticalNavIcon shape="file"></clr-icon>
+    Audit Trail
+  </a>
+</clr-vertical-nav>

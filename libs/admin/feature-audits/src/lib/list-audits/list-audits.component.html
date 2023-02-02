@@ -1,0 +1,24 @@
+<br />
+<div class="head">Audit Trail</div>
+<hr />
+<br />
+<div class="card">
+  <div class="card-block">
+    <clr-button-group>
+      <clr-button class="btn btn-sm" (click)="refresh(true)"
+        ><clr-icon shape="refresh"></clr-icon>&nbsp;Refresh</clr-button
+      >
+    </clr-button-group>
+    <br />
+
+    <div class="limit-height">
+      <membership-application-audits-list-ui
+        [auditsList]="(auditsFacade.allAudits$ | async)!"
+        [total]="(auditsFacade.totalAudits$ | async)!"
+        [loading]="(auditsFacade.loading$ | async)!"
+        [placeholderMessage]="'Audits'"
+        (updatedState)="getAuditList($event)"
+      ></membership-application-audits-list-ui>
+    </div>
+  </div>
+</div>

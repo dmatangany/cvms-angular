@@ -1,0 +1,26 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+  <h3 class="modal-title">{{ title }}</h3>
+  <div class="modal-body">
+    <form [formGroup]="memberTypeForm">
+      <clr-input-container>
+        <label>Name</label>
+        <input clrInput formControlName="name" type="text" size="30" />
+        <clr-control-error>Field is required!</clr-control-error>
+      </clr-input-container>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="closeModal.emit()">
+      Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [clrLoading]="btnState"
+      (click)="formValue.emit(memberTypeForm.value)"
+    >
+      Submit
+    </button>
+  </div>
+</clr-modal>

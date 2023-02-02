@@ -1,0 +1,67 @@
+<form clrForm [formGroup]="paySubscriptionForm">
+  <clr-radio-container>
+    <label>Subsription Options</label>
+    <clr-radio-wrapper>
+      <input
+        type="radio"
+        clrRadio
+        required
+        [value]="false"
+        formControlName="initiateSubscription"
+      />
+      <label>Using Money loaded in the account</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input
+        type="radio"
+        clrRadio
+        required
+        [value]="true"
+        formControlName="initiateSubscription"
+      />
+      <label>Initiate Payment For A Subscription</label>
+    </clr-radio-wrapper>
+
+    <clr-control-error>This field is required!</clr-control-error>
+  </clr-radio-container>
+  <clr-select-container>
+    <label>Select Package</label>
+    <select
+      clrSelect
+      formControlName="membershipPackageId"
+      (change)="checkPackage()"
+    >
+      <option selected disabled>Please Select</option>
+      <option
+        *ngFor="let membershipPackage of memberPackages"
+        [value]="membershipPackage?.id"
+      >
+        {{ membershipPackage?.name }}
+      </option>
+    </select>
+  </clr-select-container>
+  <clr-input-container>
+    <label>Amount</label>
+    <input clrInput type="number" formControlName="amount" />
+  </clr-input-container>
+
+  <br />
+
+  <div class="card-block" *ngIf="selectedPackage">
+    <h4>Selected Package Details</h4>
+    <br />
+    <membership-application-event-package-details
+      [eventPackage]="selectedPackage"
+    >
+    </membership-application-event-package-details>
+  </div>
+  <br />
+
+  <button
+    class="btn btn-primary"
+    [clrLoading]="btnState"
+    (click)="formValue.emit(paySubscriptionForm.value)"
+  >
+    Subscribe
+  </button>
+</form>

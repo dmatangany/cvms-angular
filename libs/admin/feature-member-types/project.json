@@ -1,0 +1,27 @@
+{
+  "name": "admin-feature-member-types",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/admin/feature-member-types/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/admin/feature-member-types"],
+      "options": {
+        "jestConfig": "libs/admin/feature-member-types/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/admin/feature-member-types/**/*.ts",
+          "libs/admin/feature-member-types/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

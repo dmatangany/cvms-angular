@@ -1,0 +1,64 @@
+<div class="limit-height">
+  <clr-datagrid
+    [clrDgLoading]="loading"
+    (clrDgRefresh)="updatedState.emit($event)"
+  >
+    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'createdBy'">Created By</clr-dg-column>
+    <clr-dg-column [clrDgField]="'lastModifiedBy'"
+      >Last Modified By</clr-dg-column
+    >
+    <clr-dg-column [clrDgField]="'createdDate'">Created on</clr-dg-column>
+    <clr-dg-column [clrDgField]="'lastModifiedDate'"
+      >Last Modified on</clr-dg-column
+    >
+    <clr-dg-column></clr-dg-column>
+
+    <clr-dg-placeholder>{{ placeholderMessage }}</clr-dg-placeholder>
+
+    <clr-dg-row *ngFor="let group of groupsList">
+      <clr-dg-action-overflow>
+        <button
+          class="action-item"
+          (click)="viewGroupPermissions.emit(group?.id)"
+        >
+          Update
+        </button>
+      </clr-dg-action-overflow>
+      <clr-dg-cell>{{ group?.name }}</clr-dg-cell>
+      <clr-dg-cell
+        >{{ group?.createdBy }}
+        <span *ngIf="!group?.createdBy">-</span>
+      </clr-dg-cell>
+      <clr-dg-cell
+        >{{ group?.lastModifiedBy }}
+        <span *ngIf="!group?.lastModifiedBy">-</span></clr-dg-cell
+      >
+      <clr-dg-cell
+        >{{ group?.createdDate }}
+        <span *ngIf="!group?.createdDate">-</span></clr-dg-cell
+      >
+      <clr-dg-cell
+        >{{ group?.lastModifiedDate }}
+        <span *ngIf="!group?.lastModifiedDate">-</span></clr-dg-cell
+      >
+      <clr-dg-cell>
+        <button
+          class="btn btn-primary btn-sm"
+          (click)="viewGroupPermissions.emit(group?.id)"
+        >
+          View Group Permissions
+        </button>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer *ngIf="total > 0">
+      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+      {{ pagination.totalItems }} Groups
+      <clr-dg-pagination
+        #pagination
+        [clrDgTotalItems]="total"
+      ></clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>

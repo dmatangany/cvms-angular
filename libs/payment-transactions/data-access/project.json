@@ -1,0 +1,27 @@
+{
+  "name": "payment-transactions-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/payment-transactions/data-access/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/payment-transactions/data-access"],
+      "options": {
+        "jestConfig": "libs/payment-transactions/data-access/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/payment-transactions/data-access/**/*.ts",
+          "libs/payment-transactions/data-access/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

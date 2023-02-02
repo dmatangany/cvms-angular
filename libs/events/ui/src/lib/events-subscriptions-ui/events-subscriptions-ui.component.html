@@ -1,0 +1,75 @@
+<clr-modal
+  [(clrModalOpen)]="opened"
+  [clrModalClosable]="false"
+  [clrModalSize]="'xl'"
+>
+  <h3 class="modal-title">{{ event.name }}</h3>
+  <div class="modal-body">
+    <div class="clr-row">
+      <div class="clr-col-md-4">
+        <span class="h22">City</span><br />
+        <span class="text">{{ event.city }}</span>
+      </div>
+      <div class="clr-col-md-4">
+        <span class="h22">Start Date</span><br />
+        {{ event.startDateOfEvent }} at {{ event.startTimeOfEvent }}
+      </div>
+      <div class="clr-col-md-4">
+        <span class="h22">End Date</span><br />
+        <span class="text"
+          >{{ event.endDateOfEvent }} at {{ event.endTimeOfEvent }}</span
+        >
+      </div>
+    </div>
+    <br />
+    <div class="clr-row">
+      <div class="clr-col-md-4">
+        <span class="h22">Country</span><br />
+        <span class="text"> {{ event.country }}</span>
+      </div>
+      <div class="clr-col-md-4">
+        <span class="h22">Location</span><br />
+        <span class="text"> {{ event.location }}</span>
+      </div>
+      <div class="clr-col-md-4">
+        <span class="h22">Category</span><br />
+        <span class="text"> {{ event.category.name }}</span>
+      </div>
+    </div>
+    <br />
+    <div class="card-header"></div>
+    <clr-radio-container clrInline>
+      <label>Select Event Package</label>
+      <clr-radio-wrapper *ngFor="let package of eventPackages">
+        <input
+          type="radio"
+          name="eventPackageId"
+          clrRadio
+          required
+          [value]="package.id"
+          [(ngModel)]="eventPackageId"
+        />
+        <label
+          >{{ package.name }} ({{
+            package.amount | currency: '$':package.currencyCode
+          }})</label
+        >
+      </clr-radio-wrapper>
+      <clr-control-error>This field is required!</clr-control-error>
+    </clr-radio-container>
+    <br /><br />
+    <div class="card-footer">
+      <button type="button" class="btn btn-outline" (click)="closeModal.emit()">
+        Cancel
+      </button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [clrLoading]="btnState$"
+        (click)="subscribe.emit()"
+      >
+        Make Payment
+      </button>
+    </div>
+  </div>
+</clr-modal>

@@ -1,0 +1,36 @@
+.img-logo {
+  width: 70%;
+}
+.login-wrapper {
+  background: url(/assets/images/wylly-suhendra-Swk4G_xi_uM-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: -webkit-fill-available;
+  height: 100vh;
+}
+
+@media screen and (min-width: 768px) {
+  .login {
+    margin-left: calc(100vw - 25.2rem);
+    overflow: hidden;
+  }
+
+  .login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+:host ::ng-deep {
+  .clr-control-container {
+    border: 1px solid #b4abab !important;
+    border-radius: 4px;
+  }
+  input {
+    &[type='password'],
+    &[type='text'] {
+      border: none !important;
+    }
+  }
+}

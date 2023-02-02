@@ -1,0 +1,27 @@
+{
+  "name": "audits-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/audits/ui/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/audits/ui"],
+      "options": {
+        "jestConfig": "libs/audits/ui/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/audits/ui/**/*.ts",
+          "libs/audits/ui/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

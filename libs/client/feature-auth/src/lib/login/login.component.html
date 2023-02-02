@@ -1,0 +1,15 @@
+<div class="text-center">
+  <h1>Member Login</h1>
+</div>
+
+<membership-application-client-login-form
+  [btnState$]="authFacade.authBtnState$!"
+  [title]="'Member Portal'"
+  (formValue)="login($event)"
+  (makePayment)="isMakePayment = true"
+></membership-application-client-login-form>
+
+<membership-application-walk-in-load-account
+  *ngIf="isMakePayment"
+  (closeModal)="isMakePayment = false"
+></membership-application-walk-in-load-account>

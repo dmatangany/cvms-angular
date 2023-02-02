@@ -1,0 +1,44 @@
+<button class="btn btn-outline btn-sm" (click)="assignAuthorities.emit()">
+  <clr-icon shape="plus"></clr-icon>&nbsp; Assign new authorities
+</button>
+<button
+  class="btn btn-outline btn-sm"
+  (click)="deleteSelected.emit(selectedAuthorities)"
+  [disabled]="selectedAuthorities?.length! < 1"
+  [clrLoading]="deleteBtnState$ | async"
+>
+  <clr-icon shape="times"></clr-icon>&nbsp; Remove Selected
+</button>
+
+<div class="limit-height">
+  <clr-datagrid
+    [(clrDgSelected)]="selectedAuthorities"
+    [clrDgLoading]="loading"
+  >
+    <clr-dg-placeholder *ngIf="total === 0"
+      >No authorities assigned yet!</clr-dg-placeholder
+    >
+    <clr-dg-column [clrDgField]="'authority.name'">Permission</clr-dg-column>
+
+    <clr-dg-row
+      *clrDgItems="let permission of groupAuthoritiesList"
+      [clrDgItem]="permission"
+    >
+      <clr-dg-cell>{{ permission?.authority?.name }}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+      <clr-dg-pagination
+        #pagination
+        [clrDgPageSize]="10"
+        [clrDgTotalItems]="total"
+      >
+        <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]"
+          >Authorities per page</clr-dg-page-size
+        >
+        {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+        {{ pagination.totalItems }} Group Authorities
+      </clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>

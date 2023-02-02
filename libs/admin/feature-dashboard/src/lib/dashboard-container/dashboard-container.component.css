@@ -1,0 +1,15 @@
+.card.member{
+  box-shadow: 0px 4px #5AA454 !important;
+}
+
+.card.totalSubs{
+  box-shadow: 0px 4px #300dbd !important;
+}
+
+.card.monthSubs{
+  box-shadow: 0px 4px #A10A28 !important;
+}
+
+.card.yearSubs{
+  box-shadow: 0px 4px #110542 !important;
+}

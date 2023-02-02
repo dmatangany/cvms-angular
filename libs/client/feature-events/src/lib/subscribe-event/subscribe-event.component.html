@@ -1,0 +1,7 @@
+<membership-application-events-subscriptions-ui
+  (subscribe)="onSubmit()"
+  [event]="(eventsFacade.selectedEvent$ | async)!"
+  (closeModal)="closeModal.emit(false)"
+  [eventPackages]="(eventPackagesFacade.allEventPackages$ | async)!"
+>
+</membership-application-events-subscriptions-ui>

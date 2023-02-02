@@ -1,0 +1,7 @@
+<membership-application-member-type-form
+  [btnState]="(memberTypesFacade.btnState$ | async)!"
+  [title]="'Create Member Type'"
+  [memberType]="memberType"
+  (closeModal)="closeModal.emit($event)"
+  (formValue)="onSubmit($event)"
+></membership-application-member-type-form>

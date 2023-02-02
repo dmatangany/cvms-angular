@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-block">
+    <membership-application-member-profiles-details *ngIf="userProfile.membershipIndex!=0"
+      [memberProfile]="(memberProfilesFacade.selectedMemberProfile$ | async)!"
+      [memberSubscriptions]="(subscriptionsFacade.allSubscriptions$ | async)!"
+      [btnState]="(memberProfilesFacade.btnState$ | async)!"
+      (formValue)="onSubmit($event)"
+       [btnTitle]="'PAY NOW'"
+    >
+    </membership-application-member-profiles-details>
+	<membership-application-member-self-profile-form *ngIf="userProfile.membershipIndex==0"
+	  [user]="(usersFacade.selectedUser$ | async)!"
+	  [btnState]="(memberProfilesFacade.btnState$ | async)!"
+	  [memberTypes]="(memberTypesFacade.allMemberTypes$ | async)!"
+	  [memberAttributes]="(memberAttributesFacade.allMemberAttributes$ | async)!"
+	  (memberTypeId)="getAttributes($event)"
+	  (userId)="getUserAttributes($event)"
+	  (formValue)="onSubmit($event)"
+	  [btnTitle]="'ADD'"
+	>
+	</membership-application-member-self-profile-form>
+  </div>
+</div>

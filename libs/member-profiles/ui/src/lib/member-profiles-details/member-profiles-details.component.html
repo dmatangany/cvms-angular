@@ -1,0 +1,143 @@
+
+
+<br />
+<div class="head">View Member Profile</div>
+<hr />
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Member Name</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="memberProfile?.name">{{ memberProfile?.name }}</span>
+    <span *ngIf="!memberProfile?.name">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Member Type</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="memberProfile?.memberType?.name">{{
+      memberProfile?.memberType?.name
+    }}</span>
+    <span *ngIf="!memberProfile?.memberType?.name">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <strong>Date Joined</strong>
+  </div>
+  <div class="clr-col-md-8">
+    <span *ngIf="memberProfile?.dateJoined | date">{{
+      memberProfile?.dateJoined
+    }}</span>
+    <span *ngIf="!memberProfile?.dateJoined">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Member Id</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="memberProfile?.memberId">{{ memberProfile?.memberId }}</span>
+    <span *ngIf="!memberProfile?.memberId">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Status</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="memberProfile?.status">{{ memberProfile?.status }}</span>
+  </div>
+</div>
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Physical Address</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="memberProfile?.physicalAddress">{{
+      memberProfile?.physicalAddress
+    }}</span>
+    <span *ngIf="!memberProfile?.physicalAddress">--</span>
+  </div>
+</div>
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Member Status Change Date</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="memberProfile?.memberStatusChangeDate">{{
+      memberProfile?.memberStatusChangeDate | date
+    }}</span>
+    <span *ngIf="!memberProfile?.memberStatusChangeDate">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Mailing Address</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="memberProfile?.mailingAddress">{{
+      memberProfile?.mailingAddress
+    }}</span>
+    <span *ngIf="!memberProfile?.mailingAddress">--</span>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-4"><strong>Date Created</strong></div>
+  <div class="clr-col-md-8">
+    <span *ngIf="memberProfile?.createdDate">{{
+      memberProfile?.createdDate | date
+    }}</span>
+    <span *ngIf="!memberProfile?.createdDate">--</span>
+  </div>
+</div>
+
+
+<div class="clr-row" *ngFor="let email of memberProfile?.emails; let i = index">
+  <div class="clr-col-md-4"><strong>Email {{i+1}}</strong></div>
+  <div class="clr-col-md-8" >
+    <span>{{email}}</span>
+  </div>
+</div>
+
+<div class="clr-row" *ngFor="let phone of memberProfile?.phoneNumbers; let i = index">
+  <div class="clr-col-md-4"><strong>Phone Number {{i+1}}</strong></div>
+  <div class="clr-col-md-8" >
+    <span>{{phone}}</span>
+  </div>
+</div>
+
+<div class="clr-row"  *ngIf="memberProfile?.approved">
+  <div class="clr-col-md-4"><strong>SUBSCRIBE</strong></div>
+  <div class="clr-col-md-8" >
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="onSubmit()"
+      [clrLoading]="btnState"
+    >
+      {{ btnTitle }}
+    </button>
+  </div>
+</div>
+
+<div class="clr-row" *ngFor="let pkg of memberPackages; let i = index">
+  <div class="clr-col-md-4"><strong>Package {{i+1}}</strong></div>
+  <div class="clr-col-md-8" >
+    <span>{{pkg.name}} ${{pkg.amount}}</span>
+  </div>
+</div>
+
+<div class="clr-row" *ngFor="let attrib of memberProfile?.memberAttributeValues! | keyvalue; let i = index">
+  <div class="clr-col-md-4"><strong>Attribute-Value {{i+1}}</strong></div>
+  <div class="clr-col-md-8">{{attrib?.value?.value}}</div>
+  <span *ngIf="!memberProfile?.memberAttributeValues">--</span>
+</div>
+
+<div class="clr-row" *ngFor="let attrib of memberProfile?.memberAttributeValues! | keyvalue; let i = index">
+  <div class="clr-col-md-4"><strong>Attribute-Value {{i+1}}</strong></div>
+  <div class="clr-col-md-8">{{attrib?.key}}</div>
+  <span *ngIf="!memberProfile?.memberAttributeValues">--</span>
+</div>
+
+
+<clr-dg-row *ngFor="let sub of memberSubscriptions" [clrDgItem]="sub">
+  <clr-dg-cell>{{ sub?.amountPaid }}</clr-dg-cell>
+  <clr-dg-cell>{{ sub?.calculationType }}</clr-dg-cell>
+</clr-dg-row>
+

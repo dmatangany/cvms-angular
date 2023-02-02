@@ -1,0 +1,27 @@
+{
+  "name": "client-feature-auth",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/client/feature-auth/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/feature-auth"],
+      "options": {
+        "jestConfig": "libs/client/feature-auth/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/feature-auth/**/*.ts",
+          "libs/client/feature-auth/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

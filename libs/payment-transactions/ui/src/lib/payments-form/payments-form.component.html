@@ -1,0 +1,57 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+  <h3 class="modal-title">{{ title }}</h3>
+  <div class="modal-body">
+    <form clrForm [formGroup]="paymentsForm" clrLayout="vertical">
+      <clr-input-container>
+        <label>Amount</label>
+        <input
+          formControlName="amount"
+          clrInput
+          required
+          type="text"
+          inputmode="numeric"
+        />
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-input-container>
+
+      <clr-select-container>
+        <label>Currency Code</label>
+        <select clrSelect formControlName="currencyCode">
+          <option selected disabled>Select Currency</option>
+          <option
+            *ngFor="let paymentsForm of currencies"
+            [value]="paymentsForm.code"
+          >
+            {{ paymentsForm.code }}
+          </option>
+        </select>
+      </clr-select-container>
+
+      <clr-input-container *ngIf="!(isLoggedIn || memberId)">
+        <label>Member Number</label>
+        <input
+          formControlName="memberNumber"
+          clrInput
+          required
+          type="text"
+          inputmode="numeric"
+        />
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-input-container>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="closeModal.emit()">
+      Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [clrLoading]="btnState$ | async"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  </div>
+</clr-modal>

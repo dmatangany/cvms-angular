@@ -1,0 +1,23 @@
+<br />
+<div class="head">
+  <a [routerLink]="['/member-profile']">Member Profiles</a>| View More
+</div>
+
+<hr />
+
+<div class="card">
+  <div class="card-block">
+    <membership-application-member-profiles-details
+      [memberProfile]="(memberProfileFacade.selectedMemberProfile$ | async)!"
+      [memberPackages]="(memberPackagesFacade.allMemberPackages$ | async)!"
+    >
+    </membership-application-member-profiles-details>
+    <membership-application-subscriptions-list-ui
+      [subscriptionsList]="(subscriptionFacade.allSubscriptions$ | async)!"
+      [total]="(subscriptionFacade.totalSubscriptions$ | async)!"
+      [loading]="(subscriptionFacade.loading$ | async)!"
+      (updatedState)="getSubscriptions($event)"
+    >
+    </membership-application-subscriptions-list-ui>
+  </div>
+</div>

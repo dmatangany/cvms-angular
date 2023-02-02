@@ -1,0 +1,45 @@
+<br />
+<div class="head">Categories</div>
+<hr />
+<br />
+<div class="card">
+  <div class="card-block">
+    <clr-button-group>
+      <clr-button class="btn btn-sm" (click)="isCreate = true"
+        ><clr-icon shape="plus"></clr-icon>&nbsp;Create</clr-button
+      >
+      <clr-button class="btn btn-sm" (click)="refresh(true)"
+        ><clr-icon shape="refresh"></clr-icon>&nbsp;Refresh</clr-button
+      >
+    </clr-button-group>
+    <br />
+    <div class="limit-height">
+      <membership-application-categories-list-ui
+        [categoriesList]="(categoriesFacade.allCategories$ | async)!"
+        [total]="(categoriesFacade.totalCategories$ | async)!"
+        [loading]="(categoriesFacade.loading$ | async)!"
+        [placeholderMessage]="placeholderMessage!"
+        (updatedState)="getCategoryList($event)"
+        (updateSelected)="updateCategory($event)"
+        (deleteSelected)="deleteCategory($event)"
+      ></membership-application-categories-list-ui>
+    </div>
+  </div>
+</div>
+
+<membership-application-create-category
+  *ngIf="isCreate"
+  (closeModal)="refresh($event)"
+></membership-application-create-category>
+
+<membership-application-update-category
+  *ngIf="isUpdate"
+  [category]="selectedCategory"
+  (closeModal)="refresh($event)"
+></membership-application-update-category>
+
+<membership-application-delete-category
+  *ngIf="isDelete"
+  [category]="selectedCategory"
+  (closeModal)="refresh($event)"
+></membership-application-delete-category>

@@ -1,0 +1,30 @@
+<br />
+<div class="head">Subscriptions</div>
+
+<hr />
+
+<div class="card">
+  <div class="card-block">
+    <clr-button-group>
+      <clr-button class="btn btn-sm" (click)="isCreate = true">
+        <clr-icon shape="plus"></clr-icon>&nbsp;Create
+      </clr-button>
+      <clr-button class="btn btn-sm" (click)="refresh()">
+        <clr-icon shape="refresh"></clr-icon>&nbsp;Refresh
+      </clr-button>
+    </clr-button-group>
+    <membership-application-subscriptions-list-ui
+      [subscriptionsList]="(subscriptionFacade.allSubscriptions$ | async)!"
+      [total]="(subscriptionFacade.totalSubscriptions$ | async)!"
+      [loading]="(subscriptionFacade.loading$ | async)!"
+      (updatedState)="getSubscriptions($event)"
+    >
+    </membership-application-subscriptions-list-ui>
+  </div>
+</div>
+
+<membership-application-create-subscription
+  *ngIf="isCreate"
+  (closeModal)="refresh()"
+></membership-application-create-subscription>
+

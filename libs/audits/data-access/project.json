@@ -1,0 +1,27 @@
+{
+  "name": "audits-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/audits/data-access/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/audits/data-access"],
+      "options": {
+        "jestConfig": "libs/audits/data-access/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/audits/data-access/**/*.ts",
+          "libs/audits/data-access/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

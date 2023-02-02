@@ -1,0 +1,28 @@
+<br />
+<div class="head">My Accounts</div>
+<hr />
+<br />
+<div class="card">
+  <div class="card-block">
+    <clr-tabs>
+      <clr-tab>
+        <button clrTabLink id="link1" style="border: none">
+          Member Account
+        </button>
+        <clr-tab-content id="content1" *clrIfActive>
+          <br />
+          <membership-application-my-member-account></membership-application-my-member-account>
+        </clr-tab-content>
+      </clr-tab>
+      <clr-tab>
+        <button clrTabLink style="border: none">Member Profile</button>
+        <clr-tab-content *clrIfActive>
+          <br />
+          <membership-application-my-member-profile>
+            [memberProfile]="(memberProfileFacade.selectedMemberProfile$ | async)!"
+          </membership-application-my-member-profile>
+        </clr-tab-content>
+      </clr-tab>
+    </clr-tabs>
+  </div>
+</div>

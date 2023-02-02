@@ -1,0 +1,15 @@
+<br />
+<div class="head">Create Member Profile</div>
+<hr />
+
+<membership-application-member-profile-form
+  [users]="(usersFacade.allUsers$ | async)!"
+  [btnState]="(memberProfileFacade.btnState$ | async)!"
+  [memberTypes]="(memberTypesFacade.allMemberTypes$ | async)!"
+  [memberAttributes]="(memberAttributesFacade.allMemberAttributes$ | async)!"
+  (memberTypeId)="getAttributes($event)"
+  (userId)="getUserAttributes($event)"
+  (formValue)="onSubmit($event)"
+  [btnTitle]="'ADD'"
+>
+</membership-application-member-profile-form>

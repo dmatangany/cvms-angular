@@ -1,0 +1,35 @@
+<table class="table table-vertical">
+  <tbody>
+    <tr>
+      <th>Account Type</th>
+      <td>
+        <span *ngIf="myAccount?.accountType">
+          {{ myAccount?.accountType }}</span
+        >
+        <span *ngIf="!myAccount?.accountType"> -- </span>
+      </td>
+    </tr>
+    <tr>
+      <th>Balance</th>
+      <td>
+        <span *ngIf="myAccount?.balance">
+          {{
+            myAccount?.balance | currency: '':myAccount?.currency?.code
+          }}</span
+        >
+        <span *ngIf="!myAccount?.balance">-- </span>
+      </td>
+    </tr>
+    <tr>
+      <th>Overdraft</th>
+      <td>
+        <span *ngIf="myAccount?.overdraft" class="label label-success"
+          >enabled</span
+        >
+        <span *ngIf="!myAccount?.overdraft" class="label label-danger">
+          disabled</span
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>

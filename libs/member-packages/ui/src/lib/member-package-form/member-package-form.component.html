@@ -1,0 +1,107 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+  <h3 class="modal-title">{{ title }}</h3>
+  <div class="modal-body">
+    <form [formGroup]="memberPackageForm">
+      <clr-input-container>
+        <label>Name</label>
+        <input clrInput formControlName="name" type="text" size="30" />
+        <clr-control-error>Field is required!</clr-control-error>
+      </clr-input-container>
+
+      <clr-select-container>
+        <label>Currency</label>
+        <select
+          clrSelect
+          name="options"
+          formControlName="currencyCode"
+          required
+        >
+          <option disabled value="">Select Currency</option>
+          <option
+            *ngFor="let currency of currencies$ | async"
+            [ngValue]="currency?.code"
+          >
+            {{ currency?.name }}
+          </option>
+        </select>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-select-container>
+
+      <clr-input-container>
+        <label>Annual Fee</label>
+        <input clrInput formControlName="amount" type="number" size="30" />
+        <clr-control-error>Field is required!</clr-control-error>
+      </clr-input-container>
+
+      <clr-radio-container clrInline>
+        <label>Default Package</label>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            [value]="true"
+            formControlName="defaultPackage"
+          />
+          <label>Yes</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+          <input
+            type="radio"
+            clrRadio
+            [value]="false"
+            formControlName="defaultPackage"
+          />
+          <label>No</label>
+        </clr-radio-wrapper>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-radio-container>
+
+      <clr-select-container>
+        <label>Member Type</label>
+        <select
+          clrSelect
+          name="options"
+          formControlName="memberType"
+          required
+        >
+          <option disabled value="">Select Member Types</option>
+          <option
+            *ngFor="let memberType of memberTypes$ | async"
+            [ngValue]="memberType?.id"
+          >
+            {{ memberType?.name }}
+          </option>
+        </select>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-select-container>
+	
+      <clr-textarea-container>
+        <label>Description</label>
+        <textarea
+          clrTextarea
+          formControlName="description"
+          name="description"
+          rows="4"
+          cols="45"
+          required
+        ></textarea>
+
+        <clr-control-error>You must provide a description!</clr-control-error>
+      </clr-textarea-container>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="closeModal.emit()">
+      Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [clrLoading]="btnState"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  </div>
+</clr-modal>

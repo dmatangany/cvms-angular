@@ -1,0 +1,44 @@
+<br />
+<div class="head">Transactions</div>
+<hr />
+
+<div class="card">
+  <div class="card-block">
+    <div style="float: right">
+      <button class="btn btn-primary" (click)="isLoadAccount = true">
+        Top Up Account
+      </button>
+      <button
+        class="btn btn-primary"
+        [routerLink]="['/subscriptions/initiate-subscription']"
+      >
+        Renew Subscription
+      </button>
+    </div>
+
+    <br />
+    <clr-tabs>
+      <clr-tab>
+        <button clrTabLink id="link1" style="border: none">
+          Payment Transactions
+        </button>
+        <clr-tab-content id="content1" *clrIfActive>
+          <br />
+          <membership-application-payment-transactions-list></membership-application-payment-transactions-list>
+        </clr-tab-content>
+      </clr-tab>
+      <clr-tab>
+        <button clrTabLink style="border: none">Account Transactions</button>
+        <clr-tab-content *clrIfActive>
+          <br />
+          <membership-application-account-transactions-list></membership-application-account-transactions-list>
+        </clr-tab-content>
+      </clr-tab>
+    </clr-tabs>
+  </div>
+</div>
+
+<membership-application-load-accounts
+  *ngIf="isLoadAccount"
+  (closeModal)="isLoadAccount = false"
+></membership-application-load-accounts>

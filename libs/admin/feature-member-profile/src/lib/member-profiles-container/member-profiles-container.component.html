@@ -1,0 +1,23 @@
+<div class="head">Member Profiles</div>
+<hr />
+<br />
+
+<div class="card">
+  <div class="card-block">
+    <clr-tabs>
+      <clr-tab>
+        <button clrTabLink style="border: none">All</button>
+        <clr-tab-content *clrIfActive>
+          <br />
+          <membership-application-member-profiles-list></membership-application-member-profiles-list>
+        </clr-tab-content>
+      </clr-tab>
+      <clr-tab>
+        <button clrTabLink style="border: none">By Member Type</button>
+        <clr-tab-content *clrIfActive>
+          <membership-application-list-member-profiles-by-group></membership-application-list-member-profiles-by-group>
+        </clr-tab-content>
+      </clr-tab>
+    </clr-tabs>
+  </div>
+</div>

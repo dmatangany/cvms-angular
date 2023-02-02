@@ -1,0 +1,16 @@
+<div class="head">
+  Initiate New subscriptions
+  <hr />
+</div>
+
+<div class="card">
+  <div class="card-block">
+    <membership-application-initiate-subscriptions-form
+      (formValue)="onSubmit($event)"
+      [btnState]="(subscriptionFacade.btnState$ | async)!"
+      [memberPackages]="(memberPackagesFacade.allMemberPackages$ | async)!"
+      [memberId]="(memberProfilesFacade.myProfileState$ | async)?.memberId"
+    >
+    </membership-application-initiate-subscriptions-form>
+  </div>
+</div>

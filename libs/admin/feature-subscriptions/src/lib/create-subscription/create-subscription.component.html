@@ -1,0 +1,7 @@
+<membership-application-subscriptions-form
+  [btnState]="(subscriptionFacade.btnState$ | async)!"
+  (closeModal)="closeModal.emit(false)"
+  (formValue)="onSubmit($event)"
+  [members]="(memberProfilesFacade.allMemberProfiles$ | async)!"
+  [memberPackages]="(memberPackageFacade.allMemberPackages$ | async)!"
+></membership-application-subscriptions-form>

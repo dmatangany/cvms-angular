@@ -1,0 +1,31 @@
+<br />
+<div class="head">Subscriptions</div>
+<hr />
+<div class="card">
+  <div class="card-block">
+    <button
+      class="btn btn-primary"
+      [routerLink]="['/subscriptions/initiate-subscription']"
+    >
+      Subscribe
+    </button>
+    <br /><br />
+    <clr-tabs>
+      <clr-tab>
+        <button clrTabLink style="border: none">My Current Subscription</button>
+        <clr-tab-content *clrIfActive>
+          <br />
+          <membership-application-my-current-subscription></membership-application-my-current-subscription>
+        </clr-tab-content>
+      </clr-tab>
+      <clr-tab>
+        <button clrTabLink style="border: none">Subscription List</button>
+
+        <clr-tab-content *clrIfActive>
+          <br />
+          <membership-application-subscriptions-list></membership-application-subscriptions-list>
+        </clr-tab-content>
+      </clr-tab>
+    </clr-tabs>
+  </div>
+</div>

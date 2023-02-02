@@ -1,0 +1,27 @@
+{
+  "name": "password-management-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/password-management/ui/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/password-management/ui"],
+      "options": {
+        "jestConfig": "libs/password-management/ui/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/password-management/ui/**/*.ts",
+          "libs/password-management/ui/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

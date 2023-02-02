@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-block">
+    <h3><clr-icon shape="users" size="28"></clr-icon> User Management</h3>
+    <br />
+    <a [routerLink]="['/groups/list']"> Groups List </a>
+    |
+    <span> Assign Authorities </span>
+  </div>
+</div>
+
+<membership-application-group-authorities-form
+  [btnState]="(groupAuthoritiesFacade.btnState$ | async)!"
+  [unassignedAuthorities]="
+    (groupAuthoritiesFacade.unassignedAuthorities$ | async)!
+  "
+  (formValue)="onSubmit($event)"
+></membership-application-group-authorities-form>

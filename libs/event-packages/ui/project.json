@@ -1,0 +1,27 @@
+{
+  "name": "event-packages-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/event-packages/ui/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/event-packages/ui"],
+      "options": {
+        "jestConfig": "libs/event-packages/ui/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/event-packages/ui/**/*.ts",
+          "libs/event-packages/ui/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

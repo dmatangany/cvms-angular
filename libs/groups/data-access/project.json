@@ -1,0 +1,27 @@
+{
+  "name": "groups-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/groups/data-access/src",
+  "prefix": "membership-application",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/groups/data-access"],
+      "options": {
+        "jestConfig": "libs/groups/data-access/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/groups/data-access/**/*.ts",
+          "libs/groups/data-access/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

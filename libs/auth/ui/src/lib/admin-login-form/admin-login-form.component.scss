@@ -1,0 +1,14 @@
+:host ::ng-deep {
+    clr-password-container {
+        .clr-control-container {
+            border: 1px solid #b4abab !important;
+            border-radius: 4px;
+        }
+    }
+
+    input {
+        &[type='password'] {
+            border: none !important;
+        }
+    }
+}

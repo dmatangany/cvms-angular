@@ -1,0 +1,49 @@
+<br />
+<div class="head">Member Packages</div>
+
+<hr />
+
+<div class="card">
+  <div class="card-block">
+    <clr-button-group>
+      <clr-button class="btn btn-sm" (click)="isCreate = true">
+        <clr-icon shape="plus"></clr-icon>&nbsp;Create
+      </clr-button>
+      <clr-button class="btn btn-sm" (click)="refresh(true)">
+        <clr-icon shape="refresh"></clr-icon>&nbsp;Refresh
+      </clr-button>
+    </clr-button-group>
+
+    <membership-application-member-packages-list-ui
+      [loading]="(memberPackagesFacade.loading$ | async)!"
+      [memberPackageList]="(memberPackagesFacade.allMemberPackages$ | async)!"
+      [total]="(memberPackagesFacade.totalMemberPackages$ | async)!"
+      (updatedState)="getMemberPackages($event)"
+      [placeholderMessage]="'No Member Packages Found'"
+      (updateSelected)="updateMemberPackage($event)"
+      (deleteSelected)="deleteMemberPackage($event)"
+      (viewSelected)="viewMemberPackage($event)"
+    >
+    </membership-application-member-packages-list-ui>
+  </div>
+</div>
+
+<membership-application-create-package
+  *ngIf="isCreate"
+  (closeModal)="refresh($event)"
+>
+</membership-application-create-package>
+
+<membership-application-update-package
+  *ngIf="isUpdate"
+  (closeModal)="refresh($event)"
+  [memberPackage]="selectedMemberPackage"
+>
+</membership-application-update-package>
+
+<membership-application-delete-package
+  *ngIf="isDelete"
+  (closeModal)="refresh($event)"
+  [memberPackage]="selectedMemberPackage"
+>
+</membership-application-delete-package>
