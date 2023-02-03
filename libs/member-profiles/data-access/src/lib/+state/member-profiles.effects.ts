@@ -78,6 +78,24 @@ export class MemberProfilesEffects {
     )
   );
 
+  createMemberPayment$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MemberProfilesActions.createMemberPayment),
+      mergeMap((action) =>
+        this.memberProfilesService
+          .createMemberPayment(action.memberPaymentDetails)
+          .pipe(
+            map((memberPayment) =>
+              MemberProfilesActions.createMemberPaymentSuccess(memberPayment)
+            ),
+            catchError((error) =>
+              of(MemberProfilesActions.createMemberPaymentFailure({ error }))
+            )
+          )
+      )
+    )
+  );
+
   updateMemberProfile$ = createEffect(() =>
     this.actions$.pipe(
       ofType(MemberProfilesActions.updateMemberProfile),

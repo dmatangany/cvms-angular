@@ -1,7 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiService, Page } from '@membership-application/shared/data-access';
-import { MemberProfilesEntity } from '../+state/member-profiles.models';
+import {MemberProfileRequestEntity, MemberProfilesEntity} from '../+state/member-profiles.models';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +24,12 @@ export class MemberProfilesService {
     );
   }
 
+  createMemberPayment(memberProfile: MemberProfileRequestEntity) {
+    return this.apiService.post<MemberProfileRequestEntity>(
+      `/v1/member-profiles/payments/subscribe`,
+      memberProfile
+    );
+  }
   getMyMemberProfile() {
     return this.apiService.get<MemberProfilesEntity>(
       `/v1/member-profiles/my-profile`

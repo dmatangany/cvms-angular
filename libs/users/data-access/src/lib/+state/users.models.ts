@@ -17,6 +17,7 @@ export interface UsersEntity {
   title: string;
   username: string;
   version: number;
+  adminToken: string;
 }
 
 export interface CreateUserContext {
@@ -24,6 +25,7 @@ export interface CreateUserContext {
   firstName: string;
   groupId: number;
   lastName: string;
+  adminToken: string;
 }
 
 
