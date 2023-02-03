@@ -8,7 +8,7 @@ export interface MemberProfilesEntity {
   dateJoined: string;
   deleted: boolean;
   approved: boolean;
-  subscribed: boolean;
+  joined: boolean;
   emails: string[];
   id: number;
   lastModifiedBy: string;
@@ -41,4 +41,9 @@ export enum statuses {
   INACTIVE = 'INACTIVE',
   TERMINATED = 'TERMINATED',
   SUBSCRIPTION_OVERDUE = 'SUBSCRIPTION_OVERDUE',
+}
+
+export interface MemberProfileRequestEntity {
+  id: number;
+  memberTypeId: number;
 }

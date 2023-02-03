@@ -1,6 +1,6 @@
 import { ClrDatagridStateInterface } from '@clr/angular';
 import { createAction, props } from '@ngrx/store';
-import { MemberProfilesEntity } from './member-profiles.models';
+import {MemberProfileRequestEntity, MemberProfilesEntity} from './member-profiles.models';
 
 export const getPaginatedMemberProfiles = createAction(
   '[MemberProfiles] Get Paginated MemberProfiles',
@@ -66,6 +66,25 @@ export const createMemberProfileSuccess = createAction(
 
 export const createMemberProfileFailure = createAction(
   '[MemberProfiles] Create MemberProfile Failure',
+  props<{ error: Error }>()
+);
+
+export const createMemberPayment = createAction(
+  '[MemberPayments] Create MemberPayment',
+  (memberPaymentDetails: MemberProfileRequestEntity) => ({
+    memberPaymentDetails,
+  })
+);
+
+export const createMemberPaymentSuccess = createAction(
+  '[MemberPayments] Create MemberPayment Success',
+  (memberPaymentDetails: MemberProfileRequestEntity) => ({
+    memberPaymentDetails,
+  })
+);
+
+export const createMemberPaymentFailure = createAction(
+  '[MemberPayments] Create MemberPayment Failure',
   props<{ error: Error }>()
 );
 

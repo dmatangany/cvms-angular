@@ -3,7 +3,7 @@ import { ClrDatagridStateInterface } from '@clr/angular';
 import { select, Store, Action } from '@ngrx/store';
 
 import * as MemberProfilesActions from './member-profiles.actions';
-import { MemberProfilesEntity } from './member-profiles.models';
+import {MemberProfileRequestEntity, MemberProfilesEntity} from './member-profiles.models';
 import * as MemberProfilesFeature from './member-profiles.reducer';
 import * as MemberProfilesSelectors from './member-profiles.selectors';
 
@@ -66,6 +66,12 @@ export class MemberProfilesFacade {
   createNewMemberProfile(memberProfile: MemberProfilesEntity) {
     this.store.dispatch(
       MemberProfilesActions.createMemberProfile(memberProfile)
+    );
+  }
+
+  createMemberPayment(memberPayment: MemberProfileRequestEntity) {
+    this.store.dispatch(
+      MemberProfilesActions.createMemberPayment(memberPayment)
     );
   }
 
