@@ -8,7 +8,7 @@ export interface MemberProfilesEntity {
   dateJoined: string;
   deleted: boolean;
   approved: boolean;
-  subscribed: boolean;
+  joined: boolean;
   emails: string[];
   id: number;
   lastModifiedBy: string;

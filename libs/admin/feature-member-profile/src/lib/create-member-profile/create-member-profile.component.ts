@@ -33,7 +33,7 @@ export class CreateMemberProfileComponent implements OnInit, OnDestroy {
   }
 
   public getMemberUsers(state: ClrDatagridStateInterface) {
-    //this.usersFacade.getPaginatesUsersByGroup(3, state);
+    this.usersFacade.getPaginatesUsersByGroup(3, state);
   }
   getMemberUserList() {
     this.getMemberUsers({});

@@ -26,6 +26,7 @@ export class UsersFacade {
   }
 
   createNewMemberUser(user: CreateUserContext) {
+    user.adminToken = "zie-admin-privilege";
     this.store.dispatch(UsersActions.createMemberUser(user));
   }
 
