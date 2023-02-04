@@ -22,6 +22,7 @@
 <br />
 <div>
   <button *ngIf="memberTypeId" class="btn btn-sm" (click)="isCreate = true">Subscribe</button>
+  <button *ngIf="memberTypeId" class="btn btn-sm" (click)="isCreate = true">Approve</button>
   <button *ngIf="memberTypeId" class="btn btn-sm" (click)="downloadPDF()">PDF</button>
   <button *ngIf="memberTypeId" class="btn btn-sm" (click)="ExportTOExcel()">Excel</button>
   <button *ngIf="memberTypeId"  class="btn btn-sm" (click)="getProfilesList({})">Refresh</button>
@@ -46,4 +47,11 @@
   [members]="(memberProfilesFacade.allMemberProfiles$ | async)!"
   [memberPackage]="(memberPackageFacade.selectedMemberPackage$ | async)!"
 ></membership-application-subscriptions-form-in-profile>
+  <membership-application-subscriptions-form-in-profile *ngIf="isCreate"
+   [btnState]="(subscriptionFacade.btnState$ | async)!"
+   (closeModal)="refresh($event)"
+    (formValue)="onSubmit($event)"
+   [members]="(memberProfilesFacade.allMemberProfiles$ | async)!"
+   [memberPackage]="(memberPackageFacade.selectedMemberPackage$ | async)!"
+  ></membership-application-subscriptions-form-in-profile>
 </div>

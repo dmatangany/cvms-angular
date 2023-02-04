@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListUsersByGroupComponent } from './list-users-by-group.component';
+import { ListMemberProfilesByGroupComponent } from './list-member-profiles-by-group.component';
 
 describe('ListUsersByGroupComponent', () => {
-  let component: ListUsersByGroupComponent;
-  let fixture: ComponentFixture<ListUsersByGroupComponent>;
+  let component: ListMemberProfilesByGroupComponent;
+  let fixture: ComponentFixture<ListMemberProfilesByGroupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ListUsersByGroupComponent],
+      declarations: [ListMemberProfilesByGroupComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ListUsersByGroupComponent);
+    fixture = TestBed.createComponent(ListMemberProfilesByGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

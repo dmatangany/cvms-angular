@@ -1,0 +1,32 @@
+<br />
+<div class="head"></div>
+
+<hr />
+<div class="card">
+  <div class="card-block">
+    <button class="btn btn-sm" [routerLink]="['create']">Create Member</button>
+    <button class="btn btn-sm" (click)="downloadPDF()">PDF</button>
+    <button class="btn btn-sm" (click)="ExportTOExcel()">Excel</button>
+	  <button class="btn btn-sm" (click)="refresh()">Refresh</button>
+    <br />
+    <div class="col-md-8" id="htmlData" #htmlData>
+    <membership-application-member-profiles-list-ui
+      [memberProfiles]="(memberProfileFacade.allMemberProfiles$ | async)!"
+      [placeholderMessage]="placeholderMessage"
+      [loading]="(memberProfileFacade.loading$ | async)!"
+      (updatedState)="getMemberProfiles($event)"
+      (deleteSelected)="promptDelete($event)"
+      (updateSelected)="updateMemberProfile($event)"
+      (viewMemberProfile)="viewMemberProfile($event)"
+    >
+    </membership-application-member-profiles-list-ui>
+    </div>
+  </div>
+</div>
+
+<membership-application-delete-member-profile
+  *ngIf="isDelete"
+  [selectedProfile]="selectedMemberProfile"
+  (closeModal)="refresh()"
+>
+</membership-application-delete-member-profile>

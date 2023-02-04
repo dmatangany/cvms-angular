@@ -5,6 +5,7 @@ import { MemberAttributesDataAccessModule } from '@membership-application/member
 import { ViewMemberProfileComponent } from './view-member-profile/view-member-profile.component';
 import { UpdateMemberProfileComponent } from './update-member-profile/update-member-profile.component';
 import { MemberProfilesListComponent } from './member-profiles-list/member-profiles-list.component';
+import { MemberApprovalsListComponent } from './member-approvals-list/member-approvals-list.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -48,6 +49,7 @@ import { SubscriptionsUiModule } from '@membership-application/subscriptions/ui'
     MemberProfilesListComponent,
     UpdateMemberProfileComponent,
     ViewMemberProfileComponent,
+    MemberApprovalsListComponent,
 	MemberProfilesContainerComponent,
 	ListMemberProfilesByGroupComponent,
   ],

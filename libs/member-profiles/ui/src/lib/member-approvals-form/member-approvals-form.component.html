@@ -3,7 +3,7 @@
     <form [formGroup]="memberProfileForm">
       <img [src]="fileName" height="300" />
 
-      <clr-select-container>
+<!--      <clr-select-container>
         <label>User</label>
         <select clrSelect name="options" formControlName="userId" required  (change)="userId.emit($event.target)">
           <option disabled value="">Select User</option>
@@ -14,12 +14,6 @@
         <clr-control-error>This field is required!</clr-control-error>
       </clr-select-container>
 
-      <!-- <clr-input-container>
-    <label class="required">Organization Name</label>
-    <input clrInput formControlName="name" type="text" size="35" />
-    <clr-control-error>Name is required</clr-control-error>
-  </clr-input-container> -->
-
       <clr-input-container>
         <label class="required">Physical Address</label>
         <input
@@ -29,7 +23,7 @@
           size="35"
         />
         <clr-control-error>Name is required</clr-control-error>
-      </clr-input-container>
+      </clr-input-container>-->
 
       <clr-input-container>
         <label class="required">Mailing Address</label>
@@ -188,7 +182,7 @@
       Cancel
     </button>
 
-    <button
+    <button *ngIf="memberProfile.approved"
       type="submit"
       class="btn btn-primary"
       (click)="onSubmit()"
