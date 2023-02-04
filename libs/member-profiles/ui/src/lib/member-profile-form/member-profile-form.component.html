@@ -4,19 +4,6 @@
       <img [src]="fileName" height="300" />
 
       <clr-select-container>
-        <label>JOINED</label>
-        <select clrSelect name="options" formControlName="joined">
-          <option disabled value="0">Select Joined Status</option>
-          <option [value]="1">
-            Yes
-          </option>
-          <option [value]="0">
-            No
-          </option>
-        </select>
-      </clr-select-container>
-
-      <clr-select-container>
         <label>User</label>
         <select clrSelect name="options" formControlName="userId" required  (change)="userId.emit($event.target)">
           <option disabled value="">Select User</option>
@@ -201,7 +188,7 @@
       Cancel
     </button>
 
-    <button *ngIf="memberProfile.approved"
+    <button
       type="submit"
       class="btn btn-primary"
       (click)="onSubmit()"

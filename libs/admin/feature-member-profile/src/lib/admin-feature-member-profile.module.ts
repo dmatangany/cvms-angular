@@ -5,6 +5,7 @@ import { MemberAttributesDataAccessModule } from '@membership-application/member
 import { ViewMemberProfileComponent } from './view-member-profile/view-member-profile.component';
 import { UpdateMemberProfileComponent } from './update-member-profile/update-member-profile.component';
 import { MemberProfilesListComponent } from './member-profiles-list/member-profiles-list.component';
+import { MemberApprovalsListComponent } from './member-approvals-list/member-approvals-list.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,6 +17,7 @@ import { SharedUiModule } from '@membership-application/shared/ui';
 import { UsersDataAccessModule } from '@membership-application/users/data-access';
 import { MemberProfilesContainerComponent } from './member-profiles-container/member-profiles-container.component';
 import { ListMemberProfilesByGroupComponent } from './list-member-profiles-by-group/list-member-profiles-by-group.component';
+import { ListMemberProfilesByApprovalComponent } from './list-member-profiles-by-approval/list-member-profiles-by-approval.component';
 import { MemberPackagesDataAccessModule } from '@membership-application/member-packages/data-access';
 import { SubscriptionsDataAccessModule } from '@membership-application/subscriptions/data-access';
 import { SubscriptionsUiModule } from '@membership-application/subscriptions/ui';
@@ -48,7 +50,9 @@ import { SubscriptionsUiModule } from '@membership-application/subscriptions/ui'
     MemberProfilesListComponent,
     UpdateMemberProfileComponent,
     ViewMemberProfileComponent,
-	MemberProfilesContainerComponent,
+    MemberApprovalsListComponent,
+	  MemberProfilesContainerComponent,
+    ListMemberProfilesByApprovalComponent,
 	ListMemberProfilesByGroupComponent,
   ],
 })

@@ -29,7 +29,6 @@ export class CreateMemberProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.memberTypesFacade.getAllMemberTypes();
     this.getMemberUserList();
-    console.log("a1");
   }
 
   public getMemberUsers(state: ClrDatagridStateInterface) {
@@ -50,6 +49,6 @@ export class CreateMemberProfileComponent implements OnInit, OnDestroy {
     this.memberAttributesFacade.getAttributeByMemberType(event.value);
   }
   getUserAttributes(event: { value: string | number }) {
-    //this.memberAttributesFacade.getAttributeByMemberType(event.value);
+    this.memberAttributesFacade.getAttributeByMemberType(event.value);
   }
 }

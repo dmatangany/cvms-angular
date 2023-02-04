@@ -8,7 +8,7 @@
         [(ngModel)]="memberTypeId"
         (change)="getUsersListByGroup()"
       >
-        <option value="one">Select Member Type</option>
+        <option value="1">Select Member Type</option>
         <option
           [value]="membertype.id"
           *ngFor="let membertype of memberTypesFacade.allMemberTypes$ | async"
@@ -32,7 +32,7 @@
     [total]="(memberProfilesFacade.totalMemberProfiles$ | async)!"
     [loading]="(memberProfilesFacade.loading$ | async)!"
     [placeholderMessage]="'Profiles'"
-    (updatedState)="getMemberProfiles($event)"
+    (updatedState)="getProfilesList($event)"
     (deleteSelected)="promptDelete($event)"
     (updateSelected)="updateMemberProfile($event)"
     (viewMemberProfile)="viewMemberProfile($event)"

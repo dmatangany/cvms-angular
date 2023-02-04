@@ -114,6 +114,23 @@ export class MemberProfilesEffects {
     )
   );
 
+  updateMemberApprovalProfile$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MemberProfilesActions.updateMemberProfileApproval),
+      mergeMap((action) =>
+        this.memberProfilesService
+          .updateMemberApprovalProfile(action.memberApprovalEntity)
+          .pipe(
+            map((memberProfile) =>
+              MemberProfilesActions.updateMemberProfileApprovalSuccess(memberProfile)
+            ),
+            catchError((error) =>
+              of(MemberProfilesActions.updateMemberProfileApprovalFailure({ error }))
+            )
+          )
+      )
+    )
+  );
   getMyMemberProfile$ = createEffect(() =>
     this.actions$.pipe(
       ofType(MemberProfilesActions.getMyMemberProfile),
@@ -224,6 +241,42 @@ export class MemberProfilesEffects {
     )
   );
 
+  loadMemberProfileListByApproved$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MemberProfilesActions.getPaginatedMemberProfilesByApproved),
+      concatMap((action) =>
+        of(action).pipe(
+          withLatestFrom(
+            this.store.pipe(select(MemberProfilesSelectors.getCurrentPageState))
+          )
+        )
+      ),
+      exhaustMap(([action, page]) =>
+        this.memberProfilesService
+          .getPaginatedMemberProfilesByByApproved(
+            action.approved,
+            Utilities.formatDatagridState(
+              action.state,
+              action.state.page
+                ? action.state.page.from! / action.state.page.size!
+                : page
+            )
+          )
+          .pipe(
+            map((memberProfilesObject) =>
+              MemberProfilesActions.getPaginatedMemberProfilesByApprovedSuccess({
+                memberProfiles: memberProfilesObject.content,
+                total: memberProfilesObject.totalElements,
+                page: memberProfilesObject.pageable.pageNumber,
+              })
+            ),
+            catchError((error) =>
+              of(MemberProfilesActions.getPaginatedMemberProfilesByApprovedFailure({ error }))
+            )
+          )
+      )
+    )
+  );
   loadMemberProfileListByUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(MemberProfilesActions.getMemberProfileByUser),

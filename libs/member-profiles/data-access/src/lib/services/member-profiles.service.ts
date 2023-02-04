@@ -1,7 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiService, Page } from '@membership-application/shared/data-access';
-import {MemberProfileRequestEntity, MemberProfilesEntity} from '../+state/member-profiles.models';
+import {MemberApprovalEntity, MemberProfileRequestEntity, MemberProfilesEntity} from '../+state/member-profiles.models';
 
 @Injectable({
   providedIn: 'root',
@@ -43,6 +43,13 @@ export class MemberProfilesService {
     );
   }
 
+  updateMemberApprovalProfile(memberApprovalEntity: MemberApprovalEntity) {
+    return this.apiService.post<MemberApprovalEntity>(
+      `/v1/member-profiles/${memberApprovalEntity.memberProfileId}/${memberApprovalEntity.approved}/approval`,
+      memberApprovalEntity
+    );
+  }
+
   getMemberProfileById(memberProfileId: string | number) {
     return this.apiService.get<MemberProfilesEntity>(
       `/v1/member-profiles/${memberProfileId}`
@@ -63,6 +70,13 @@ export class MemberProfilesService {
     );
   }
 
+  getPaginatedMemberProfilesByByApproved(approved: any, filters?: any) {
+    const httpParams = new HttpParams({ fromObject: filters });
+    return this.apiService.get<Page<MemberProfilesEntity>>(
+      `/v1/member-profiles/${approved}/approved`,
+      httpParams
+    );
+  }
   getMemberProfileByUser(user_id: any) {
     return this.apiService.get<Page<MemberProfilesEntity>>(
       `/v1/member-profiles/${user_id}/userid`

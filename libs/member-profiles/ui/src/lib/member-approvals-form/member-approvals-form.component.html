@@ -1,0 +1,45 @@
+<clr-modal [(clrModalOpen)]="opened">
+  <h3 class="modal-title">Approve Membership</h3>
+  <div class="modal-body">
+    <form [formGroup]="memberApprovalForm">
+
+      <clr-select-container>
+        <label>Approval</label>
+        <select clrSelect name="options" formControlName="approved">
+          <option [value]="1">
+            Yes
+          </option>
+          <option [value]="0">
+            No
+          </option>
+        </select>
+      </clr-select-container>
+
+      <clr-select-container>
+        <label>Select Member</label>
+        <select clrSelect name="options" formControlName="memberProfileId">
+          <option *ngFor="let member of members" [value]="member?.id">
+            {{ member?.name }}
+          </option>
+        </select>
+      </clr-select-container>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline"
+      (click)="closeModal.emit(true)"
+    >
+      Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="formValue.emit(memberApprovalForm.value)"
+    >
+      Submit
+    </button>
+  </div>
+</clr-modal>

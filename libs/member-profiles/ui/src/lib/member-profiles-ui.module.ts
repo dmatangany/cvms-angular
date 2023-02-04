@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { ClarityModule } from '@clr/angular';
 import { MemberProfilesDetailsComponent } from './member-profiles-details/member-profiles-details.component';
 import { MemberProfileFormComponent } from './member-profile-form/member-profile-form.component';
+import { MemberApprovalsFormComponent } from './member-approvals-form/member-approvals-form.component';
 import { MemberSelfProfileFormComponent } from './member-self-profile-form/member-self-profile-form.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -27,6 +28,7 @@ import { FilterPipe } from './filter/filter.pipe';
     MemberSelfProfileFormComponent,
     MemberProfilesDetailsComponent,
     MemberProfilesListUiComponent,
+    MemberApprovalsFormComponent,
     PhoneNumberFormComponent,
 	FilterPipe,
   ],
@@ -36,6 +38,7 @@ import { FilterPipe } from './filter/filter.pipe';
     MemberSelfProfileFormComponent,
     MemberProfilesDetailsComponent,
     MemberProfilesListUiComponent,
+    MemberApprovalsFormComponent,
     PhoneNumberFormComponent,
   ],
 })
