@@ -8,7 +8,6 @@
   [memberTypes]="(memberTypesFacade.allMemberTypes$ | async)!"
   [memberAttributes]="(memberAttributesFacade.allMemberAttributes$ | async)!"
   (memberTypeId)="getAttributes($event)"
-  (userId)="getUserAttributes($event)"
   (formValue)="onSubmit($event)"
   [btnTitle]="'ADD'"
 >
