@@ -3,7 +3,11 @@ import { ClrDatagridStateInterface } from '@clr/angular';
 import { select, Store, Action } from '@ngrx/store';
 
 import * as MemberProfilesActions from './member-profiles.actions';
-import {MemberProfileRequestEntity, MemberProfilesEntity} from './member-profiles.models';
+import {
+  MemberApprovalEntity,
+  MemberProfileRequestEntity,
+  MemberProfilesEntity
+} from './member-profiles.models';
 import * as MemberProfilesFeature from './member-profiles.reducer';
 import * as MemberProfilesSelectors from './member-profiles.selectors';
 
@@ -45,6 +49,12 @@ export class MemberProfilesFacade {
     );
   }
 
+  getPaginatedMemberProfilesByApproved(approved: any, state: ClrDatagridStateInterface) {
+    this.store.dispatch(
+      MemberProfilesActions.getPaginatedMemberProfilesByApproved({ approved, state })
+    );
+  }
+
   getMemberProfileByUser(userId: any) {
     this.store.dispatch(
       MemberProfilesActions.getMemberProfileByUser({ userId })
@@ -81,6 +91,11 @@ export class MemberProfilesFacade {
     );
   }
 
+  updateMemberApprovalProfile(memberApprovalEntity: MemberApprovalEntity) {
+    this.store.dispatch(
+      MemberProfilesActions.updateMemberProfileApproval(memberApprovalEntity)
+    );
+  }
   getMyMemberProfile() {
     this.store.dispatch(MemberProfilesActions.getMyMemberProfile());
   }

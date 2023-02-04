@@ -17,6 +17,7 @@ import { SharedUiModule } from '@membership-application/shared/ui';
 import { UsersDataAccessModule } from '@membership-application/users/data-access';
 import { MemberProfilesContainerComponent } from './member-profiles-container/member-profiles-container.component';
 import { ListMemberProfilesByGroupComponent } from './list-member-profiles-by-group/list-member-profiles-by-group.component';
+import { ListMemberProfilesByApprovalComponent } from './list-member-profiles-by-approval/list-member-profiles-by-approval.component';
 import { MemberPackagesDataAccessModule } from '@membership-application/member-packages/data-access';
 import { SubscriptionsDataAccessModule } from '@membership-application/subscriptions/data-access';
 import { SubscriptionsUiModule } from '@membership-application/subscriptions/ui';
@@ -50,7 +51,8 @@ import { SubscriptionsUiModule } from '@membership-application/subscriptions/ui'
     UpdateMemberProfileComponent,
     ViewMemberProfileComponent,
     MemberApprovalsListComponent,
-	MemberProfilesContainerComponent,
+	  MemberProfilesContainerComponent,
+    ListMemberProfilesByApprovalComponent,
 	ListMemberProfilesByGroupComponent,
   ],
 })

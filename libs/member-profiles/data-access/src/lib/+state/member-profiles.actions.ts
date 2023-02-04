@@ -1,6 +1,10 @@
 import { ClrDatagridStateInterface } from '@clr/angular';
 import { createAction, props } from '@ngrx/store';
-import {MemberProfileRequestEntity, MemberProfilesEntity} from './member-profiles.models';
+import {
+  MemberApprovalEntity,
+  MemberProfileRequestEntity,
+  MemberProfilesEntity
+} from './member-profiles.models';
 
 export const getPaginatedMemberProfiles = createAction(
   '[MemberProfiles] Get Paginated MemberProfiles',
@@ -33,6 +37,21 @@ export const getPaginatedMemberProfilesByMemberTypeSuccess = createAction(
 
 export const getPaginatedMemberProfilesByMemberTypeFailure = createAction(
   '[User Manager/MemberProfiles] Get Paginated MemberProfiles  By MemberType Failure',
+  props<{ error: Error }>()
+);
+
+export const getPaginatedMemberProfilesByApproved = createAction(
+  '[User Manager/MemberProfiles] Get Paginated MemberProfiles By Approved',
+  props<{ approved: any; state: ClrDatagridStateInterface }>()
+);
+
+export const getPaginatedMemberProfilesByApprovedSuccess = createAction(
+  '[User Manager/MemberProfiles] Get Paginated MemberProfiles  By Approved Success',
+  props<{ memberProfiles: MemberProfilesEntity[]; total: number; page: number }>()
+);
+
+export const getPaginatedMemberProfilesByApprovedFailure = createAction(
+  '[User Manager/MemberProfiles] Get Paginated MemberProfiles  By Approved Failure',
   props<{ error: Error }>()
 );
 
@@ -149,5 +168,24 @@ export const getAllMemberProfilesSuccess = createAction(
 
 export const getAllMemberProfilesFailure = createAction(
   '[MemberProfiles] Get All MemberProfiles Failure',
+  props<{ error: Error }>()
+);
+
+export const updateMemberProfileApproval = createAction(
+  '[MemberProfiles] Update MemberApprovalProfile',
+  (memberApprovalEntity: MemberApprovalEntity) => ({
+    memberApprovalEntity,
+  })
+);
+
+export const updateMemberProfileApprovalSuccess = createAction(
+  '[MemberProfiles] Update MemberApprovalProfile Success',
+  (memberApprovalEntity: MemberApprovalEntity) => ({
+    memberApprovalEntity,
+  })
+);
+
+export const updateMemberProfileApprovalFailure = createAction(
+  '[MemberProfiles] Update MemberApprovalProfile Failure',
   props<{ error: Error }>()
 );

@@ -21,32 +21,29 @@ import { SubscriptionsFacade } from '@membership-application/subscriptions/data-
 import jsPDF from "jspdf";
 import * as XLSX from 'xlsx';
 @Component({
-  selector: 'membership-application-list-member-profiles-by-group',
-  templateUrl: './list-member-profiles-by-group.component.html',
-  styleUrls: ['./list-member-profiles-by-group.component.scss'],
+  selector: 'membership-application-list-member-profiles-by-approval',
+  templateUrl: './list-member-profiles-by-approval.component.html',
+  styleUrls: ['./list-member-profiles-by-approval.component.scss'],
 })
-export class ListMemberProfilesByGroupComponent implements OnInit, AfterViewChecked {
+export class ListMemberProfilesByApprovalComponent implements OnInit, AfterViewChecked {
   public isEdit = false;
   public isDelete = false;
   public isStatusChange = false;
   public isUpdate = false;
-  public isCreate = false;
+  public isApprove = false;
   public isChangeStatus = false;
   public selectedType!: MemberTypesEntity;
   public selectedMemberProfile!: MemberProfilesEntity;
-  memberTypeId!: string | number;
+  approved!: string | number;
   @Output() closeModal = new EventEmitter();
   sub = new Subscription();
   @ViewChild('htmlData')
   htmlData!: ElementRef;
   constructor(
-    public memberPackageFacade: MemberPackagesFacade,
     public memberProfilesFacade: MemberProfilesFacade,
-    public subscriptionFacade: SubscriptionsFacade,
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute,
-    public memberTypesFacade: MemberTypesFacade
   ) {}
 
   ngAfterViewChecked(): void {
@@ -54,33 +51,31 @@ export class ListMemberProfilesByGroupComponent implements OnInit, AfterViewChec
   }
 
   ngOnInit(): void {
-	this.isCreate = false;
-    this.memberTypesFacade.getAllMemberTypes();
-    this.memberPackageFacade.getMemberPackage(1);
     this.memberProfilesFacade.getAllMemberProfiles();
   }
 
   public getProfilesList(state: ClrDatagridStateInterface) {
-    console.log("ListMemberProfilesByGroupComponent",this.memberTypeId, state)
-    this.memberProfilesFacade.getPaginatedMemberProfilesByMemberType(this.memberTypeId, state);
-    this.memberPackageFacade.getMemberPackage(this.memberTypeId);
+    console.log("ListMemberProfilesByApprovalComponentX",this.approved, state)
+    this.memberProfilesFacade.getPaginatedMemberProfilesByApproved(this.approved, state);
   }
-
-  public getPackagesList() {
-    this.memberPackageFacade.getMemberPackage(this.memberTypeId);
-  }
-  getUsersListByGroup() {
+  getMembersByStatus() {
     this.getProfilesList({});
   }
 
+  onSubmit(approvalContext: any) {
+    this.memberProfilesFacade.updateMemberApprovalProfile(approvalContext);
+    this.refresh(true);
+    this.sub = this.memberProfilesFacade.loaded$.subscribe((res) => {
+      res ? this.closeModal.emit(true) : null;
+    });
+  }
   refresh(isRefresh: boolean) {
      this.isUpdate = false;
     this.isChangeStatus = false;
-	  this.isCreate = false;
-    this.getPackagesList()
+    this.isApprove = false;
     return isRefresh ? this.getProfilesList({}) : null;
   }
-  updateMemberProfile(memberProfile: MemberProfilesEntity) {
+   updateMemberProfile(memberProfile: MemberProfilesEntity) {
     this.router.navigate(['/member-profile/update', memberProfile?.id]);
     this.isEdit = false;
   }
@@ -129,13 +124,6 @@ export class ListMemberProfilesByGroupComponent implements OnInit, AfterViewChec
 });
   }
 
-    onSubmit(subscriptionContext: any) {
-    this.subscriptionFacade.createNewSubscription(subscriptionContext);
-	this.refresh(true);
-    this.sub = this.subscriptionFacade.loaded$.subscribe((res) => {
-      res ? this.closeModal.emit(true) : null;
-    });
-  }
   downloadPDF() {
     let options : any = {
       orientation: 'p',

@@ -1,0 +1,48 @@
+<div class="clr-row">
+  <div class="clr-col-md-4">
+    <clr-select-container>
+      <label>Approval Status</label>
+      <select
+        clrSelect
+        name="approved"
+        [(ngModel)]="approved"
+        (change)="getMembersByStatus()"
+      >
+        <option value="0">Select Approval Status</option>
+        <option [value]="1">
+          Approved
+        </option>
+        <option [value]="0">
+          Not-Approved
+        </option>
+      </select>
+    </clr-select-container>
+  </div>
+</div>
+<br />
+<div>
+  <button *ngIf="approved" class="btn btn-sm" (click)="isApprove = true">Approve</button>
+  <button *ngIf="approved" class="btn btn-sm" (click)="downloadPDF()">PDF</button>
+  <button *ngIf="approved" class="btn btn-sm" (click)="ExportTOExcel()">Excel</button>
+  <button *ngIf="approved"  class="btn btn-sm" (click)="getProfilesList({})">Refresh</button>
+  <div class="col-md-8" id="htmlData" #htmlData>
+  <membership-application-member-profiles-list-ui
+    *ngIf="approved"
+    [memberProfiles]="(memberProfilesFacade.allMemberProfiles$ | async)!"
+    [total]="(memberProfilesFacade.totalMemberProfiles$ | async)!"
+    [loading]="(memberProfilesFacade.loading$ | async)!"
+    [placeholderMessage]="'Profiles'"
+    (updatedState)="getProfilesList($event)"
+    (deleteSelected)="promptDelete($event)"
+    (updateSelected)="updateMemberProfile($event)"
+    (viewMemberProfile)="viewMemberProfile($event)"
+    (viewUserSubscriptions)="viewUserSubscriptions($event)"
+  ></membership-application-member-profiles-list-ui>
+  </div>
+  <membership-application-member-approvals-form *ngIf="isApprove"
+  [btnState]="(memberProfilesFacade.btnState$ | async)!"
+  (closeModal)="refresh($event)"
+  (formValue)="onSubmit($event)"
+  [members]="(memberProfilesFacade.allMemberProfiles$ | async)!"
+></membership-application-member-approvals-form>
+</div>

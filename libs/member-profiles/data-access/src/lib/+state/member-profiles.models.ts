@@ -42,8 +42,13 @@ export enum statuses {
   TERMINATED = 'TERMINATED',
   SUBSCRIPTION_OVERDUE = 'SUBSCRIPTION_OVERDUE',
 }
-
 export interface MemberProfileRequestEntity {
   id: number;
   memberTypeId: number;
+}
+
+export interface MemberApprovalEntity {
+  approved: boolean;
+  memberProfileId: number;
+  result: boolean;
 }

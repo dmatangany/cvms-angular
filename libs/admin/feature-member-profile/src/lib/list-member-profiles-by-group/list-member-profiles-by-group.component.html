@@ -8,7 +8,7 @@
         [(ngModel)]="memberTypeId"
         (change)="getUsersListByGroup()"
       >
-        <option value="one">Select Member Type</option>
+        <option value="1">Select Member Type</option>
         <option
           [value]="membertype.id"
           *ngFor="let membertype of memberTypesFacade.allMemberTypes$ | async"
@@ -22,7 +22,6 @@
 <br />
 <div>
   <button *ngIf="memberTypeId" class="btn btn-sm" (click)="isCreate = true">Subscribe</button>
-  <button *ngIf="memberTypeId" class="btn btn-sm" (click)="isCreate = true">Approve</button>
   <button *ngIf="memberTypeId" class="btn btn-sm" (click)="downloadPDF()">PDF</button>
   <button *ngIf="memberTypeId" class="btn btn-sm" (click)="ExportTOExcel()">Excel</button>
   <button *ngIf="memberTypeId"  class="btn btn-sm" (click)="getProfilesList({})">Refresh</button>
@@ -33,7 +32,7 @@
     [total]="(memberProfilesFacade.totalMemberProfiles$ | async)!"
     [loading]="(memberProfilesFacade.loading$ | async)!"
     [placeholderMessage]="'Profiles'"
-    (updatedState)="getMemberProfiles($event)"
+    (updatedState)="getProfilesList($event)"
     (deleteSelected)="promptDelete($event)"
     (updateSelected)="updateMemberProfile($event)"
     (viewMemberProfile)="viewMemberProfile($event)"
@@ -47,11 +46,4 @@
   [members]="(memberProfilesFacade.allMemberProfiles$ | async)!"
   [memberPackage]="(memberPackageFacade.selectedMemberPackage$ | async)!"
 ></membership-application-subscriptions-form-in-profile>
-  <membership-application-subscriptions-form-in-profile *ngIf="isCreate"
-   [btnState]="(subscriptionFacade.btnState$ | async)!"
-   (closeModal)="refresh($event)"
-    (formValue)="onSubmit($event)"
-   [members]="(memberProfilesFacade.allMemberProfiles$ | async)!"
-   [memberPackage]="(memberPackageFacade.selectedMemberPackage$ | async)!"
-  ></membership-application-subscriptions-form-in-profile>
 </div>
