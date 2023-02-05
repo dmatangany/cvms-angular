@@ -83,7 +83,7 @@ export class MyMemberUserProfileComponent implements AfterViewChecked {
           );
         }
       }
-    }, 100);
+    }, 1000);
   }
   onSubmit(formValue: any) {
     console.log("MyMemberUserProfileComponent onSubmit", this.isMember)
