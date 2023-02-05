@@ -52,7 +52,7 @@ export class RegistrationFormComponent implements OnInit {
       email: ['', Validators.email],
       firstName: [''],
       gender: [''],
-      groupId: [''],
+      groupId: '3',
       initials: [''],
       lastName: [''],
       nationalIdentificationNumber: [''],

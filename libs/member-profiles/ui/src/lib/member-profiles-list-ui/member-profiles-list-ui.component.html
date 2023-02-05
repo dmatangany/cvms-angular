@@ -9,7 +9,7 @@
   <clr-dg-column>Member Name</clr-dg-column>
   <clr-dg-column [clrDgField]="'memberId'">Member ID</clr-dg-column>
     <clr-dg-column [clrDgField]="'status'">MemberType</clr-dg-column>
-  <clr-dg-column [clrDgField]="'status'">Status</clr-dg-column>
+  <clr-dg-column [clrDgField]="'status'">Approval</clr-dg-column>
     <clr-dg-column [clrDgField]="'owing'">Balance</clr-dg-column>
   <clr-dg-placeholder>{{ placeholderMessage }}</clr-dg-placeholder>
 
@@ -34,7 +34,9 @@
     >
     <clr-dg-cell>{{ memberProfile?.memberId }}</clr-dg-cell>
     <clr-dg-cell>{{ memberProfile?.memberType.name }}</clr-dg-cell>
-    <clr-dg-cell>{{ memberProfile?.status }}</clr-dg-cell>
+    <clr-dg-cell><span *ngIf="memberProfile?.approved">Approved</span>
+      <span *ngIf="!memberProfile?.approved">Pending</span>
+    </clr-dg-cell>
 
     <clr-dg-cell>{{ memberProfile?.owing  | currency:'USD':'symbol' }}</clr-dg-cell>
   </clr-dg-row>

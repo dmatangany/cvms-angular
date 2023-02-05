@@ -25,7 +25,7 @@ import {
 } from '@membership-application/member-profiles/data-access';
 import {SubscriptionsEntity} from "@membership-application/subscriptions/data-access";
 import {MemberPackageEntity} from "@membership-application/member-packages/data-access";
-
+import {formatDate} from '@angular/common';
 @Component({
   selector: 'membership-application-member-self-profile-form',
   templateUrl: './member-self-profile-form.component.html',
@@ -67,6 +67,7 @@ export class MemberSelfProfileFormComponent implements OnInit, OnChanges {
   phoneNumberIndex: any;
   selectedPhoneNumber: any;
   selectedEmail: any;
+  joinedDate: Date = new Date();
   @Output() userId = new EventEmitter();
 
   constructor(
@@ -83,9 +84,10 @@ export class MemberSelfProfileFormComponent implements OnInit, OnChanges {
   }
 
   private createMemberProfileForm() {
+    const joinedDate = formatDate(this.joinedDate, 'dd/MM/yyyy', 'en-US');
     this.memberProfileForm = this.fb.group({
       name: '',
-      dateJoined: '',
+      dateJoined: joinedDate,
       emails: ['', [Validators.required, Validators.email]],
       mailingAddress: '',
       memberTypeAttributeValues: this.fb.array([]),
@@ -93,9 +95,9 @@ export class MemberSelfProfileFormComponent implements OnInit, OnChanges {
       phoneNumbers: '',
       physicalAddress: '',
       profileImageFileName: '',
-      status: '',
-      userId: '',
-      id: '',
+      status: 'ACTIVE',
+      userId: this.user.id.toString(),
+      id: ''
     });
   }
 

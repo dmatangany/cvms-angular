@@ -43,9 +43,10 @@
 </div>
 
 <div class="clr-row">
-  <div class="clr-col-md-4"><strong>Status</strong></div>
+  <div class="clr-col-md-4"><strong>Approval Status</strong></div>
   <div class="clr-col-md-8">
-    <span *ngIf="memberProfile?.status">{{ memberProfile?.status }}</span>
+    <span *ngIf="memberProfile?.joined">Approved</span>
+    <span *ngIf="!memberProfile?.joined">Pending</span>
   </div>
 </div>
 <div class="clr-row">
@@ -102,7 +103,7 @@
   </div>
 </div>
 
-<div class="clr-row"  *ngIf="memberProfile?.approved">
+<div class="clr-row"  *ngIf="memberProfile?.approved && !memberProfile?.joined" >
   <div class="clr-col-md-4"><strong>SUBSCRIBE</strong></div>
   <div class="clr-col-md-8" >
     <button

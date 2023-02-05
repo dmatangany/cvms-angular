@@ -7,23 +7,6 @@
     <form [formGroup]="memberProfileForm">
       <img [src]="fileName" height="300" />
 
-      <clr-select-container>
-        <label>User</label>
-        <select clrSelect name="options" formControlName="userId" required  (change)="userId.emit($event.target)">
-          <option disabled value="">Select User</option>
-          <option [value]="user?.id">
-            {{ user?.title }} {{ user?.firstName }} {{ user?.lastName }}
-          </option>
-        </select>
-        <clr-control-error>This field is required!</clr-control-error>
-      </clr-select-container>
-
-      <!-- <clr-input-container>
-    <label class="required">Organization Name</label>
-    <input clrInput formControlName="name" type="text" size="35" />
-    <clr-control-error>Name is required</clr-control-error>
-  </clr-input-container> -->
-
       <clr-input-container>
         <label class="required">Physical Address</label>
         <input
@@ -45,23 +28,6 @@
         />
         <clr-control-error>This field is required</clr-control-error>
       </clr-input-container>
-
-      <clr-date-container>
-        <label>Date Joined </label>
-        <input clrDate type="date" formControlName="dateJoined" />
-      </clr-date-container>
-
-      <clr-select-container>
-        <label class="required">Status</label>
-        <select clrSelect name="options" formControlName="status">
-          <option
-            *ngFor="let status of statuses | keyvalue"
-            [value]="status.value"
-          >
-            {{ status.key }}
-          </option>
-        </select>
-      </clr-select-container>
 
       <clr-select-container>
         <label class="required">Member Type</label>

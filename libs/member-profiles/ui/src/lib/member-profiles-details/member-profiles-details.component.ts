@@ -28,11 +28,11 @@ export class MemberProfilesDetailsComponent implements OnInit {
       id: number = 1;
       memberTypeId: number = 1;
     }
-    this.memberProfileRequest!.id = this.memberProfile.id;
-    this.memberProfileRequest!.id = this.memberProfile.id;
+    this.memberProfileRequest!.memberTypeId = this.memberProfile?.memberType?.id;
+    this.memberProfileRequest!.id = this.memberProfile?.id;
     this.memberProfilesFacade.createMemberPayment(this.memberProfileRequest);
     this.memberProfilesFacade.loaded$.subscribe((res) => {
-      res ? this.router.navigate(['/dashboard']) : null;
+      res ? this.router.navigate(['/subscriptions']) : null;
     });
   }
 }
