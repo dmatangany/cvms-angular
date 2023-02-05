@@ -31,7 +31,7 @@ export class TotalAmountInHistoryComponent implements OnChanges {
   yAxisLabel = 'Amount';
 
   colorScheme: any = {
-    domain: ['#5AA454', '#110542', '#C7B42C', '#AAAAAA'],
+    domain: ['#5AA454', '#498d51', '#C7B42C', '#AAAAAA'],
   };
 
   constructor() {

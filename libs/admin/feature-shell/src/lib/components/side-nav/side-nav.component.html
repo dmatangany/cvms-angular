@@ -1,4 +1,12 @@
 <clr-vertical-nav id="show_bg_2" [clr-nav-level]="1">
+  <a class="logo-img text-center" routerLink="/">
+    <img
+      src="assets/images/ZIE Logo - white.png"
+      class="logo"
+      alt="ZIE Logo"
+      style="height: 5rem"
+    />
+  </a>
   <br />
   <a clrVerticalNavLink [routerLink]="['/dashboard']" routerLinkActive="active">
     <clr-icon clrVerticalNavIcon shape="home" class="is-solid"></clr-icon>
@@ -67,19 +75,19 @@
       </a>
 
       <a
-    clrVerticalNavLink
-    [routerLink]="['/member-packages']"
-    routerLinkActive="active"
-  >
-    Member Packages
-  </a>
-	<a
-    clrVerticalNavLink
-    [routerLink]="['/member-types']"
-    routerLinkActive="active"
-  >
-    Member Types
-  </a>
+        clrVerticalNavLink
+        [routerLink]="['/member-packages']"
+        routerLinkActive="active"
+      >
+        Member Packages
+      </a>
+      <a
+        clrVerticalNavLink
+        [routerLink]="['/member-types']"
+        routerLinkActive="active"
+      >
+        Member Types
+      </a>
       <a
         [routerLink]="['/currencies']"
         clrVerticalNavLink

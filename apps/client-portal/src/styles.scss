@@ -1,14 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cabin:500&display=swap');
 
-$clr-link-color: #110542;
-$clr-link-color-hover: #110542;
-$clr-link-color-active: #110542;
-$primary-default: #110542;
+$clr-font: 'Cabin', sans-serif;
+$clr-link-color: #498d51;
+$clr-link-color-hover: #498d51;
+$clr-link-color-active: #498d51;
+$primary-default: #498d51;
+@import '~@clr/ui/src/utils/components.clarity';
 
-:root {
-  --clr-font: 'Open Sans', sans-serif, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol' !important;
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .header {
@@ -16,7 +22,7 @@ $primary-default: #110542;
 }
 a {
   cursor: pointer;
-  color: blue !important;
+  color: $primary-default !important;
 }
 
 $zindex: (
@@ -33,10 +39,6 @@ $zindex: (
 
 .clr-input-group .clr-input {
   border: 1px solid rgb(165, 165, 165) !important;
-}
-
-.modal-body-wrapper {
-  overflow: hidden !important;
 }
 
 input[type='text'],
@@ -77,7 +79,6 @@ textarea {
   -moz-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  appearance: none;
   margin: 0;
   padding: 0;
   border: 0;
@@ -124,7 +125,6 @@ textarea {
 
 clr-password-container .clr-input-group {
   width: 97% !important;
-  border: none !important;
 }
 
 .clr-select-wrapper {
@@ -137,11 +137,19 @@ clr-password-container .clr-input-group {
 :host ::ng-deep {
   clr-select-container {
     .clr-multiselect-wrapper select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
       height: 1.45rem;
     }
 
     .clr-select-wrapper {
       select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        -o-appearance: none;
         height: 1.45rem;
         width: 100%;
       }
@@ -160,7 +168,7 @@ clr-password-container .clr-input-group {
     border-bottom: none;
   }
   .clr-control-container {
-    border: 1px solid #110542;
+    border: 1px solid #498d51;
     border-radius: 4px;
   }
   input {
@@ -171,12 +179,8 @@ clr-password-container .clr-input-group {
   }
 }
 
-.modal-body-wrapper {
-  overflow: inherit !important;
-}
-
 input[type='file'] {
-  border: 1px solid $primary-default;
+  border: 1px solid grey;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   width: 80%;
@@ -227,7 +231,7 @@ clr-date-container .clr-input-group {
   border-bottom: none !important;
 }
 
-$primary-default: #110542;
+$primary-default: #498d51;
 .clr-vertical-nav {
   background-color: $primary-default !important;
   .nav-divider {
@@ -255,6 +259,9 @@ $primary-default: #110542;
     &.active {
       color: $primary-default !important;
       background-color: #fafafa !important;
+      &::before {
+        background-color: $primary-default !important;
+      }
     }
     &:hover {
       color: $primary-default !important;
@@ -276,7 +283,7 @@ $primary-default: #110542;
 }
 
 .clr-vertical-nav .nav-link.active .nav-icon {
-  fill: $primary-default;
+  fill: $primary-default !important;
 }
 
 .limit-height clr-datagrid {
@@ -285,23 +292,23 @@ $primary-default: #110542;
 
 clr-datagrid {
   .datagrid .datagrid-column {
-    color: #fff;
-    background-color: $primary-default;
+    color: #bda352;
+    background-color: transparent;
   }
 
   .datagrid-table .datagrid-column {
     .datagrid-filter-toggle {
-      color: #fff;
+      color: #bda352;
 
       &.datagrid-filter-open,
       &.datagrid-filtered,
       &:hover {
-        color: #fff;
+        color: #bda352;
       }
     }
 
     .datagrid-column-title {
-      color: #fff;
+      color: #bda352;
     }
   }
 
@@ -384,8 +391,8 @@ a.label {
 }
 
 .btn.btn-success {
+  background-color: $primary-default !important;
   color: white !important;
-  border: none !important;
 }
 
 hr {
@@ -393,7 +400,7 @@ hr {
 }
 
 .clr-checkbox-wrapper input[type='checkbox']:checked + label::before {
-  background-color: #110542 !important;
+  background-color: #498d51 !important;
 }
 
 .main-container .content-container .clr-vertical-nav {
@@ -404,13 +411,12 @@ hr {
 
 .header.header-6 {
   background-color: #ffffff !important;
-  box-shadow: 0px 0px 7px #60537d !important;
+  box-shadow: 0px 2px 9px #564f4f !important;
 }
 
-@media screen and (max-width: 768px) {
-  .main-container .header-hamburger-trigger,
-  .main-container .header-overflow-trigger {
-    opacity: 1 !important;
-    background-color: #110542 !important;
-  }
+.nav .nav-link:hover,
+.nav .nav-link.active {
+  box-shadow: 0 -0.15rem 0 #0072a3 inset;
+  box-shadow: 0 -0.15rem 0 $primary-default inset !important;
+  transition: box-shadow 0.2s ease-in;
 }

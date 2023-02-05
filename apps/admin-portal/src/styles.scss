@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin:500&display=swap');
 
 $clr-font: 'Cabin', sans-serif;
-$clr-link-color: #110542;
-$clr-link-color-hover: #110542;
-$clr-link-color-active: #110542;
-$primary-default: #110542;
+$clr-link-color: #498d51;
+$clr-link-color-hover: #498d51;
+$clr-link-color-active: #498d51;
+$primary-default: #498d51;
 @import '~@clr/ui/src/utils/components.clarity';
 
 :host {
@@ -22,7 +22,7 @@ $primary-default: #110542;
 }
 a {
   cursor: pointer;
-  color: blue !important;
+  color: $primary-default !important;
 }
 
 $zindex: (
@@ -168,7 +168,7 @@ clr-password-container .clr-input-group {
     border-bottom: none;
   }
   .clr-control-container {
-    border: 1px solid #110542;
+    border: 1px solid #498d51;
     border-radius: 4px;
   }
   input {
@@ -231,7 +231,7 @@ clr-date-container .clr-input-group {
   border-bottom: none !important;
 }
 
-$primary-default: #110542;
+$primary-default: #498d51;
 .clr-vertical-nav {
   background-color: $primary-default !important;
   .nav-divider {
@@ -259,6 +259,9 @@ $primary-default: #110542;
     &.active {
       color: $primary-default !important;
       background-color: #fafafa !important;
+      &::before {
+        background-color: $primary-default !important;
+      }
     }
     &:hover {
       color: $primary-default !important;
@@ -280,7 +283,7 @@ $primary-default: #110542;
 }
 
 .clr-vertical-nav .nav-link.active .nav-icon {
-  fill: $primary-default;
+  fill: $primary-default !important;
 }
 
 .limit-height clr-datagrid {
@@ -289,23 +292,23 @@ $primary-default: #110542;
 
 clr-datagrid {
   .datagrid .datagrid-column {
-    color: #fff;
-    background-color: $primary-default;
+    color: #bda352;
+    background-color: transparent;
   }
 
   .datagrid-table .datagrid-column {
     .datagrid-filter-toggle {
-      color: #fff;
+      color: #bda352;
 
       &.datagrid-filter-open,
       &.datagrid-filtered,
       &:hover {
-        color: #fff;
+        color: #bda352;
       }
     }
 
     .datagrid-column-title {
-      color: #fff;
+      color: #bda352;
     }
   }
 
@@ -397,7 +400,7 @@ hr {
 }
 
 .clr-checkbox-wrapper input[type='checkbox']:checked + label::before {
-  background-color: #110542 !important;
+  background-color: #498d51 !important;
 }
 
 .main-container .content-container .clr-vertical-nav {
@@ -409,4 +412,11 @@ hr {
 .header.header-6 {
   background-color: #ffffff !important;
   box-shadow: 0px 2px 9px #564f4f !important;
+}
+
+.nav .nav-link:hover,
+.nav .nav-link.active {
+  box-shadow: 0 -0.15rem 0 #0072a3 inset;
+  box-shadow: 0 -0.15rem 0 $primary-default inset !important;
+  transition: box-shadow 0.2s ease-in;
 }
