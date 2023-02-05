@@ -90,14 +90,14 @@ export class MyMemberUserProfileComponent implements AfterViewChecked {
     if(!this.isMember) {
       this.memberProfilesFacade.createNewMemberProfile(formValue);
       this.sub = this.memberProfilesFacade.loaded$.subscribe((res) => {
-        res ? this.router.navigate(['/member-profile']) : null;
+        res ? this.router.navigate(['/dashboard']) : null;
       });
     }
     if(this.isMember) {
       console.log("MyMemberUserProfileComponent onSubmit2", this.isMember)
       this.memberProfilesFacade.createMemberPayment(formValue);
       this.sub = this.memberProfilesFacade.loaded$.subscribe((res) => {
-        res ? this.router.navigate(['/member-profile']) : null;
+        res ? this.router.navigate(['/dashboard']) : null;
       });
     }
   }
