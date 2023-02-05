@@ -7,7 +7,7 @@ import { MemberProfilesEntity } from '@membership-application/member-profiles/da
 @Component({
   selector: 'membership-application-member-approvals-form',
   templateUrl: './member-approvals-form.component.html',
-  styleUrls: ['./member-approvals-form.component.scss'],
+  styleUrls: ['./member-approvals-form.component.css'],
 })
 export class MemberApprovalsFormComponent implements OnInit {
   @Input() memberPackage!: MemberPackageEntity;
