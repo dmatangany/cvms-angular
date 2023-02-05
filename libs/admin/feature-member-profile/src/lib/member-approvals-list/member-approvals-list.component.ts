@@ -17,7 +17,7 @@ import * as XLSX from 'xlsx';
 @Component({
   selector: 'membership-application-member-approvals-list',
   templateUrl: './member-approvals-list.component.html',
-  styleUrls: ['./member-profiles-list.component.css'],
+  styleUrls: ['./member-approvals-list.component.css'],
 })
 export class MemberApprovalsListComponent implements OnInit, AfterViewChecked {
   public isEdit = false;
