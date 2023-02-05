@@ -32,7 +32,7 @@ export class MemberProfilesDetailsComponent implements OnInit {
     this.memberProfileRequest!.id = this.memberProfile.id;
     this.memberProfilesFacade.createMemberPayment(this.memberProfileRequest);
     this.memberProfilesFacade.loaded$.subscribe((res) => {
-      res ? this.router.navigate(['/member-profiles']) : null;
+      res ? this.router.navigate(['/dashboard']) : null;
     });
   }
 }
