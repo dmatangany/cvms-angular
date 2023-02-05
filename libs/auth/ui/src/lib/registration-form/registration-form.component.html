@@ -1,132 +1,124 @@
-<div class="card form">
-  <div class="card-block">
-    <form [formGroup]="registrationForm">
-      <clr-input-container>
-        <label>Title</label>
-        <input clrInput type="text" formControlName="title" size="45" />
-        <clr-control-error>Field is required</clr-control-error>
-      </clr-input-container>
+<form [formGroup]="registrationForm">
+  <clr-input-container>
+    <label>Title</label>
+    <input clrInput type="text" formControlName="title" size="45" />
+    <clr-control-error>Field is required</clr-control-error>
+  </clr-input-container>
 
-      <clr-input-container>
-        <label>Initials</label>
-        <input clrInput type="text" formControlName="initials" size="45" />
-        <clr-control-error>Field is required</clr-control-error>
-      </clr-input-container>
+  <clr-input-container>
+    <label>Initials</label>
+    <input clrInput type="text" formControlName="initials" size="45" />
+    <clr-control-error>Field is required</clr-control-error>
+  </clr-input-container>
 
-      <clr-input-container>
-        <label>Last Name</label>
-        <input clrInput type="text" formControlName="lastName" size="45" />
-        <clr-control-error>Field is required</clr-control-error>
-      </clr-input-container>
+  <clr-input-container>
+    <label>Last Name</label>
+    <input clrInput type="text" formControlName="lastName" size="45" />
+    <clr-control-error>Field is required</clr-control-error>
+  </clr-input-container>
 
-      <clr-input-container>
-        <label>First Name</label>
-        <input clrInput type="text" formControlName="firstName" size="45" />
-        <clr-control-error>Field is required</clr-control-error>
-      </clr-input-container>
+  <clr-input-container>
+    <label>First Name</label>
+    <input clrInput type="text" formControlName="firstName" size="45" />
+    <clr-control-error>Field is required</clr-control-error>
+  </clr-input-container>
 
-      <clr-input-container>
-        <label>Username</label>
-        <input clrInput type="text" formControlName="username" size="45" />
-        <clr-control-error>Field is required</clr-control-error>
-      </clr-input-container>
+  <clr-input-container>
+    <label>Username</label>
+    <input clrInput type="text" formControlName="username" size="45" />
+    <clr-control-error>Field is required</clr-control-error>
+  </clr-input-container>
 
-      <clr-date-container>
-        <label for="dateControl">Date of Birth</label>
-        <input
-          id="dateControl"
-          type="date"
-          clrDate
-          formControlName="dateOfBirth"
-        />
-      </clr-date-container>
+  <clr-date-container>
+    <label for="dateControl">Date of Birth</label>
+    <input id="dateControl" type="date" clrDate formControlName="dateOfBirth" />
+  </clr-date-container>
 
-      <clr-radio-container clrInline>
-        <label>Gender</label>
-        <clr-radio-wrapper>
-          <input
-            type="radio"
-            clrRadio
-            required
-            formControlName="gender"
-            value="MALE"
-          />
-          <label>Male</label>
-        </clr-radio-wrapper>
-        <clr-radio-wrapper>
-          <input
-            type="radio"
-            clrRadio
-            required
-            formControlName="gender"
-            value="FEMALE"
-          />
-          <label>Female</label>
-        </clr-radio-wrapper>
+  <clr-radio-container clrInline>
+    <label>Gender</label>
+    <clr-radio-wrapper>
+      <input
+        type="radio"
+        clrRadio
+        required
+        formControlName="gender"
+        value="MALE"
+      />
+      <label>Male</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input
+        type="radio"
+        clrRadio
+        required
+        formControlName="gender"
+        value="FEMALE"
+      />
+      <label>Female</label>
+    </clr-radio-wrapper>
 
-        <clr-control-error>This field is required!</clr-control-error>
-      </clr-radio-container>
+    <clr-control-error>This field is required!</clr-control-error>
+  </clr-radio-container>
 
-      <clr-input-container>
-        <label>Email</label>
-        <input clrInput type="email" formControlName="email" size="45" />
-        <clr-control-error>Please enter a valid email</clr-control-error>
-      </clr-input-container>
+  <clr-input-container>
+    <label>Email</label>
+    <input clrInput type="email" formControlName="email" size="45" />
+    <clr-control-error>Please enter a valid email</clr-control-error>
+  </clr-input-container>
 
-      <clr-select-container>
-        <label>Group</label>
-        <select clrSelect name="options" formControlName="groupId" required>
-          <option disabled selected>Select Group</option>
-          <option [value]="3">
-            MEMBER
-          </option>
-        </select>
-        <clr-control-error>This field is required!</clr-control-error>
-      </clr-select-container>
+  <clr-select-container>
+    <label>Group</label>
+    <select clrSelect name="options" formControlName="groupId" required>
+      <option disabled selected>Select Group</option>
+      <option [value]="3">MEMBER</option>
+    </select>
+    <clr-control-error>This field is required!</clr-control-error>
+  </clr-select-container>
 
-      <clr-input-container>
-        <label>National Identification Number</label>
-        <input
-          clrInput
-          type="text"
-          formControlName="nationalIdentificationNumber"
-          size="45"
-        />
-        <clr-control-error>Field is required</clr-control-error>
-      </clr-input-container>
+  <clr-input-container>
+    <label>National Identification Number</label>
+    <input
+      clrInput
+      type="text"
+      formControlName="nationalIdentificationNumber"
+      size="45"
+    />
+    <clr-control-error>Field is required</clr-control-error>
+  </clr-input-container>
 
-      <clr-input-container>
-        <label>Driver License Number</label>
-        <input
-          clrInput
-          type="text"
-          formControlName="driverLicenseNumber"
-          size="45"
-        />
-        <clr-control-error>Field is required</clr-control-error>
-      </clr-input-container>
+  <clr-input-container>
+    <label>Driver License Number</label>
+    <input
+      clrInput
+      type="text"
+      formControlName="driverLicenseNumber"
+      size="45"
+    />
+    <clr-control-error>Field is required</clr-control-error>
+  </clr-input-container>
 
-      <clr-input-container>
-        <label>Passport Number</label>
-        <input
-          clrInput
-          type="text"
-          formControlName="passportNumber"
-          size="45"
-        />
-        <clr-control-error>Field is required</clr-control-error>
-      </clr-input-container>
-    </form>
-  </div>
+  <clr-input-container>
+    <label>Passport Number</label>
+    <input clrInput type="text" formControlName="passportNumber" size="45" />
+    <clr-control-error>Field is required</clr-control-error>
+  </clr-input-container>
+</form>
+<br />
+<button
+  class="btn btn-primary"
+  type="submit"
+  (click)="formValue.emit(registrationForm.value)"
+  [clrLoading]="btnState"
+>
+  REGISTER
+</button>
 
-  <div class="card-footer">
-    <button
-      class="btn btn-primary"
-      type="submit"
-      (click)="formValue.emit(registrationForm.value)"
-      [clrLoading]="btnState"
-    >
-      REGISTER
-    </button>
-  </div>
-</div>
+<br />
+<div class="card-header"></div>
+<a class="text-right" routerLink="../forgot-password" class="txt3">
+  Forgot Password?
+</a>
+<br /><br />
+
+<a class="text-right" routerLink="../login"> I have an account</a>
+<br /><br />

@@ -1,12 +1,25 @@
 clr-vertical-nav {
-  height: 100%;
-  background-color: #fafafa;
+  height: 100vh;
 }
 
-.clr-vertical-nav .nav-text {
-  font-size: 10px !important;
+:host ::ng-deep {
+  .nav-group {
+    .nav-group-content {
+      button {
+        &:focus {
+          outline: none;
+        }
+
+        .nav-group-trigger-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
 }
 
-.clr-vertical-nav.has-nav-groups .nav-link {
-  font-size: 12px;
+.logo-img {
+  display: block;
 }

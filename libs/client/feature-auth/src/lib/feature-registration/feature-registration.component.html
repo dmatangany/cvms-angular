@@ -1,12 +1,9 @@
-<clr-main-container>
-  <div class="container">
-    <div class="wrap">
-      <div class="card-header text-center">New Member Registration</div>
+<div class="text-center">
+  <h1>New Member Registration</h1>
+</div>
 
-      <membership-application-registration-form
-        [btnState]="(usersFacade.btnState$ | async)!"
-        [title]="'New Member'"
-        (formValue)="createNewMemberUser($event)"
-      ></membership-application-registration-form>
-    </div></div
-></clr-main-container>
+<membership-application-registration-form
+  [btnState]="(usersFacade.btnState$ | async)!"
+  [title]="'New Member'"
+  (formValue)="createNewMemberUser($event)"
+></membership-application-registration-form>
