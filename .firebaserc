@@ -1,15 +1,15 @@
 {
   "projects": {
-    "default": "staging-apps-dee55"
+    "default": "external-dcc8c"
   },
   "targets": {
-    "staging-apps-dee55": {
+    "external-dcc8c": {
       "hosting": {
         "admin": [
-          "membership-admin-v2"
+          "zie-admin"
         ],
         "client": [
-          "membership-client"
+          "zie-client"
         ]
       }
     }
