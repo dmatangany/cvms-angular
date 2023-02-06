@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://api.zie.co.zw',
+  baseUrl: 'http://localhost:40000',
 };
 
 /*
